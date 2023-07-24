@@ -23,7 +23,7 @@ class GameBoard:
         self.size = size
         self.board = [["-" for x in range(size)] for y in range(size)]
 
-    def print_board(self, size):
+    def print_board(self):
         """
         Function prints the game board, take size as parameter
         and sets letter at the begining of each row
@@ -40,6 +40,7 @@ class GameBoard:
 
         print(" ", *column_values)
 
+        # with assist of Sean - Tutor 
 # loop over the zipped lists, row is the index, cell is the list in the loop
         for index, row in enumerate(zip(alphabet, self.board)):
             # there are two items in the list,
@@ -47,5 +48,10 @@ class GameBoard:
             # the character can be printed as is
             # the board list must be joined as a string
             print(
-                f'{row[0]} ', ' '.join(x for x in row[1])
+                f'{row[0]}', ' '.join(x for x in row[1])
             )
+
+
+size = 5
+board_one = GameBoard(size)
+board_one.print_board()
