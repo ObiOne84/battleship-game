@@ -23,7 +23,7 @@ class GameBoard:
         self.size = size
         self.board = [["-" for x in range(size)] for y in range(size)]
 
-    def print_board(self):
+    def print_board(self, size):
         """
         Function prints the game board, take size as parameter
         and sets letter at the begining of each row
@@ -83,7 +83,61 @@ def game_logo():
 """)
 
 
+def game_intro():
+    """
+    Prints welcome message and game rules
+    """
+
+    message = """
+    Weclome to the game battleship \n
+    Battleship is a war-themed game for two players in which the opponents
+    try to guess the location of their opponent's warships and sink them. \n
+    You can choose between three game levels:
+    Beginner - which will build 5 x 5 grid and allow you to choose
+    location of five ships on the board.
+    Intermediate - the game will take place on 10 x 10 grid with ten available
+    ships.
+    Expert - on this level the number of available shots is limited to 50.\n
+    """
+    print_out(message)
+
+
+def collect_user_name():
+    """
+    The function will collect user name
+    """
+
+    while True:
+        print_out("""
+Please choose your username. The username should contain minimum 3 characters,
+and maximum 15.
+        """)
+        global user_name
+        user_name = input(f"Please provide your username: ")
+
+        try:
+            if len(user_name) >= 3 and len(user_name) < 16:
+                print(f"Thank you {user_name}.\n")
+                return user_name
+
+            else:
+                raise ValueError(print(f"{user_name} is not valid."))
+
+        except ValueError:
+            print(f'You entered {user_name}.')
+            print(f'{user_name} has {len(user_name)} characters.')
+            print_out("""
+Username should have minium 3 and maximum 15 charcters. Please try again.
+            """)
+
+
+user_name = collect_user_name()
 size = 5
-game_logo()
-board_one = GameBoard(size)
-board_one.print_board()
+# game_logo()
+# game_intro()
+
+# collect_user_name()
+print(user_name)
+
+# board_one = GameBoard(size)
+# board_one.print_board(size)
