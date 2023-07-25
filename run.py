@@ -40,9 +40,9 @@ class GameBoard:
 
         print(" ", *column_values)
 
-        # with assist of Sean - Tutor 
+        # with assist of Sean - Tutor
 # loop over the zipped lists, row is the index, cell is the list in the loop
-        for index, row in enumerate(zip(alphabet, self.board)):
+        for x, row in enumerate(zip(alphabet, self.board)):
             # there are two items in the list,
             # row[0] is the alphabet character, row[1] is the board row
             # the character can be printed as is
@@ -52,6 +52,38 @@ class GameBoard:
             )
 
 
+def game_logo():
+    """
+    Prints game logo and game name
+    """
+    battleship_logo = """
+|    |    |
+             )_)  )_)  )_)     *     *                 __/___
+            )___))___))__*)               *      _____/______|
+           )____)____)_____)\\           _______/_____\_______\_____ 
+         _____|____|____|____\\\__       \              < < <       |
+---------\                   /-----------\     < - - < - - < - - < |
+  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^  ^^^^^ ^^^^^^^^^^
+    ^^^^      ^^^^     ^^^    ^^      ^^^^      ^^^^     ^^^    ^^
+         ^^^^      ^^^           ^^^        ^^^^      ^^^
+"""
+
+    print_out(battleship_logo)
+
+    print("""
+- - - - B A T T L E S H I P - - - - - - - - - - - - - - - - - - - - - - - -
+ ######     #    ####### ####### #       #######  #####  #     # ### ######
+ #     #   # #      #       #    #       #       #     # #     #  #  #     #
+ #     #  #   #     #       #    #       #       #       #     #  #  #     #
+ ######  #     #    #       #    #       #####    #####  #######  #  ######
+ #     # #######    #       #    #       #             # #     #  #  #
+ #     # #     #    #       #    #       #       #     # #     #  #  #
+ ######  #     #    #       #    ####### #######  #####  #     # ### #
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - ObiOne84 - - - - -
+""")
+
+
 size = 5
+game_logo()
 board_one = GameBoard(size)
 board_one.print_board()
