@@ -56,19 +56,20 @@ def game_logo():
     """
     Prints game logo and game name
     """
-    battleship_logo = """
-|    |    |
-             )_)  )_)  )_)     *     *                 __/___
-            )___))___))__*)               *      _____/______|
-           )____)____)_____)\\           _______/_____\_______\_____ 
-         _____|____|____|____\\\__       \              < < <       |
----------\                   /-----------\     < - - < - - < - - < |
-  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^  ^^^^^ ^^^^^^^^^^
-    ^^^^      ^^^^     ^^^    ^^      ^^^^      ^^^^     ^^^    ^^
-         ^^^^      ^^^           ^^^        ^^^^      ^^^
-"""
 
-    print_out(battleship_logo)
+    message = ("""
+     |    |    |                         *   *
+             )_)  )_)  )_)           *            *
+            )___))___))___)      *                   *__/_____
+           )____)____)_____)*                    ____/_______\\
+         _____|____|____|_____           _______/_____\\_______\\____
+---------\\                   /-----------\\              < < <      |
+  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^
+     ^^^^      ^^^^     ^^^    ^^^   ^^^^      ^^^^     ^^^    ^^
+         ^^^^      ^^^     ^^^^      ^^^         ^^^^      ^^^
+    """)
+
+    print_out(message)
 
     print("""
 - - - - B A T T L E S H I P - - - - - - - - - - - - - - - - - - - - - - - -
@@ -89,16 +90,16 @@ def game_intro():
     """
 
     message = """
-    Weclome to the game battleship \n
-    Battleship is a war-themed game for two players in which the opponents
-    try to guess the location of their opponent's warships and sink them. \n
-    You can choose between three game levels:
-    Beginner - which will build 5 x 5 grid and allow you to choose
-    location of five ships on the board.
-    Intermediate - the game will take place on 10 x 10 grid with ten available
-    ships.
-    Expert - on this level the number of available shots is limited to 50.\n
-    """
+Weclome to the game battleship \n
+Battleship is a war-themed game for two players in which the opponents
+try to guess the location of their opponent's warships and sink them. \n
+You can choose between three game levels:
+Beginner - which will build 5 x 5 grid and allow you to choose
+location of five ships on the board.
+Intermediate - the game will take place on 10 x 10 grid with ten available
+ships.
+Expert - on this level the number of available shots is limited to 50.\n
+"""
     print_out(message)
 
 
@@ -118,7 +119,6 @@ and maximum 15.
         if validate_user_name(user_name):
             print("Great")
             return user_name
-            break
 
 
 def validate_user_name(name):
@@ -141,13 +141,60 @@ def validate_user_name(name):
     return True
 
 
+def game_level():
+    """
+    function checks user input and defines the size of the game board
+    need to add validation here
+    """
+
+    while True:
+        message = """
+Please choose your gaming experience by choosing one of three options:
+choose 'b' for beginner
+choose 'i' for intermediate
+or  choose 'e' for expert.\n
+    """
+        print_out(message)
+        # global user_name
+        # user_name = input(f"Please enter username: ")
+        user_input = input(f"Please indicate your game experience: ")
+        user_experience = user_input.lower()
+
+        try:
+            if user_experience == "b":
+                print_out(f"""
+Thank you {user_name}. Your game experience level is beginner.\n
+                """)
+                return 5
+            elif user_experience == "i":
+                print_out(f"""
+Thank you {user_name}. Your game experience level is intermediate.\n
+                """)
+                return 10
+            elif user_experience == "e":
+                print_out(f"""
+Thank you {user_name}. Your game experience level is expert.\n
+                """)
+                return 10
+            else:
+                raise ValueError
+        except ValueError:
+            print_out(f"""
+Invalid data. You provided '{user_experience}', this is not recognised value.\n
+            """)
+
+
+# ----------------------------------------------------------------
+# ----------------------Code Call-Out Zone------------------------
+
+game_logo()
+game_intro()
+
+# define variables in this order
 user_name = collect_user_name()
-size = 5
-# game_logo()
-# game_intro()
+size = game_level()
 
-# collect_user_name()
-print(user_name)
-
-# board_one = GameBoard(size)
-# board_one.print_board(size)
+print(f" {user_name}'s Game Board")
+print(f"..." * size)
+board_one = GameBoard(size)
+board_one.print_board(size)
