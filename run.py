@@ -112,23 +112,33 @@ def collect_user_name():
 Please choose your username. The username should contain minimum 3 characters,
 and maximum 15.
         """)
-        global user_name
+        # global user_name
         user_name = input(f"Please provide your username: ")
 
-        try:
-            if len(user_name) >= 3 and len(user_name) < 16:
-                print(f"Thank you {user_name}.\n")
-                return user_name
+        if validate_user_name(user_name):
+            print("Great")
+            return user_name
+            break
 
-            else:
-                raise ValueError(print(f"{user_name} is not valid."))
 
-        except ValueError:
-            print(f'You entered {user_name}.')
-            print(f'{user_name} has {len(user_name)} characters.')
-            print_out("""
-Username should have minium 3 and maximum 15 charcters. Please try again.
-            """)
+def validate_user_name(name):
+    """
+    Functions validates user input to ensure username
+    is between 3 to 15 characters
+    """
+    try:
+        if len(name) < 3:
+            print(f"{name} has {len(name)} charactes.")
+            raise ValueError
+        if len(name) > 15:
+            print(f"{name} has {len(name)} characters.")
+            raise ValueError
+    except ValueError:
+        print(
+            f"The username is not valid!\n"
+        )
+        return False
+    return True
 
 
 user_name = collect_user_name()
