@@ -230,7 +230,7 @@ def validate_coordinates(values):
         if len(values) > 3:
             print("bad batch")
             raise ValueError
-        if len(values) == 3 and int(values[2]) != 0 and int(values[1]) != 1:
+        if len(values) == 3 and int(values[1] + values[2]) != 10:
             print("incorrect value")
             raise ValueError
         if len(values) < 2:
@@ -337,8 +337,8 @@ ships = []
 
 # print(f" {user_name}'s Game Board")
 # print(f"..." * size)
-board_one = GameBoard(size)
-board_one.print_board(size)
+# board_one = GameBoard(size)
+# board_one.print_board(size)
 # print(ships)
 # print(computer_guess)
 # print(num_ships)
@@ -351,9 +351,11 @@ board_one.print_board(size)
 # print(num_ships)
 
 # code for user to choose the ships
-while len(ships) < num_ships:
-    z = player_ship_coordinates()
-    x = return_x_value(z)
-    y = return_y_value(z)
-    user_ship_location(board_one, x, y)
-    board_one.print_board(size)
+# while len(ships) < num_ships:
+#     z = player_ship_coordinates()
+#     x = return_x_value(z)
+#     y = return_y_value(z)
+#     user_ship_location(board_one, x, y)
+#     board_one.print_board(size)
+
+player_ship_coordinates()
