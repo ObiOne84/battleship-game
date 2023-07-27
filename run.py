@@ -216,7 +216,7 @@ def player_ship_coordinates():
         if validate_coordinates(ship_loc):
             print("Great, you chose your ship location!")
             break
-    return ship_loc
+    return ship_loc.upper()
 
 
 def validate_coordinates(values):
@@ -252,6 +252,19 @@ def validate_coordinates(values):
         return False
 
     return True
+
+
+def return_x_value(data):
+    """
+    Function return x coordinate for the ship or shot
+    from user input
+    """
+    alphabet = ["ABCDEFGHIJKLMNOPRTQUXYZ"]
+    alphabet = ''.join(alphabet[:size])
+
+    if data[0] in ''.join(alphabet[:size]):
+        x = alphabet.index(data[0])
+        return x
 
 
 def random_shot(data):
@@ -296,15 +309,15 @@ ships = []
 
 # print(f" {user_name}'s Game Board")
 # print(f"..." * size)
-board_one = GameBoard(size)
+# board_one = GameBoard(size)
 # board_one.print_board(size)
-print(ships)
-print(computer_guess)
-print(num_ships)
-random_ship_location(board_one)
-board_one.print_board(size)
-random_shot(board_one)
-board_one.print_board(size)
-print(ships)
-print(computer_guess)
-print(num_ships)
+# print(ships)
+# print(computer_guess)
+# print(num_ships)
+# random_ship_location(board_one)
+# board_one.print_board(size)
+# random_shot(board_one)
+# board_one.print_board(size)
+# print(ships)
+# print(computer_guess)
+# print(num_ships)
