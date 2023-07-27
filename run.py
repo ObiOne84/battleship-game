@@ -205,13 +205,53 @@ def random_ship_location(data):
         b += 1
 
 
-def player_choose_ships():
+def player_ship_coordinates():
     """
     Function collects ships coordinates from the user as a string
     """
 
-    ship_loc = input("please enter ship location: ")
+    while True:
+        ship_loc = input("please enter ship location: ")
+
+        if validate_coordinates(ship_loc):
+            print("Great, you chose your ship location!")
+            break
     return ship_loc
+
+
+def validate_coordinates(values):
+    """
+    Function validates users ships coardinates
+    """
+    alphabet = ["ABCDEFGHIJKLMNOPRTQUXYZ"]
+    alphabet = ''.join(alphabet[:size])
+
+    try:
+        if len(values) > 3:
+            print("bad batch")
+            raise ValueError
+        if len(values) == 3 and int(values[2]) != 0 and int(values[1]) != 1:
+            print("incorrect value")
+            raise ValueError
+        if len(values) < 2:
+            print("too short")
+            raise ValueError
+        if values[0].upper() not in ''.join(alphabet[:size]):
+            print(f"{values[0].upper()} is not a column name on the gameboard")
+            raise ValueError
+        if values[1].isnumeric() is False:
+            print(f" '{values[1]}' not a number")
+            raise ValueError
+        if int(values[1]) > size:
+            print(f"{values[1]} is not a row number.")
+            print(f"Please choose number between 1 and {size}")
+            raise ValueError
+
+    except ValueError:
+        print(f"{values} is not a valid choice.")
+        return False
+
+    return True
 
 
 # ----variables for testing --------------------------------------
@@ -237,4 +277,4 @@ ships = []
 # random_ship_location(board_one)
 # board_one.print_board(size)
 # print(ships)
-player_choose_ships()
+player_ship_coordinates()
