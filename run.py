@@ -219,6 +219,17 @@ def player_ship_coordinates():
     return ship_loc.upper()
 
 
+# ----variables for testing --------------------------------------
+user_name = "Adam"
+size = 10
+shots = size * 5
+num_ships = size
+computer_guess = []
+ships = []
+guesses = []
+# ----------------------------------------------------------------
+
+
 def validate_coordinates(values):
     """
     Function validates users ships coardinates
@@ -294,6 +305,35 @@ def append_ship(data, x, y):
         print("You already placed ship here")
 
 
+def user_shots(data, x, y):
+    """
+    Function record user shots, and check against board
+    reduce the number of shots after each round
+    and ships after each hit
+    """
+    global num_ships
+    global shots
+    pair = (x, y)
+
+    if pair in guesses:
+        print("shoot again")
+    else:
+        if pair not in ships:
+            data.board[x][y] = "0"
+            print("miss\n")
+            guesses.append(pair)
+            shots -= 1
+            return False
+
+        else:
+            data.board[x][y] = "X"
+            print("Hit\n")
+            guesses.append(pair)
+            num_ships -= 1
+            shots -= 1
+            return False
+
+
 def random_shot(data):
     """
     Function randomly shots at the ships
@@ -317,13 +357,6 @@ def random_shot(data):
             num_ships -= 1
 
 
-# ----variables for testing --------------------------------------
-user_name = "Adam"
-size = 10
-num_ships = size
-computer_guess = []
-ships = []
-# ----------------------------------------------------------------
 # ----------------------Code Call-Out Zone------------------------
 
 # game_logo()
@@ -356,3 +389,13 @@ while len(ships) < num_ships:
     y = return_y_value(z)
     append_ship(board_one, x, y)
     board_one.print_board(size)
+while shots > 0 and num_ships > 0:
+    z = player_ship_coordinates()
+    x = return_x_value(z)
+    y = return_y_value(z)
+    user_shots(board_one, x, y)
+    board_one.print_board(size)
+    print(f"You have {shots} shots left.")
+    print(f"You still need to find {num_ships} ships.")
+else:
+    print("Game Over")
