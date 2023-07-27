@@ -279,6 +279,22 @@ def return_y_value(data):
         return y
 
 
+def user_ship_location(data, x, y):
+    """
+    Function allow user to choose location of ships
+    on the board, if the position has already ship
+    it will inform user about the error
+    """
+
+    if data.board[x][y] == "-":
+        data.board[x][y] = "@"
+        pair = (x, y)
+        # data.append(pair)
+        ships.append(pair)
+    elif data.board[x][y] == "@":
+        print("You already placed ship here")
+
+
 def random_shot(data):
     """
     Function randomly shots at the ships
@@ -321,8 +337,8 @@ ships = []
 
 # print(f" {user_name}'s Game Board")
 # print(f"..." * size)
-# board_one = GameBoard(size)
-# board_one.print_board(size)
+board_one = GameBoard(size)
+board_one.print_board(size)
 # print(ships)
 # print(computer_guess)
 # print(num_ships)
@@ -334,8 +350,10 @@ ships = []
 # print(computer_guess)
 # print(num_ships)
 
-cor = player_ship_coordinates()
-print(cor)
-x = return_x_value(cor)
-y = return_y_value(cor)
-print(x, y)
+# code for user to choose the ships
+while len(ships) < num_ships:
+    z = player_ship_coordinates()
+    x = return_x_value(z)
+    y = return_y_value(z)
+    user_ship_location(board_one, x, y)
+    board_one.print_board(size)
