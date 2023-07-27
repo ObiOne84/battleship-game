@@ -22,7 +22,6 @@ class GameBoard:
     def __init__(self, size):
         self.size = size
         self.board = [["-" for x in range(size)] for y in range(size)]
-        self.num_ships = num_ships
         self.ships = []
         self.guesses = []
 
@@ -206,6 +205,15 @@ def random_ship_location(data):
         b += 1
 
 
+def player_choose_ships():
+    """
+    Function collects ships coordinates from the user as a string
+    """
+
+    ship_loc = input("please enter ship location: ")
+    return ship_loc
+
+
 # ----variables for testing --------------------------------------
 user_name = "Adam"
 size = 10
@@ -218,14 +226,15 @@ num_ships = size
 # game_intro()
 
 # define variables in this order
-user_name = collect_user_name()
-size = game_level()
-num_ships = size
+# user_name = collect_user_name()
+# size = game_level()
+# num_ships = size
 ships = []
-print(f" {user_name}'s Game Board")
-print(f"..." * size)
-board_one = GameBoard(size)
-board_one.print_board(size)
-random_ship_location(board_one)
-board_one.print_board(size)
-print(ships)
+# print(f" {user_name}'s Game Board")
+# print(f"..." * size)
+# board_one = GameBoard(size)
+# board_one.print_board(size)
+# random_ship_location(board_one)
+# board_one.print_board(size)
+# print(ships)
+player_choose_ships()
