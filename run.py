@@ -254,11 +254,35 @@ def validate_coordinates(values):
     return True
 
 
+def random_shot(data):
+    """
+    Function randomly shots at the ships
+    """
+    x = randint(0, size - 1)
+    y = randint(0, size - 1)
+    pair = (x, y)
+
+    global num_ships
+    if pair in computer_guess:
+        print("shoot again")
+    else:
+        if pair not in ships:
+            data.board[x][y] = "0"
+            print("miss\n")
+            computer_guess.append(pair)
+        else:
+            data.board[x][y] = "#"
+            print("Hit\n")
+            computer_guess.append(pair)
+            num_ships -= 1
+
+
 # ----variables for testing --------------------------------------
 user_name = "Adam"
 size = 10
 num_ships = size
-
+computer_guess = []
+ships = []
 # ----------------------------------------------------------------
 # ----------------------Code Call-Out Zone------------------------
 
@@ -269,12 +293,18 @@ num_ships = size
 # user_name = collect_user_name()
 # size = game_level()
 # num_ships = size
-ships = []
+
 # print(f" {user_name}'s Game Board")
 # print(f"..." * size)
-# board_one = GameBoard(size)
+board_one = GameBoard(size)
 # board_one.print_board(size)
-# random_ship_location(board_one)
-# board_one.print_board(size)
-# print(ships)
-player_ship_coordinates()
+print(ships)
+print(computer_guess)
+print(num_ships)
+random_ship_location(board_one)
+board_one.print_board(size)
+random_shot(board_one)
+board_one.print_board(size)
+print(ships)
+print(computer_guess)
+print(num_ships)
