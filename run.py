@@ -267,6 +267,18 @@ def return_x_value(data):
         return x
 
 
+def return_y_value(data):
+    """
+    Function return y coordinate for the ship or shot
+    """
+    if len(data) == 3:
+        y = int(data[1] + data[2])
+        return y
+    else:
+        y = int(data[1])
+        return y
+
+
 def random_shot(data):
     """
     Function randomly shots at the ships
@@ -321,3 +333,9 @@ ships = []
 # print(ships)
 # print(computer_guess)
 # print(num_ships)
+
+cor = player_ship_coordinates()
+print(cor)
+x = return_x_value(cor)
+y = return_y_value(cor)
+print(x, y)
