@@ -22,6 +22,9 @@ class GameBoard:
     def __init__(self, size):
         self.size = size
         self.board = [["-" for x in range(size)] for y in range(size)]
+        self.num_ships = num_ships
+        self.ships = []
+        self.guesses = []
 
     def print_board(self, size):
         """
@@ -184,17 +187,45 @@ Invalid data. You provided '{user_experience}', this is not recognised value.\n
             """)
 
 
+def random_ship_location(data):
+    """
+    Function randomly allocates ships on the board
+    """
+
+    b = 0
+    while b < num_ships:
+        x = randint(0, size - 1)
+        y = randint(0, size - 1)
+        if data.board[x][y] == "-":
+            data.board[x][y] = "@"
+            pair = (x, y)
+            # data.append(pair)
+            ships.append(pair)
+        else:
+            continue
+        b += 1
+
+
+# ----variables for testing --------------------------------------
+user_name = "Adam"
+size = 10
+num_ships = size
+
 # ----------------------------------------------------------------
 # ----------------------Code Call-Out Zone------------------------
 
-game_logo()
-game_intro()
+# game_logo()
+# game_intro()
 
 # define variables in this order
 user_name = collect_user_name()
 size = game_level()
-
+num_ships = size
+ships = []
 print(f" {user_name}'s Game Board")
 print(f"..." * size)
 board_one = GameBoard(size)
 board_one.print_board(size)
+random_ship_location(board_one)
+board_one.print_board(size)
+print(ships)
