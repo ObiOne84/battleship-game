@@ -279,11 +279,10 @@ def return_y_value(data):
         return y
 
 
-def user_ship_location(data, x, y):
+def append_ship(data, x, y):
     """
-    Function allow user to choose location of ships
-    on the board, if the position has already ship
-    it will inform user about the error
+    Function appends user ships to the game board
+    only if the position is not occupied by ship
     """
 
     if data.board[x][y] == "-":
@@ -337,8 +336,8 @@ ships = []
 
 # print(f" {user_name}'s Game Board")
 # print(f"..." * size)
-# board_one = GameBoard(size)
-# board_one.print_board(size)
+board_one = GameBoard(size)
+board_one.print_board(size)
 # print(ships)
 # print(computer_guess)
 # print(num_ships)
@@ -351,11 +350,9 @@ ships = []
 # print(num_ships)
 
 # code for user to choose the ships
-# while len(ships) < num_ships:
-#     z = player_ship_coordinates()
-#     x = return_x_value(z)
-#     y = return_y_value(z)
-#     user_ship_location(board_one, x, y)
-#     board_one.print_board(size)
-
-player_ship_coordinates()
+while len(ships) < num_ships:
+    z = player_ship_coordinates()
+    x = return_x_value(z)
+    y = return_y_value(z)
+    append_ship(board_one, x, y)
+    board_one.print_board(size)
