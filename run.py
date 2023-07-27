@@ -272,10 +272,10 @@ def return_y_value(data):
     Function return y coordinate for the ship or shot
     """
     if len(data) == 3:
-        y = int(data[1] + data[2])
+        y = int(data[1] + data[2]) - 1
         return y
     else:
-        y = int(data[1])
+        y = int(data[1]) - 1
         return y
 
 
