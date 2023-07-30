@@ -4,10 +4,10 @@ from random import randint
 
 
 # ----variables for testing --------------------------------------
-user_name = "Adam"
-size = 10
+user_name = ""
+size = 5
 shots = size * 5
-num_ships = 10
+num_ships = size
 computer_guess = []
 ships = []
 guesses = []
@@ -157,11 +157,11 @@ def collect_user_name():
 Please choose your username. The username should contain minimum 3 characters,
 and maximum 15.
         """)
-        # global user_name
+
         user_name = input(f"Please provide your username: ")
 
         if validate_user_name(user_name):
-            print("Great")
+            print_out(f"Thank you {user_name}. Welocome to BATTLESHIP GAME!\n")
             return user_name
 
 
@@ -394,17 +394,32 @@ def random_shot(self, data, shots):
     return True
 
 
-# def play_game():
-#     """
-#     Function calls out other functions to enable user to play the game
-#     it sets the game parameter like board size, num_ships, user_name
-#     """
-#     game_logo()
-#     game_intro()
+def play_game():
+    """
+    Function calls out other functions to enable user to play the game
+    it sets the game parameter like board size, num_ships, user_name
+    """
 
-#     user_name = collect_user_name()
-#     size = game_level()
-#     num_ships = size
+    game_logo()
+    game_intro()
+
+    user_name = collect_user_name()
+    size = game_level()
+    num_ships = size
+    shots = size * 5
+
+    user_board = GameBoard(size, num_ships, shots, name=user_name)
+    computer_board = GameBoard(size, num_ships, shots, "Computer")
+
+    print(f"..." * size)
+    print(f" {user_name}'s Game Board")
+    user_board.print_board(size)
+    print(f"..." * size)
+
+    print(f"..." * size)
+    print(f" Computer's Game Board")
+    computer_board.print_board(size)
+    print(f"..." * size)
 
 
 # ----------------------Code Call-Out Zone------------------------
@@ -416,28 +431,28 @@ def random_shot(self, data, shots):
 # user_name = collect_user_name()
 # size = game_level()
 # num_ships = size
-name = user_name
-x = 0
+# name = user_name
+# x = 0
 
 # print(f" {user_name}'s Game Board")
 # print(f"..." * size)
-board_two = GameBoard(size, num_ships, shots, name)
-board_one = GameBoard(size, num_ships, shots, "Computer")
-board_two.print_board(size)
-board_two.add_random_ships()
-board_two.print_board(size)
-print("..." * size)
-while x < 100:
-    board_one.guess(board_two, shots, "Computer")
-    x += 1
-print("..." * 20)
-board_two.print_board(size)
-print("..." * 20)
-print(board_one.guesses)
-print(board_two. guesses)
-print(board_one.name)
-print(board_two.name)
-print(len(board_one.guesses))
+# board_two = GameBoard(size, num_ships, shots, name)
+# board_one = GameBoard(size, num_ships, shots, "Computer")
+# board_two.print_board(size)
+# board_two.add_random_ships()
+# board_two.print_board(size)
+# print("..." * size)
+# while x < 100:
+#     board_one.guess(board_two, shots, "Computer")
+#     x += 1
+# print("..." * 20)
+# board_two.print_board(size)
+# print("..." * 20)
+# print(board_one.guesses)
+# print(board_two. guesses)
+# print(board_one.name)
+# print(board_two.name)
+# print(len(board_one.guesses))
 # print(ships)
 # print(computer_guess)
 # print(num_ships)
@@ -466,3 +481,6 @@ print(len(board_one.guesses))
 #     print(f"You still need to find {num_ships} ships.")
 # else:
 #     print("Game Over")
+
+
+play_game()
