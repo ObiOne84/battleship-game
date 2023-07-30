@@ -6,11 +6,11 @@ from random import randint
 # ----variables for testing --------------------------------------
 user_name = ""
 size = 5
-shots = size * 5
+# shots = size * 5
 num_ships = size
-computer_guess = []
-ships = []
-guesses = []
+# computer_guess = []
+# ships = []
+# guesses = []
 # ----------------------------------------------------------------
 
 
@@ -187,7 +187,7 @@ def validate_user_name(name):
     return True
 
 
-def game_level():
+def game_level(user_name):
     """
     function checks user input and defines the size of the game board
     need to add validation here
@@ -254,15 +254,15 @@ def player_ship_coordinates():
     """
 
     while True:
-        ship_loc = input("please enter ship location: ")
+        ship_loc = input("Please enter your coordinates: ")
 
-        if validate_coordinates(ship_loc):
-            print("Great, you chose your ship location!")
+        if validate_coordinates(ship_loc, size):
+            print(f"Great, you chose {ship_loc.upper()}!")
             break
     return ship_loc.upper()
 
 
-def validate_coordinates(values):
+def validate_coordinates(values, size):
     """
     Function validates users ships coardinates
     """
@@ -438,7 +438,8 @@ def play_game():
     # game_intro()
 
     user_name = collect_user_name()
-    size = game_level()
+    global size
+    size = game_level(user_name)
     num_ships = size
     shots = size * 5
 
