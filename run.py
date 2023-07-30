@@ -161,7 +161,9 @@ and maximum 15.
         user_name = input(f"Please provide your username: ")
 
         if validate_user_name(user_name):
-            print_out(f"Thank you {user_name}. Welocome to BATTLESHIP GAME!\n")
+            print_out(
+                f"Thank you {user_name}. Welocome to BATTLESHIP GAME!\n"
+                )
             return user_name
 
 
@@ -194,9 +196,9 @@ def game_level():
     while True:
         message = """
 Please choose your gaming experience by choosing one of three options:
-choose 'b' for beginner
-choose 'i' for intermediate
-or  choose 'e' for expert.\n
+-- choose 'b' for beginner
+-- choose 'i' for intermediate
+-- or  choose 'e' for expert.\n
     """
         print_out(message)
         # global user_name
@@ -332,6 +334,33 @@ def append_user_ship(self, x, y):
         self.ships.append(pair)
     elif self.board[x][y] == "@":
         print("You already placed ship here")
+
+
+def user_ships_option():
+    """
+    Function allow user to choose location of the place or
+    to randomly allocated ships on the board
+    """
+
+    print_out("""
+You can choose the position of the ships on the board. If you wish to choose
+location of your ships on the board choose "Y"  for YES or "N" for NO, if you
+choose NO ships will be randomly allocated on the board.
+    """)
+    while True:
+        answer = input(f"Would you like to place ships on the board Y/N: ")
+        decision = answer.upper()
+
+        if decision == "Y":
+            print_out("Great, you can choose ships locations now.\n")
+            break
+        elif decision == "N":
+            print_out("Great, your ships will be randomly placed.\n")
+            break
+        else:
+            print(f"{answer} is not a valid option. Try again!\n")
+            continue
+    return decision
 
 
 def user_shots(self, data, shots):
@@ -483,4 +512,11 @@ def play_game():
 #     print("Game Over")
 
 
-play_game()
+# play_game()
+
+x = user_ships_option()
+
+if x == "Y":
+    print("Hello")
+else:
+    print("Bye")
