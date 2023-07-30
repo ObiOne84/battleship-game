@@ -429,8 +429,8 @@ def play_game():
     it sets the game parameter like board size, num_ships, user_name
     """
 
-    game_logo()
-    game_intro()
+    # game_logo()
+    # game_intro()
 
     user_name = collect_user_name()
     size = game_level()
@@ -450,6 +450,31 @@ def play_game():
     computer_board.print_board(size)
     print(f"..." * size)
 
+    ship_location = user_ships_option()
+    if ship_location == "Y":
+        while len(user_board.ships) < num_ships:
+            coordinates = player_ship_coordinates()
+            x = return_x_value(coordinates)
+            y = return_y_value(coordinates)
+            user_board.add_ships(x, y)
+            print(f"..." * size)
+            print(f" {user_name}'s Game Board")
+            user_board.print_board(size)
+            print(f"..." * size)
+            print(f"""
+{user_name}, you placed {len(user_board.ships)} out of {num_ships} ships.
+                """)
+            print(f"..." * size)
+    else:
+        user_board.add_random_ships()
+        print(f"..." * size)
+        print(f" {user_name}'s Game Board")
+        user_board.print_board(size)
+        print(f"..." * size)
+
+    print_out(f"""
+Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
+        """)
 
 # ----------------------Code Call-Out Zone------------------------
 
@@ -512,11 +537,4 @@ def play_game():
 #     print("Game Over")
 
 
-# play_game()
-
-x = user_ships_option()
-
-if x == "Y":
-    print("Hello")
-else:
-    print("Bye")
+play_game()
