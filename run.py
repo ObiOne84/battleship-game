@@ -30,9 +30,11 @@ class GameBoard:
     The class holds the game board, ships position and user guesses
     """
 
-    def __init__(self, size, num_ships):
+    def __init__(self, size, num_ships, shots, name):
         self.size = size
         self.num_ships = num_ships
+        self.shots = shots
+        self.name = name
         self.board = [["-" for x in range(size)] for y in range(size)]
         self.ships = []
         self.guesses = []
@@ -80,6 +82,18 @@ class GameBoard:
         """
 
         random_ship_location(self)
+
+    def guess(self, data, shots, name):
+        """
+        Method collect computer and user guesses and
+        append them to the guesses list. It calls helper functions
+        to allow choose location by user, and randomly guess by cpu
+        """
+
+        if name == "Computer":
+            random_shot(data)
+        else:
+            user_shots(self, data, shots)
 
 
 def game_logo():
@@ -320,33 +334,36 @@ def append_user_ship(self, x, y):
         print("You already placed ship here")
 
 
-def user_shots(data, x, y):
+def user_shots(self, data, shots):
     """
     Function record user shots, and check against board
     reduce the number of shots after each round
     and ships after each hit
     """
-    global num_ships
-    global shots
-    pair = (x, y)
 
-    if pair in guesses:
-        print("shoot again")
-    else:
-        if pair not in ships:
-            data.board[x][y] = "0"
-            print("miss\n")
-            guesses.append(pair)
-            shots -= 1
-            return False
+    while True:
+        coordinates = player_ship_coordinates()
+        x = return_x_value(coordinates)
+        y = return_y_value(coordinates)
+        pair = (x, y)
 
+        if pair in self.guesses:
+            print(f"You already shot at {coordinates}!")
         else:
-            data.board[x][y] = "X"
-            print("Hit\n")
-            guesses.append(pair)
-            num_ships -= 1
-            shots -= 1
-            return False
+            if pair not in data.ships:
+                data.board[x][y] = "0"
+                print("miss\n")
+                self.guesses.append(pair)
+                self.shots -= 1
+                break
+            else:
+                data.board[x][y] = "X"
+                print("Hit\n")
+                self.guesses.append(pair)
+                data.num_ships -= 1
+                self.shots -= 1
+                break
+    return True
 
 
 def random_shot(data):
@@ -372,6 +389,19 @@ def random_shot(data):
             num_ships -= 1
 
 
+# def play_game():
+#     """
+#     Function calls out other functions to enable user to play the game
+#     it sets the game parameter like board size, num_ships, user_name
+#     """
+#     game_logo()
+#     game_intro()
+
+#     user_name = collect_user_name()
+#     size = game_level()
+#     num_ships = size
+
+
 # ----------------------Code Call-Out Zone------------------------
 
 # game_logo()
@@ -381,13 +411,25 @@ def random_shot(data):
 # user_name = collect_user_name()
 # size = game_level()
 # num_ships = size
+name = user_name
+x = 0
 
 # print(f" {user_name}'s Game Board")
 # print(f"..." * size)
-board_one = GameBoard(size, num_ships)
-board_one.print_board(size)
-board_one.add_random_ships()
-board_one.print_board(size)
+board_two = GameBoard(size, num_ships, shots, "Computer")
+board_one = GameBoard(size, num_ships, shots, name)
+board_two.print_board(size)
+board_two.add_random_ships()
+board_two.print_board(size)
+print("..." * size)
+while x < 5:
+    board_one.guess(board_two, shots, name)
+    board_two.print_board(size)
+    x += 1
+print(board_one.guesses)
+print(board_two. guesses)
+print(board_one.name)
+print(board_two.name)
 # print(ships)
 # print(computer_guess)
 # print(num_ships)
