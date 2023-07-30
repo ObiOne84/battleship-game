@@ -335,7 +335,7 @@ def append_user_ship(self, x, y):
         self.board[x][y] = "@"
         pair = (x, y)
         self.ships.append(pair)
-    elif self.board[x][y] == "@":
+    else:
         print("You already placed ship here")
 
 
@@ -430,7 +430,7 @@ def play_game():
     """
     Function calls out other functions to enable user to play the game
     it sets the game parameters like board size, num_ships, user_name
-    allows user to place the ships on the board, provides feedback to 
+    allows user to place the ships on the board, provides feedback to
     users actions.
     """
 
@@ -467,7 +467,7 @@ def play_game():
             user_board.print_board(size)
             print(f"..." * size)
             print(f"""
-{user_name}, you placed {len(user_board.ships)} out of {num_ships} ships.
+Great {user_name}, you placed {len(user_board.ships)} out of {num_ships} ships.
                 """)
             print(f"..." * size)
     else:
