@@ -91,7 +91,7 @@ class GameBoard:
         """
 
         if name == "Computer":
-            random_shot(self, data, shots)
+            random_shot(self, data, shots, name)
         else:
             user_shots(self, data, shots)
 
@@ -398,7 +398,7 @@ def user_shots(self, data, shots):
     return True
 
 
-def random_shot(self, data, shots):
+def random_shot(self, data, shots, name):
     """
     Function randomly shots at the ships
     """
@@ -412,13 +412,13 @@ def random_shot(self, data, shots):
         else:
             if pair not in data.ships:
                 data.board[x][y] = "0"
-                print("miss\n")
+                print(f"{name} missed!\n")
                 self.guesses.append(pair)
                 self.shots -= 1
                 break
             else:
                 data.board[x][y] = "#"
-                print("Hit\n")
+                print(f"{name}, that's HIT\n")
                 self.guesses.append(pair)
                 data.num_ships -= 1
                 self.shots -= 1
@@ -456,6 +456,7 @@ def play_game():
     computer_board.print_board(size)
     print(f"..." * size)
 
+    # User choose the location of the ships
     ship_location = user_ships_option()
     if ship_location == "Y":
         while len(user_board.ships) < num_ships:
@@ -481,6 +482,35 @@ Great {user_name}, you placed {len(user_board.ships)} out of {num_ships} ships.
     print_out(f"""
 Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
         """)
+    print(f"..." * size)
+
+    computer_board.add_random_ships()
+    # computer_board.print_board(size)
+
+    # Battle zone
+    while computer_board.num_ships > 0:
+        if user_board.shots > 0:
+            # print_out("=" * 40)
+            # print_out(f"{computer_board.name}'s Board")
+            # computer_board.print_board(size)
+            print("=" * 40)
+            user_board.guess(computer_board, shots, name=user_name)
+            print("=" * 40)
+            print(f"{computer_board.name}'s Board")
+            computer_board.print_board(size)
+            print("=" * 40)
+            print("\n")
+            print("=" * 40)
+            computer_board.guess(user_board, shots, "Computer")
+            print(f"{user_board.name}'s Board")
+            user_board.print_board(size)
+            print("=" * 40)
+            print("\n")
+        else:
+            print(f"Sorry {user_name}, you run out of bullets.")
+    else:
+        print(f"Congratulations {user_name}! You destroyed all ships!")
+        
 
 # ----------------------Code Call-Out Zone------------------------
 
