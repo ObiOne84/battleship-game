@@ -30,8 +30,9 @@ class GameBoard:
     The class holds the game board, ships position and user guesses
     """
 
-    def __init__(self, size):
+    def __init__(self, size, num_ships):
         self.size = size
+        self.num_ships = num_ships
         self.board = [["-" for x in range(size)] for y in range(size)]
         self.ships = []
         self.guesses = []
@@ -72,6 +73,13 @@ class GameBoard:
         """
 
         append_user_ship(self, x, y)
+
+    def add_random_ships(self):
+        """
+        Function randomly allocates ships on the board
+        """
+
+        random_ship_location(self)
 
 
 def game_logo():
@@ -206,20 +214,19 @@ Invalid data. You provided '{user_experience}', this is not recognised value.\n
             """)
 
 
-def random_ship_location(data):
+def random_ship_location(self):
     """
     Function randomly allocates ships on the board
     """
 
     b = 0
-    while b < num_ships:
+    while b < self.num_ships:
         x = randint(0, size - 1)
         y = randint(0, size - 1)
-        if data.board[x][y] == "-":
-            data.board[x][y] = "@"
-            pair = (x, y)
-            # data.append(pair)
-            ships.append(pair)
+        pair = (x, y)
+        if self.board[x][y] == "-":
+            self.board[x][y] = "@"
+            self.ships.append(pair)
         else:
             continue
         b += 1
@@ -377,7 +384,9 @@ def random_shot(data):
 
 # print(f" {user_name}'s Game Board")
 # print(f"..." * size)
-board_one = GameBoard(size)
+board_one = GameBoard(size, num_ships)
+board_one.print_board(size)
+board_one.add_random_ships()
 board_one.print_board(size)
 # print(ships)
 # print(computer_guess)
@@ -391,19 +400,19 @@ board_one.print_board(size)
 # print(num_ships)
 
 # code for user to choose the ships
-while len(board_one.ships) < num_ships:
-    z = player_ship_coordinates()
-    x = return_x_value(z)
-    y = return_y_value(z)
-    board_one.add_ships(x, y)
-    board_one.print_board(size)
-while shots > 0 and num_ships > 0:
-    z = player_ship_coordinates()
-    x = return_x_value(z)
-    y = return_y_value(z)
-    user_shots(board_one, x, y)
-    board_one.print_board(size)
-    print(f"You have {shots} shots left.")
-    print(f"You still need to find {num_ships} ships.")
-else:
-    print("Game Over")
+# while len(board_one.ships) < num_ships:
+#     z = player_ship_coordinates()
+#     x = return_x_value(z)
+#     y = return_y_value(z)
+#     board_one.add_ships(x, y)
+#     board_one.print_board(size)
+# while shots > 0 and num_ships > 0:
+#     z = player_ship_coordinates()
+#     x = return_x_value(z)
+#     y = return_y_value(z)
+#     user_shots(board_one, x, y)
+#     board_one.print_board(size)
+#     print(f"You have {shots} shots left.")
+#     print(f"You still need to find {num_ships} ships.")
+# else:
+#     print("Game Over")
