@@ -91,7 +91,7 @@ class GameBoard:
         """
 
         if name == "Computer":
-            random_shot(data)
+            random_shot(self, data, shots)
         else:
             user_shots(self, data, shots)
 
@@ -366,27 +366,32 @@ def user_shots(self, data, shots):
     return True
 
 
-def random_shot(data):
+def random_shot(self, data, shots):
     """
     Function randomly shots at the ships
     """
-    x = randint(0, size - 1)
-    y = randint(0, size - 1)
-    pair = (x, y)
+    while True:
+        x = randint(0, size - 1)
+        y = randint(0, size - 1)
+        pair = (x, y)
 
-    global num_ships
-    if pair in computer_guess:
-        print("shoot again")
-    else:
-        if pair not in ships:
-            data.board[x][y] = "0"
-            print("miss\n")
-            computer_guess.append(pair)
+        if pair in self.guesses:
+            continue
         else:
-            data.board[x][y] = "#"
-            print("Hit\n")
-            computer_guess.append(pair)
-            num_ships -= 1
+            if pair not in data.ships:
+                data.board[x][y] = "0"
+                print("miss\n")
+                self.guesses.append(pair)
+                self.shots -= 1
+                break
+            else:
+                data.board[x][y] = "#"
+                print("Hit\n")
+                self.guesses.append(pair)
+                data.num_ships -= 1
+                self.shots -= 1
+                break
+    return True
 
 
 # def play_game():
@@ -416,20 +421,23 @@ x = 0
 
 # print(f" {user_name}'s Game Board")
 # print(f"..." * size)
-board_two = GameBoard(size, num_ships, shots, "Computer")
-board_one = GameBoard(size, num_ships, shots, name)
+board_two = GameBoard(size, num_ships, shots, name)
+board_one = GameBoard(size, num_ships, shots, "Computer")
 board_two.print_board(size)
 board_two.add_random_ships()
 board_two.print_board(size)
 print("..." * size)
-while x < 5:
-    board_one.guess(board_two, shots, name)
-    board_two.print_board(size)
+while x < 100:
+    board_one.guess(board_two, shots, "Computer")
     x += 1
+print("..." * 20)
+board_two.print_board(size)
+print("..." * 20)
 print(board_one.guesses)
 print(board_two. guesses)
 print(board_one.name)
 print(board_two.name)
+print(len(board_one.guesses))
 # print(ships)
 # print(computer_guess)
 # print(num_ships)
