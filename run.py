@@ -289,6 +289,9 @@ def validate_coordinates(values):
             print(f"{values[1]} is not a row number.")
             print(f"Please choose number between 1 and {size}")
             raise ValueError
+        if int(values[1]) == 0:
+            print(f"{values[1]} is not a column number.")
+            raise ValueError
 
     except ValueError:
         print(f"{values} is not a valid choice.")
@@ -426,7 +429,9 @@ def random_shot(self, data, shots):
 def play_game():
     """
     Function calls out other functions to enable user to play the game
-    it sets the game parameter like board size, num_ships, user_name
+    it sets the game parameters like board size, num_ships, user_name
+    allows user to place the ships on the board, provides feedback to 
+    users actions.
     """
 
     # game_logo()
