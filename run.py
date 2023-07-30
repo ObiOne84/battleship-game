@@ -3,6 +3,17 @@ import sys
 from random import randint
 
 
+# ----variables for testing --------------------------------------
+user_name = "Adam"
+size = 10
+shots = size * 5
+num_ships = 10
+computer_guess = []
+ships = []
+guesses = []
+# ----------------------------------------------------------------
+
+
 def print_out(data):
     """
     The function will display text as it typed in real
@@ -52,6 +63,15 @@ class GameBoard:
             print(
                 f'{row[0]}', ' '.join(x for x in row[1])
             )
+
+    def add_ships(self, x, y):
+        """
+        Function allows to add ship to the board, by allowing
+        user to choose own location of ships
+        Function calls user_coordinations function to allocate the ships.
+        """
+
+        append_user_ship(self, x, y)
 
 
 def game_logo():
@@ -219,17 +239,6 @@ def player_ship_coordinates():
     return ship_loc.upper()
 
 
-# ----variables for testing --------------------------------------
-user_name = "Adam"
-size = 10
-shots = size * 5
-num_ships = size
-computer_guess = []
-ships = []
-guesses = []
-# ----------------------------------------------------------------
-
-
 def validate_coordinates(values):
     """
     Function validates users ships coardinates
@@ -290,18 +299,17 @@ def return_y_value(data):
         return y
 
 
-def append_ship(data, x, y):
+def append_user_ship(self, x, y):
     """
     Function appends user ships to the game board
     only if the position is not occupied by ship
     """
 
-    if data.board[x][y] == "-":
-        data.board[x][y] = "@"
+    if self.board[x][y] == "-":
+        self.board[x][y] = "@"
         pair = (x, y)
-        # data.append(pair)
-        ships.append(pair)
-    elif data.board[x][y] == "@":
+        self.ships.append(pair)
+    elif self.board[x][y] == "@":
         print("You already placed ship here")
 
 
@@ -383,11 +391,11 @@ board_one.print_board(size)
 # print(num_ships)
 
 # code for user to choose the ships
-while len(ships) < num_ships:
+while len(board_one.ships) < num_ships:
     z = player_ship_coordinates()
     x = return_x_value(z)
     y = return_y_value(z)
-    append_ship(board_one, x, y)
+    board_one.add_ships(x, y)
     board_one.print_board(size)
 while shots > 0 and num_ships > 0:
     z = player_ship_coordinates()
