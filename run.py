@@ -162,7 +162,7 @@ and maximum 15.
 
         if validate_user_name(user_name):
             print_out(
-                f"Thank you {user_name}. Welocome to BATTLESHIP GAME!\n"
+                f"Thank you {user_name}. Welcome to BATTLESHIP GAME!\n"
                 )
             return user_name
 
@@ -257,7 +257,7 @@ def player_ship_coordinates():
         ship_loc = input("Please enter your coordinates: ")
 
         if validate_coordinates(ship_loc, size):
-            print(f"Great, you chose {ship_loc.upper()}!")
+            print_out(f"Your coordinates are: '{ship_loc.upper()}'!") 
             break
     return ship_loc.upper()
 
