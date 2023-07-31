@@ -93,7 +93,7 @@ class GameBoard:
         if name == "Computer":
             random_shot(self, data, shots, name)
         else:
-            user_shots(self, data, shots)
+            user_shots(self, data, shots, name)
 
 
 def game_logo():
@@ -366,9 +366,9 @@ choose NO ships will be randomly allocated on the board.
     return decision
 
 
-def user_shots(self, data, shots):
+def user_shots(self, data, shots, name):
     """
-    Function record user shots, and check against board
+    Function record user shots, and checks against board
     reduce the number of shots after each round
     and ships after each hit
     """
@@ -380,17 +380,17 @@ def user_shots(self, data, shots):
         pair = (x, y)
 
         if pair in self.guesses:
-            print(f"You already shot at {coordinates}!")
+            print_out(f"{name}, you already shot at {coordinates}!\n")
         else:
             if pair not in data.ships:
                 data.board[x][y] = "0"
-                print("miss\n")
+                print_out(f"Sorry {name} that's a miss!\n")
                 self.guesses.append(pair)
                 self.shots -= 1
                 break
             else:
                 data.board[x][y] = "X"
-                print("Hit\n")
+                print_out(f"Well done {name}, you just HIT a ship!\n")
                 self.guesses.append(pair)
                 data.num_ships -= 1
                 self.shots -= 1
@@ -400,7 +400,8 @@ def user_shots(self, data, shots):
 
 def random_shot(self, data, shots, name):
     """
-    Function randomly shots at the ships
+    Function randomly shots at the ships, and validates the shot
+    if computer shot location, the function calls for another shot
     """
     while True:
         x = randint(0, size - 1)
@@ -510,7 +511,7 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
             print(f"Sorry {user_name}, you run out of bullets.")
     else:
         print(f"Congratulations {user_name}! You destroyed all ships!")
-        
+
 
 # ----------------------Code Call-Out Zone------------------------
 
