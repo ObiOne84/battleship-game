@@ -67,14 +67,14 @@ class GameBoard:
                 f'{row[0]}', ' '.join(x for x in row[1])
             )
 
-    def add_ships(self, x, y):
+    def add_ships(self):
         """
         Function allows to add ship to the board, by allowing
         user to choose own location of ships
         Function calls user_coordinations function to allocate the ships.
         """
 
-        append_user_ship(self, x, y)
+        append_user_ship(self)
 
     def add_random_ships(self):
         """
@@ -325,18 +325,25 @@ def return_y_value(data):
         return y
 
 
-def append_user_ship(self, x, y):
+def append_user_ship(self):
     """
     Function appends user ships to the game board
     only if the position is not occupied by ship
     """
 
-    if self.board[x][y] == "-":
-        self.board[x][y] = "@"
+    while True:
+        coordinates = player_ship_coordinates()
+        x = return_x_value(coordinates)
+        y = return_y_value(coordinates)
         pair = (x, y)
-        self.ships.append(pair)
-    else:
-        print("You already placed ship here")
+        if pair not in self.ships:
+            self.board[x][y] = "@"
+            self.ships.append(pair)
+            break
+        else:
+            print("You already placed ship here")
+            continue
+    return True
 
 
 def user_ships_option():
@@ -461,10 +468,10 @@ def play_game():
     ship_location = user_ships_option()
     if ship_location == "Y":
         while len(user_board.ships) < num_ships:
-            coordinates = player_ship_coordinates()
-            x = return_x_value(coordinates)
-            y = return_y_value(coordinates)
-            user_board.add_ships(x, y)
+            # coordinates = player_ship_coordinates()
+            # x = return_x_value(coordinates)
+            # y = return_y_value(coordinates)
+            user_board.add_ships()
             print(f"..." * size)
             print(f" {user_name}'s Game Board")
             user_board.print_board(size)
