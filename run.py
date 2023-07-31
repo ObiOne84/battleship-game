@@ -257,7 +257,7 @@ def player_ship_coordinates():
         ship_loc = input("Please enter your coordinates: ")
 
         if validate_coordinates(ship_loc, size):
-            print_out(f"Your coordinates are: '{ship_loc.upper()}'!") 
+            print_out(f"Your coordinates are: '{ship_loc.upper()}'!")
             break
     return ship_loc.upper()
 
@@ -434,6 +434,39 @@ def random_shot(self, data, shots, name):
     return True
 
 
+def game_battle():
+    """
+    Function controls the game battle, and identifies winner
+    and looser
+    """
+    x = 10
+    b = 1
+    while x > 0:
+        print_out(f"----------------Round {b}----------------\n")
+        print(f"--------You have {x} bullets left--------\n")
+        print("=" * 40)
+        print(f"{computer_board.name}'s Board")
+        computer_board.print_board(size)
+        print("=" * 40)
+        user_board.guess(computer_board, shots, name=user_name)
+        print("=" * 40)
+        print_out("          \n")
+        print(f"{computer_board.name}'s Board")
+        computer_board.print_board(size)
+        # print("\n")
+        print("=" * 40)
+        computer_board.guess(user_board, shots, "Computer")
+        print("=" * 40)
+        print(f"{user_board.name}'s Board")
+        user_board.print_board(size)
+        print("=" * 40)
+        print_out(f"-----------End of round {b}!-----------\n")
+        print("=" * 40)
+        print("\n")
+        x -= 1
+        b += 1
+
+
 def play_game():
     """
     Function calls out other functions to enable user to play the game
@@ -581,4 +614,13 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
 #     print("Game Over")
 
 
-play_game()
+# play_game()
+user_name = "Szymon"
+size = 5
+
+num_ships = size
+shots = size * 5
+
+user_board = GameBoard(size, num_ships, shots, name=user_name)
+computer_board = GameBoard(size, num_ships, shots, "Computer")
+game_battle()
