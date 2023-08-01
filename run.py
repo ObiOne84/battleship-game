@@ -257,7 +257,7 @@ def player_ship_coordinates():
         ship_loc = input("Please enter your coordinates: ")
 
         if validate_coordinates(ship_loc, size):
-            print_out(f"Your coordinates are: '{ship_loc.upper()}'!")
+            print_out(f"Your coordinates are: '{ship_loc.upper()}'!\n")
             break
     return ship_loc.upper()
 
@@ -442,8 +442,15 @@ def game_battle():
     x = 10
     b = 1
     while x > 0:
-        print_out(f"----------------Round {b}----------------\n")
-        print(f"--------You have {x} bullets left--------\n")
+        print_out(f"----------------Round {b}-----------------\n")
+        print("-" * 40)
+        print(f"\t {user_name}", end="")
+        print("\t\t Computer")
+        print(f"  Shots: {user_board.shots}", end="")
+        print(f"\t\t {computer_board.shots}")
+        print(f"  Ships: {user_board.num_ships}", end="")
+        print(f"\t\t {computer_board.num_ships}")
+        print("-" * 40)
         print("=" * 40)
         print(f"{computer_board.name}'s Board")
         computer_board.print_board(size)
@@ -453,14 +460,14 @@ def game_battle():
         print_out("          \n")
         print(f"{computer_board.name}'s Board")
         computer_board.print_board(size)
-        # print("\n")
+        print("\n")
         print("=" * 40)
         computer_board.guess(user_board, shots, "Computer")
         print("=" * 40)
         print(f"{user_board.name}'s Board")
         user_board.print_board(size)
         print("=" * 40)
-        print_out(f"-----------End of round {b}!-----------\n")
+        print_out(f"-------------End of round {b}-------------\n")
         print("=" * 40)
         print("\n")
         x -= 1
@@ -618,7 +625,7 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
 user_name = "Szymon"
 size = 5
 
-num_ships = size
+num_ships = 10
 shots = size * 5
 
 user_board = GameBoard(size, num_ships, shots, name=user_name)
