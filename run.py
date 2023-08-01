@@ -434,44 +434,73 @@ def random_shot(self, data, shots, name):
     return True
 
 
-def game_battle():
+def game_battle(self, data, shots, name):
     """
     Function controls the game battle, and identifies winner
     and looser
     """
-    x = 10
+
     b = 1
-    while x > 0:
-        print_out(f"----------------Round {b}-----------------\n")
-        print("-" * 40)
-        print(f"\t {user_name}", end="")
-        print("\t\t Computer")
-        print(f"  Shots: {user_board.shots}", end="")
-        print(f"\t\t {computer_board.shots}")
-        print(f"  Ships: {user_board.num_ships}", end="")
-        print(f"\t\t {computer_board.num_ships}")
-        print("-" * 40)
-        print("=" * 40)
-        print(f"{computer_board.name}'s Board")
-        computer_board.print_board(size)
-        print("=" * 40)
-        user_board.guess(computer_board, shots, name=user_name)
-        print("=" * 40)
-        print_out("          \n")
-        print(f"{computer_board.name}'s Board")
-        computer_board.print_board(size)
-        print("\n")
-        print("=" * 40)
-        computer_board.guess(user_board, shots, "Computer")
-        print("=" * 40)
-        print(f"{user_board.name}'s Board")
-        user_board.print_board(size)
-        print("=" * 40)
-        print_out(f"-------------End of round {b}-------------\n")
-        print("=" * 40)
-        print("\n")
-        x -= 1
-        b += 1
+    while data.num_ships > 0:
+        if self.shots > 0:
+            if len(self.ships) > 0:
+                print_out(f"----------------Round {b}-----------------\n")
+                print("-" * 40)
+                print(f"\t {name}", end="")
+                print("\t\t Computer")
+                print(f"  Shots: {self.shots}", end="")
+                print(f"\t\t {data.shots}")
+                print(f"  Ships: {self.num_ships}", end="")
+                print(f"\t\t {data.num_ships}")
+                print("-" * 40)
+                print("=" * 40)
+                print(f"{data.name}'s Board")
+                data.print_board(size)
+                print("=" * 40)
+                self.guess(data, shots, name=user_name)
+                print("=" * 40)
+                print_out("          \n")
+                print(f"{data.name}'s Board")
+                data.print_board(size)
+                print("\n")
+                print("=" * 40)
+                data.guess(self, shots, "Computer")
+                print("=" * 40)
+                print(f"{self.name}'s Board")
+                self.print_board(size)
+                print("=" * 40)
+                print_out(f"-------------End of round {b}-------------\n")
+                print("=" * 40)
+                print("\n")
+                b += 1
+            else:
+                print_out(f"Sorry {name}. All your ships are sunk!\n")
+                break
+        else:
+            print_out(f"Sorry {name}. You don't have any bullets!\n")
+            break
+    else:
+        print_out(f"Congratulations {name}! You destroyed all ships!\n")
+
+
+# def validate_battle(self):
+#     """
+#     The function validate the game battle, by display game result to the
+#     user. Congratulation message after winning the game by sinking all
+#     computer ships, or game over, if all ships or bullets are gone.
+#     """
+#     try:
+#         if self.num_ships == 0:
+#             print_out(f"Sorry {user_name}. All your ships are sunk.\n")
+#             raise ValueError
+#         if self.num_shots == 0:
+#             print_out(f"Sorry {user_name}. You don't have any bullets.\n")
+#             raise ValueError
+#         if computer_board.num_ships == 0:
+#             print_out(f"Congratulation {user_name}! You sunk all ships!\n")
+#             raise ValueError
+#     except ValueError:
+#         print_out("Thank you for playing BATTLESHIP\n")
 
 
 def play_game():
@@ -490,7 +519,7 @@ def play_game():
     size = game_level(user_name)
     num_ships = size
     shots = size * 5
-
+    # b = 1
     user_board = GameBoard(size, num_ships, shots, name=user_name)
     computer_board = GameBoard(size, num_ships, shots, "Computer")
 
@@ -536,28 +565,45 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
     # computer_board.print_board(size)
 
     # Battle zone
-    while computer_board.num_ships > 0:
-        if user_board.shots > 0:
-            # print_out("=" * 40)
-            # print_out(f"{computer_board.name}'s Board")
-            # computer_board.print_board(size)
-            print("=" * 40)
-            user_board.guess(computer_board, shots, name=user_name)
-            print("=" * 40)
-            print(f"{computer_board.name}'s Board")
-            computer_board.print_board(size)
-            print("=" * 40)
-            print("\n")
-            print("=" * 40)
-            computer_board.guess(user_board, shots, "Computer")
-            print(f"{user_board.name}'s Board")
-            user_board.print_board(size)
-            print("=" * 40)
-            print("\n")
-        else:
-            print(f"Sorry {user_name}, you run out of bullets.")
-    else:
-        print(f"Congratulations {user_name}! You destroyed all ships!")
+    game_battle(user_board, computer_board, shots, user_name)
+    # while computer_board.num_ships > 0:
+    #     if user_board.shots > 0:
+    #         if len(user_board.ships) > 0:
+    #             print_out(f"----------------Round {b}-----------------\n")
+    #             print("-" * 40)
+    #             print(f"\t {user_name}", end="")
+    #             print("\t\t Computer")
+    #             print(f"  Shots: {user_board.shots}", end="")
+    #             print(f"\t\t {computer_board.shots}")
+    #             print(f"  Ships: {user_board.num_ships}", end="")
+    #             print(f"\t\t {computer_board.num_ships}")
+    #             print("-" * 40)
+    #             print("=" * 40)
+    #             print(f"{computer_board.name}'s Board")
+    #             computer_board.print_board(size)
+    #             print("=" * 40)
+    #             user_board.guess(computer_board, shots, name=user_name)
+    #             print("=" * 40)
+    #             print_out("          \n")
+    #             print(f"{computer_board.name}'s Board")
+    #             computer_board.print_board(size)
+    #             print("\n")
+    #             print("=" * 40)
+    #             computer_board.guess(user_board, shots, "Computer")
+    #             print("=" * 40)
+    #             print(f"{user_board.name}'s Board")
+    #             user_board.print_board(size)
+    #             print("=" * 40)
+    #             print_out(f"-------------End of round {b}-------------\n")
+    #             print("=" * 40)
+    #             print("\n")
+    #             b += 1
+    #         else:
+    #             print_out(f"Sorry {user_name}. All your ships are sunk!\n")
+    #     else:
+    #         print_out(f"Sorry {user_name}. You don't have any bullets!\n")
+    # else:
+    #     print_out(f"Congratulations {user_name}! You destroyed all ships!\n")
 
 
 # ----------------------Code Call-Out Zone------------------------
@@ -621,13 +667,13 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
 #     print("Game Over")
 
 
-# play_game()
-user_name = "Szymon"
-size = 5
+play_game()
+# user_name = "Szymon"
+# size = 5
 
-num_ships = 10
-shots = size * 5
+# num_ships = 10
+# shots = size * 5
 
-user_board = GameBoard(size, num_ships, shots, name=user_name)
-computer_board = GameBoard(size, num_ships, shots, "Computer")
-game_battle()
+# user_board = GameBoard(size, num_ships, shots, name=user_name)
+# computer_board = GameBoard(size, num_ships, shots, "Computer")
+# game_battle()
