@@ -413,23 +413,31 @@ def random_shot(self, data, shots, name):
     Function randomly shots at the ships, and validates the shot
     if computer shot location, the function calls for another shot
     """
+
+    alphabet = ["ABCDEFGHIJKLMNOPRTQUXYZ"]
+    alphabet = ''.join(alphabet[:size])
+    numbers = [*range(1, size + 1)]
+
     while True:
         x = randint(0, size - 1)
         y = randint(0, size - 1)
         pair = (x, y)
+        coordinates = alphabet[x] + str(numbers[y])
 
         if pair in self.guesses:
             continue
         else:
             if pair not in data.ships:
                 data.board[x][y] = "0"
-                print(f"{name} missed!\n")
+                print_out(f"{name} gueesed {coordinates}\n")
+                print_out(f"{name} missed!\n")
                 self.guesses.append(pair)
                 self.shots -= 1
                 break
             else:
-                data.board[x][y] = "#"
-                print(f"{name}, that's HIT\n")
+                data.board[x][y] = "X"
+                print_out(f"{name} gueesed {coordinates}\n")
+                print_out(f"{name}, that's a HIT\n")
                 self.guesses.append(pair)
                 data.num_ships -= 1
                 self.shots -= 1
@@ -522,7 +530,7 @@ def play_game():
             user_board.print_board(size)
             print("=" * 40)
             print(f"""
-Great {user_name}, you placed {len(user_board.ships)} out of {num_ships} ships.\n
+Well done, you placed {len(user_board.ships)} out of {num_ships} ships.\n
                 """)
             print("=" * 40)
     else:
