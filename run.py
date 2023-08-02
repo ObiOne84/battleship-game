@@ -232,7 +232,9 @@ Invalid data. You provided '{user_experience}', this is not recognised value.\n
 
 def random_ship_location(self):
     """
-    Function randomly allocates ships on the board
+    Function randomly allocates ships on the board,
+    for the Computer, the ships are added to the list, but not on the board
+    for the user, the ships will be displayed on the board.
     """
 
     b = 0
@@ -240,9 +242,10 @@ def random_ship_location(self):
         x = randint(0, size - 1)
         y = randint(0, size - 1)
         pair = (x, y)
-        if self.board[x][y] == "-":
-            self.board[x][y] = "@"
+        if pair not in self.ships:
             self.ships.append(pair)
+            if self.name != "Computer":
+                self.board[x][y] = "@"
         else:
             continue
         b += 1
@@ -443,7 +446,7 @@ def game_battle(board_one, board_two, shots, user_name):
     b = 1
     while board_two.num_ships > 0:
         if board_one.shots > 0:
-            if len(board_one.ships) > 0:
+            if board_one.num_ships > 0:
                 print_out(f"----------------Round {b}-----------------\n")
                 print("-" * 40)
                 print(f"\t {user_name}", end="")
@@ -511,8 +514,8 @@ def play_game():
     users actions.
     """
 
-    # game_logo()
-    # game_intro()
+    game_logo()
+    game_intro()
 
     user_name = collect_user_name()
     global size
