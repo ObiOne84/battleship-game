@@ -235,9 +235,9 @@ def game_level(user_name):
     while True:
         message = """
 Please choose your gaming experience by choosing one of three options:
--- choose 'b' for beginner
--- choose 'i' for intermediate
--- or  choose 'e' for expert.\n
+-- choose 'b' for beginner to set up 5 x 5 grid, 25 shots and 5 ships.
+-- choose 'i' for intermediate for 10 x 10 grid, 100 shots, and 10 ships.
+-- or  choose 'e' for expert for 10 x 10 grid, 50 shots, and 10 ships..\n
     """
         print_out(message)
         # global user_name
@@ -284,7 +284,7 @@ def random_ship_location(self):
         if pair not in self.ships:
             self.ships.append(pair)
             # don't forget to remove line below to hide computer ships
-            self.board[x][y] = "S"
+            # self.board[x][y] = "S"
             if self.name != "Computer":
                 self.board[x][y] = "S"
         else:
@@ -688,8 +688,8 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        # game_logo()
-        # game_intro()
+        game_logo()
+        game_intro()
         print("Would you like to start the game?")
         print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
