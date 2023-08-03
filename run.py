@@ -308,7 +308,8 @@ def player_ship_coordinates():
 
 def validate_coordinates(values, size):
     """
-    Function validates users ships coardinates
+    Function validates users ships coordinates
+    and user shot coordinates
     """
     alphabet = ["ABCDEFGHIJKLMNOPRTQUXYZ"]
     alphabet = ''.join(alphabet[:size])
@@ -320,13 +321,14 @@ def validate_coordinates(values, size):
             print(" \n" * 3)
             main()
         if len(values) > 3:
-            print("bad batch")
+            print("The coordinates can have maximum 3 characters.")
             raise ValueError
         if len(values) == 3 and int(values[1] + values[2]) != 10:
-            print("incorrect value")
+            print(f"{values[1] + values[2]} is not a row number.")
+            print(f"Please choose number between 1 and {size}")
             raise ValueError
         if len(values) < 2:
-            print("too short")
+            print("The coordinates must have minimun 2 characters.")
             raise ValueError
         if values[0].upper() not in ''.join(alphabet[:size]):
             print(f"{values[0].upper()} is not a column name on the gameboard")
@@ -504,32 +506,32 @@ def game_battle(board_one, board_two, shots, user_name):
                 print_out(
                     f"----------------Round {b}-----------------\n"
                 )
-                print("-" * 40)
+                print("-" * 60)
                 print(f"\t {user_name}", end="")
-                print("\t\t Computer")
+                print("\t\t\t Computer")
                 print(f"  Shots: {board_one.shots}", end="")
-                print(f"\t\t {board_two.shots}")
+                print(f"\t\t\t {board_two.shots}")
                 print(f"  Ships: {board_one.num_ships}", end="")
-                print(f"\t\t {board_two.num_ships}")
-                print("-" * 40)
-                print("=" * 40)
+                print(f"\t\t\t {board_two.num_ships}")
+                print("-" * 60)
+                print("=" * 60)
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
-                print("=" * 40)
+                print("=" * 60)
                 board_one.guess(board_two, shots, name=user_name)
-                print("=" * 40)
+                print("=" * 60)
                 print_out("          \n")
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
                 print("\n")
-                print("=" * 40)
+                print("=" * 60)
                 board_two.guess(board_one, shots, "Computer")
-                print("=" * 40)
+                print("=" * 60)
                 print(f"{board_one.name}'s Board")
                 board_one.print_board(size)
-                print("=" * 40)
+                print("=" * 60)
                 print_out(f"-------------End of round {b}-------------\n")
-                print("=" * 40)
+                print("=" * 60)
                 print("\n")
                 b += 1
             else:
@@ -637,30 +639,30 @@ def play_game(user_name):
     print_out("Board set up: Completed!\n")
 
     print("")
-    print("=" * 40)
+    print("=" * 60)
     print(f"{user_board.name}'s Board")
     user_board.print_board(size)
-    print("=" * 40)
+    print("=" * 60)
 
     # User choose the location of the ships
     ship_location = user_ships_option()
     if ship_location == "Y":
         while len(user_board.ships) < num_ships:
             user_board.add_ships()
-            print("=" * 40)
+            print("=" * 60)
             print(f" {user_name}'s Game Board")
             user_board.print_board(size)
-            print("=" * 40)
+            print("=" * 60)
             print(f"""
 Well done, you placed {len(user_board.ships)} out of {num_ships} ships.\n
                 """)
-            print("=" * 40)
+            print("=" * 60)
     else:
         user_board.add_random_ships()
-        print("=" * 40)
+        print("=" * 60)
         print(f" {user_name}'s Game Board")
         user_board.print_board(size)
-        print("=" * 40)
+        print("=" * 60)
 
     print_out(f"""
 Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
