@@ -315,8 +315,9 @@ def validate_coordinates(values, size):
 
     try:
         if values.upper() == "STOP":
-            print_out("Sorry to see you go!")
-            print("Thank you for playing BATTLESHIP!")
+            print_out("Sorry to see you go!\n")
+            print_out("Thank you for playing BATTLESHIP!\n")
+            print(" \n" * 3)
             main()
         if len(values) > 3:
             print("bad batch")
