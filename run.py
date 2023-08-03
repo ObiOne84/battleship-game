@@ -155,7 +155,7 @@ def start_game():
     """
     while True:
         print("Would you like to start the game?")
-        print_out("Choose 'Y' to start the game or 'N' to leave now.")
+        print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = input("Please choose Y/N: ").upper()
         if validate_decision(decision):
             print_out(f"Thank you, your choice is {decision}\n")
@@ -211,7 +211,7 @@ def validate_user_name(name):
             print(f"{name} has {len(name)} characters.")
             raise ValueError
     except ValueError:
-        print(
+        print_out(
             f"The username is not valid!\n"
         )
         return False
@@ -275,6 +275,7 @@ def random_ship_location(self):
         pair = (x, y)
         if pair not in self.ships:
             self.ships.append(pair)
+            self.board[x][y] = "S"
             if self.name != "Computer":
                 self.board[x][y] = "S"
         else:
@@ -527,7 +528,7 @@ def game_battle(board_one, board_two, shots, user_name):
         print_out(f"Congratulations {user_name}! You destroyed all ships!\n")
 
 
-def play_game():
+def play_game(user_name):
     """
     Function calls out other functions to enable user to play the game
     it sets the game parameters like board size, num_ships, user_name
@@ -538,7 +539,7 @@ def play_game():
     # game_logo()
     # game_intro()
 
-    user_name = collect_user_name()
+    # user_name = collect_user_name()
     global size
     size = game_level(user_name)
     num_ships = size
@@ -581,6 +582,17 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
     # Battle zone
     game_battle(user_board, computer_board, shots, user_name)
 
+    # Continue or leave
+    print_out(f"{user_name} would you like to continue the game?")
+    decision = start_game()
+
+    if decision == "Y":
+        play_game(user_name)
+    else:
+        print_out(f"Thank you {user_name} for playing BATTLESHIP GAME!")
+        print("\n\n\n\n")
+
+
 # ----------------------Code Call-Out Zone------------------------
 
 
@@ -592,12 +604,15 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        game_logo()
-        game_intro()
+        # game_logo()
+        # game_intro()
 
         decision = start_game()
         if decision == "Y":
-            play_game()
+            user_name = collect_user_name()
+            play_game(user_name)
+        else:
+            print_out("Thank you for playing BATTLESHIP GAME!")
 
 
 main()
