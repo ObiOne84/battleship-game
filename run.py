@@ -134,17 +134,48 @@ def game_intro():
     """
 
     message = """
-Weclome to the game battleship \n
+Weclome to the game BATTLESHIP\n
 Battleship is a war-themed game for two players in which the opponents
 try to guess the location of their opponent's warships and sink them. \n
 You can choose between three game levels:
 Beginner - which will build 5 x 5 grid and allow you to choose
-location of five ships on the board.
-Intermediate - the game will take place on 10 x 10 grid with ten available
-ships.
-Expert - on this level the number of available shots is limited to 50.\n
+location of 5 ships on the board. Additionally, you will received 25 bullets.
+Intermediate - the game will take place on 10 x 10 grid with 10 available
+ships, and 100 bullets.
+Expert - the game takes place on the 10 x 10 gridg but, on this level
+the number of available shots is limited to 50.\n
 """
     print_out(message)
+
+
+def start_game():
+    """
+    Function prompts user to start the game, collect user's input
+    and provides feedback when incorrect.
+    """
+    while True:
+        print("Would you like to start the game?")
+        print_out("Choose 'Y' to start the game or 'N' to leave now.")
+        decision = input("Please choose Y/N: ").upper()
+        if validate_decision(decision):
+            print_out(f"Thank you, your choice is {decision}\n")
+            break
+    return decision
+
+
+def validate_decision(value):
+    """
+    Function validates user decision, when user must choose between Y and N
+    """
+    try:
+        if value != "N":
+            if value != "Y":
+                print(f"{value} is not a valid option.")
+                raise ValueError
+    except ValueError:
+        print_out("Please choose again!\n")
+        return False
+    return True
 
 
 def collect_user_name():
@@ -245,7 +276,7 @@ def random_ship_location(self):
         if pair not in self.ships:
             self.ships.append(pair)
             if self.name != "Computer":
-                self.board[x][y] = "@"
+                self.board[x][y] = "S"
         else:
             continue
         b += 1
@@ -340,7 +371,7 @@ def append_user_ship(self):
         y = return_y_value(coordinates)
         pair = (x, y)
         if pair not in self.ships:
-            self.board[x][y] = "@"
+            self.board[x][y] = "S"
             self.ships.append(pair)
             break
         else:
