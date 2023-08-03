@@ -19,6 +19,17 @@ def print_out(data):
         time.sleep(0.05)
 
 
+def print_pause(data):
+    """
+    The function will print text very slowly
+    ather than dispaly all message at once
+    """
+    for letter in data:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(1)
+
+
 class GameBoard:
     """
     The class holds the game board, ships position and user guesses
@@ -613,6 +624,17 @@ def play_game(user_name):
     shots = size * 5
     user_board = GameBoard(size, num_ships, shots, name=user_name)
     computer_board = GameBoard(size, num_ships, shots, "Computer")
+    print_out("We are setting your game board.\n")
+    print_pause("." * 8)
+    print_out("10%")
+    print_out("." * 16)
+    print_pause("." * 8)
+    print_out("50%")
+    print_pause("." * 4)
+    print_out("." * 28)
+    print_pause("100%\n")
+    print_out("Board set up: Completed!\n")
+
     print("")
     print("=" * 40)
     print(f"{user_board.name}'s Board")
@@ -665,8 +687,8 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        game_logo()
-        game_intro()
+        # game_logo()
+        # game_intro()
         print("Would you like to start the game?")
         print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
