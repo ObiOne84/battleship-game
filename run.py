@@ -164,7 +164,7 @@ def start_game():
     and provides feedback when incorrect.
     """
     while True:
-        decision = input("Please choose Y/N: ").upper()
+        decision = input("Please choose Y/N:\n").upper()
         if validate_decision(decision):
             print_out(f"Thank you, your choice is {decision}\n")
             break
@@ -197,7 +197,7 @@ Please choose your username. The username should contain minimum 3 characters,
 and maximum 15.
         """)
 
-        user_name = input(f"Please provide your username: ")
+        user_name = input(f"Please provide your username:\n")
 
         if validate_user_name(user_name):
             print_out(
@@ -298,7 +298,7 @@ def player_ship_coordinates():
     """
 
     while True:
-        ship_loc = input("Please enter your coordinates: ")
+        ship_loc = input("Please enter your coordinates:\n")
 
         if validate_coordinates(ship_loc, size):
             print_out(f"Your coordinates are: '{ship_loc.upper()}'!\n")
@@ -407,7 +407,7 @@ location of your ships on the board choose "Y"  for YES or "N" for NO, if you
 choose NO ships will be randomly allocated on the board.\n
     """)
     while True:
-        answer = input(f"Would you like to place ships on the board Y/N: ")
+        answer = input(f"Would you like to place ships on the board Y/N:\n")
         decision = answer.upper()
 
         if decision == "Y":
@@ -599,7 +599,7 @@ def game_battle(board_one, board_two, shots, user_name):
     MMMMMMMMMMMMMMMMMMMMMMMMMWWNNNNNNWWMMMMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMM #    # ##### #   #  #      # @ #    #   MMMMMMMMMM
-    MMMMMMMMM  #  #  #   # #   #  #      # # # #  #   MMMMMMMMMM
+    MMMMMMMMM  #  #  #   # #   #  #  #   # # # #  #   MMMMMMMMMM
     MMMMMMMMM   #    #   # #   #   # # #   # #  # #   MMMMMMMMMM
     MMMMMMMMM   #    #####  ###     # #    # #    #   MMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
