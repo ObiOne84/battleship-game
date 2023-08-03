@@ -3,15 +3,9 @@ import sys
 from random import randint
 
 
-# ----variables for testing --------------------------------------
 user_name = ""
 size = 5
-# shots = size * 5
 num_ships = size
-# computer_guess = []
-# ships = []
-# guesses = []
-# ----------------------------------------------------------------
 
 
 def print_out(data):
