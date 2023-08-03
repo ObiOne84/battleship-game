@@ -275,7 +275,7 @@ def random_ship_location(self):
         pair = (x, y)
         if pair not in self.ships:
             self.ships.append(pair)
-            self.board[x][y] = "S"
+            # self.board[x][y] = "S"
             if self.name != "Computer":
                 self.board[x][y] = "S"
         else:
@@ -305,6 +305,10 @@ def validate_coordinates(values, size):
     alphabet = ''.join(alphabet[:size])
 
     try:
+        if values == "STOP":
+            print_out("Sorry to see you go!")
+            print("Thank you for playing BATTLESHIP!")
+            main()
         if len(values) > 3:
             print("bad batch")
             raise ValueError
@@ -390,7 +394,7 @@ def user_ships_option():
     print_out("""
 You can choose the position of the ships on the board. If you wish to choose
 location of your ships on the board choose "Y"  for YES or "N" for NO, if you
-choose NO ships will be randomly allocated on the board.
+choose NO ships will be randomly allocated on the board.\n
     """)
     while True:
         answer = input(f"Would you like to place ships on the board Y/N: ")
