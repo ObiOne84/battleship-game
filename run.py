@@ -139,21 +139,22 @@ def game_intro():
     """
 
     message = """
-Weclome to the game BATTLESHIP\n
+Welcome to the game BATTLESHIP\n
 Battleship is a war-themed game for two players in which the opponents
 try to guess the location of their opponent's warships and sink them. \n
 You can choose between three game levels:
-Beginner - which will build 5 x 5 grid and allow you to choose
-location of 5 ships on the board. Additionally, you will received 25 bullets.
-Intermediate - the game will take place on 10 x 10 grid with 10 available
-ships, and 100 bullets.
-Expert - the game takes place on the 10 x 10 gridg but, on this level
+Beginner - This will build a 5 x 5 grid and allow you to choose
+the location of 5 ships on the board. Additionally, you will receive
+25 bullets.
+Intermediate - the game will take place on a 10 x 10 grid with 10 available
+ships and 100 bullets.
+Expert - the game takes place on the 10 x 10 grid but, on this level
 the number of available shots is limited to 50.
   S - represent the ship on the game board.
   0 - indicates missed shot.
   X - illustrates hit ship.
-  You can leave the game during the battle, by entering command 'STOP'
-  into coordination input field. The game will reload.\n
+  You can leave the game during the battle by entering the command 'STOP.'
+  into the coordination input field. The game will reload.\n
 """
     print_out(message)
 
@@ -235,9 +236,9 @@ def game_level(user_name):
     while True:
         message = """
 Please choose your gaming experience by choosing one of three options:
--- choose 'b' for beginner to set up 5 x 5 grid, 25 shots and 5 ships.
--- choose 'i' for intermediate for 10 x 10 grid, 100 shots, and 10 ships.
--- or  choose 'e' for expert for 10 x 10 grid, 50 shots, and 10 ships..\n
+-- choose 'b' for beginners to set up a 5 x 5 grid, 25 shots and 5 ships.
+-- choose 'i' for intermediate for a 10 x 10 grid, 100 shots, and 10 ships.
+-- or choose 'e' for an expert for a 10 x 10 grid, 50 shots, and 10 ships.\n
     """
         print_out(message)
         # global user_name
@@ -248,7 +249,7 @@ Please choose your gaming experience by choosing one of three options:
         try:
             if user_experience == "b":
                 print_out(f"""
-Thank you {user_name}. Your game experience level is beginner.\n
+Thank you {user_name}. Your game experience level is a beginner.\n
                 """)
                 return 5
             elif user_experience == "i":
@@ -265,7 +266,8 @@ Thank you {user_name}. Your game experience level is expert.\n
                 raise ValueError
         except ValueError:
             print_out(f"""
-Invalid data. You provided '{user_experience}', this is not recognised value.\n
+Invalid data. You provided '{user_experience}';
+this is not a recognised value.\n
             """)
 
 
@@ -298,6 +300,11 @@ def player_ship_coordinates():
     """
 
     while True:
+        print_out("""
+Please enter coordinates in format 'A1', where 'A' represents the column
+name, and '1' indicates the row number. Only enter the coordinates displayed
+on your Battleship game board.
+        """)
         ship_loc = input("Please enter your coordinates:\n")
 
         if validate_coordinates(ship_loc, size):
@@ -321,24 +328,24 @@ def validate_coordinates(values, size):
             print(" \n" * 3)
             main()
         if len(values) > 3:
-            print("The coordinates can have maximum 3 characters.")
+            print("The coordinates can have a maximum of 3 characters.")
             raise ValueError
         if len(values) == 3 and int(values[1] + values[2]) != 10:
             print(f"{values[1] + values[2]} is not a row number.")
-            print(f"Please choose number between 1 and {size}")
+            print(f"Please choose a number between 1 and {size}")
             raise ValueError
         if len(values) < 2:
-            print("The coordinates must have minimun 2 characters.")
+            print("The coordinates must have a minimum of 2 characters.")
             raise ValueError
         if values[0].upper() not in ''.join(alphabet[:size]):
             print(f"{values[0].upper()} is not a column name on the gameboard")
             raise ValueError
         if values[1].isnumeric() is False:
-            print(f" '{values[1]}' not a number")
+            print(f" '{values[1]}' is not a number")
             raise ValueError
         if int(values[1]) > size:
             print(f"{values[1]} is not a row number.")
-            print(f"Please choose number between 1 and {size}")
+            print(f"Please choose a number between 1 and {size}")
             raise ValueError
         if int(values[1]) == 0:
             print(f"{values[1]} is not a column number.")
@@ -367,6 +374,7 @@ def return_x_value(data):
 def return_y_value(data):
     """
     Function return y coordinate for the ship or shot
+    from user input
     """
     if len(data) == 3:
         y = int(data[1] + data[2]) - 1
@@ -405,15 +413,15 @@ def user_ships_option():
 
     print_out("""
 You can choose the position of the ships on the board. If you wish to choose
-location of your ships on the board choose "Y"  for YES or "N" for NO, if you
-choose NO ships will be randomly allocated on the board.\n
+the location of your ships on the board, choose "Y"  for YES or "N" for NO; if you
+choose NO, ships will be randomly allocated on the board.\n
     """)
     while True:
         answer = input(f"Would you like to place ships on the board Y/N:\n")
         decision = answer.upper()
 
         if decision == "Y":
-            print_out("Great, you can choose ships locations now.\n")
+            print_out("Great, you can choose ship locations now.\n")
             break
         elif decision == "N":
             print_out("Great, your ships will be randomly placed.\n")
@@ -426,7 +434,7 @@ choose NO ships will be randomly allocated on the board.\n
 
 def user_shots(self, data, shots, name):
     """
-    Function record user shots, and checks against board
+    Function records user shots, and checks against board
     reduce the number of shots after each round
     and ships after each hit
     """
@@ -496,7 +504,8 @@ def random_shot(self, data, shots, name):
 def game_battle(board_one, board_two, shots, user_name):
     """
     Function controls the game battle, and identifies winner
-    and looser
+    and looser, it prints the boards after each round, round number,
+    number of ships and shots lefts.
     """
 
     b = 1
@@ -600,10 +609,10 @@ def game_battle(board_one, board_two, shots, user_name):
     MMMMMMMMMMMMMMMMMMMMMMWOc;,''...',;:dXMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMMMWWNNNNNNWWMMMMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-    MMMMMMMMM #    # ##### #   #  #      # @ #    #   MMMMMMMMMM
+    MMMMMMMMM #    #  ###  #   #  #      # @ #    #   MMMMMMMMMM
     MMMMMMMMM  #  #  #   # #   #  #  #   # # # #  #   MMMMMMMMMM
     MMMMMMMMM   #    #   # #   #   # # #   # #  # #   MMMMMMMMMM
-    MMMMMMMMM   #    #####  ###     # #    # #    #   MMMMMMMMMM
+    MMMMMMMMM   #     ###   ###     # #    # #    #   MMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n
         """)
@@ -617,17 +626,13 @@ def play_game(user_name):
     users actions.
     """
 
-    # game_logo()
-    # game_intro()
-
-    # user_name = collect_user_name()
     global size
     size = game_level(user_name)
     num_ships = size
     shots = size * 5
     user_board = GameBoard(size, num_ships, shots, name=user_name)
     computer_board = GameBoard(size, num_ships, shots, "Computer")
-    print_out("We are setting your game board.\n")
+    print_out("Please wait! We are setting your game board.\n")
     print_pause("." * 8)
     print_out("10%")
     print_out("." * 16)
@@ -644,7 +649,6 @@ def play_game(user_name):
     user_board.print_board(size)
     print("=" * 60)
 
-    # User choose the location of the ships
     ship_location = user_ships_option()
     if ship_location == "Y":
         while len(user_board.ships) < num_ships:
@@ -702,4 +706,5 @@ def main():
             print_out("Thank you for playing BATTLESHIP GAME!\n")
 
 
-main()
+# main()
+
