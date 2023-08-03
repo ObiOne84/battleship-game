@@ -159,8 +159,6 @@ def start_game():
     and provides feedback when incorrect.
     """
     while True:
-        print("Would you like to start the game?")
-        print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = input("Please choose Y/N: ").upper()
         if validate_decision(decision):
             print_out(f"Thank you, your choice is {decision}\n")
@@ -615,7 +613,8 @@ def main():
     while True:
         # game_logo()
         # game_intro()
-
+        print("Would you like to start the game?")
+        print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
         if decision == "Y":
             user_name = collect_user_name()
