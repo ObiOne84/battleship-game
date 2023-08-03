@@ -143,7 +143,12 @@ location of 5 ships on the board. Additionally, you will received 25 bullets.
 Intermediate - the game will take place on 10 x 10 grid with 10 available
 ships, and 100 bullets.
 Expert - the game takes place on the 10 x 10 gridg but, on this level
-the number of available shots is limited to 50.\n
+the number of available shots is limited to 50.
+  S - represent the ship on the game board.
+  0 - indicates missed shot.
+  X - illustrates hit ship.
+  You can leave the game during the battle, by entering command 'STOP'
+  into coordination input field. The game will reload.\n
 """
     print_out(message)
 
