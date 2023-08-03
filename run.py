@@ -278,7 +278,8 @@ def random_ship_location(self):
         pair = (x, y)
         if pair not in self.ships:
             self.ships.append(pair)
-            # self.board[x][y] = "S"
+            # don't forget to remove line below to hide computer ships
+            self.board[x][y] = "S"
             if self.name != "Computer":
                 self.board[x][y] = "S"
         else:
@@ -308,7 +309,7 @@ def validate_coordinates(values, size):
     alphabet = ''.join(alphabet[:size])
 
     try:
-        if values == "STOP":
+        if values.upper() == "STOP":
             print_out("Sorry to see you go!")
             print("Thank you for playing BATTLESHIP!")
             main()
@@ -527,12 +528,77 @@ def game_battle(board_one, board_two, shots, user_name):
                 b += 1
             else:
                 print_out(f"Sorry {user_name}. All your ships are sunk!\n")
+                print("""
+     #####     #    #     # #######
+    #     #   # #   ##   ## #
+    #        #   #  # # # # #
+    #  #### #     # #  #  # #####
+    #     # ####### #     # #
+    #     # #     # #     # #
+     #####  #     # #     # #######
+
+    ####### #     # ####### ######  ###
+    #     # #     # #       #     # ###
+    #     # #     # #       #     # ###
+    #     # #     # #####   ######   #
+    #     #  #   #  #       #   #
+    #     #   # #   #       #    #  ###
+    #######    #    ####### #     # ###
+                    """)
                 break
         else:
             print_out(f"Sorry {user_name}. You don't have any bullets!\n")
+            print("""
+     #####     #    #     # #######
+    #     #   # #   ##   ## #
+    #        #   #  # # # # #
+    #  #### #     # #  #  # #####
+    #     # ####### #     # #
+    #     # #     # #     # #
+     #####  #     # #     # #######
+
+    ####### #     # ####### ######  ###
+    #     # #     # #       #     # ###
+    #     # #     # #       #     # ###
+    #     # #     # #####   ######   #
+    #     #  #   #  #       #   #
+    #     #   # #   #       #    #  ###
+    #######    #    ####### #     # ###
+                    """)
             break
     else:
         print_out(f"Congratulations {user_name}! You destroyed all ships!\n")
+        print("""
+    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMWXK00000000KXNWMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMXo'....     ....:OMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMWkdKWMK,              .xWMNkdKMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMX: .:ol.               :dl, .kMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMN: ,ooc.               ;loc..OMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMWo.oWMX:              .OMMO',KMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMk.cNMNc              '0MMk.cNMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMX:;KMWo              ,KMNl.kMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMWk,lNMx.             :XMO,cNMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMWx;oX0'             dNk;lXMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMW0ood,            .ldlkNMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMWX0d.           cOKNMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMWk.         cXMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMMWO:.     'dNMMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMMMMWO;. .dXMMMMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMMMMMK:  .kWMMMMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMMMMMMO;.oWMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMMMNKOl..;kKNWMMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMW0l,.      .':xNMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMWOc;,''...',;:dXMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMMMWWNNNNNNWWMMMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMM #    # ##### #   #  #      # @ #    #   MMMMMMMMMM
+    MMMMMMMMM  #  #  #   # #   #  #      # # # #  #   MMMMMMMMMM
+    MMMMMMMMM   #    #   # #   #   # # #   # #  # #   MMMMMMMMMM
+    MMMMMMMMM   #    #####  ###     # #    # #    #   MMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n
+        """)
 
 
 def play_game(user_name):
@@ -590,14 +656,14 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
     game_battle(user_board, computer_board, shots, user_name)
 
     # Continue or leave
-    print_out(f"{user_name} would you like to continue the game?")
+    print_out(f"{user_name} would you like to continue the game?\n")
     decision = start_game()
 
     if decision == "Y":
         play_game(user_name)
     else:
-        print_out(f"Thank you {user_name} for playing BATTLESHIP GAME!")
-        print("\n\n\n\n")
+        print_out(f"Thank you {user_name} for playing BATTLESHIP GAME!\n")
+        print(" \n" * 4)
 
 
 def main():
@@ -605,8 +671,8 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        # game_logo()
-        # game_intro()
+        game_logo()
+        game_intro()
         print("Would you like to start the game?")
         print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
@@ -614,7 +680,7 @@ def main():
             user_name = collect_user_name()
             play_game(user_name)
         else:
-            print_out("Thank you for playing BATTLESHIP GAME!")
+            print_out("Thank you for playing BATTLESHIP GAME!\n")
 
 
 main()
