@@ -242,7 +242,7 @@ Please choose your gaming experience by choosing one of three options:
         print_out(message)
         # global user_name
         # user_name = input(f"Please enter username: ")
-        user_input = input(f"Please indicate your game experience: ")
+        user_input = input(f"Please indicate your game experience:\n")
         user_experience = user_input.lower()
 
         try:
