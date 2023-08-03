@@ -600,12 +600,6 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
         print("\n\n\n\n")
 
 
-# ----------------------Code Call-Out Zone------------------------
-
-
-# play_game()
-
-
 def main():
     """
     Functions controls entire game, by calling all functions
