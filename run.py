@@ -168,9 +168,9 @@ def game_intro():
  25 bullets.
  Intermediate - the game will take place on a 10 x 10 grid with 10 available
  ships and 75 bullets.
- Expert - the game takes place on the 10 x 10 grid but, on this level
+ Expert - the game takes place on the 10 x 10 grid; on this level
  the number of available shots is limited to 50, and you must destroy 20 ships.
-  S - represent the ship on the game board.
+  S - represents the ship on the game board.
   0 - indicates missed shot.
   X - illustrates hit ship.
   You can leave the game during the battle by entering the command 'STOP'
@@ -222,7 +222,7 @@ def collect_user_name():
         user_name = input(f" Please provide your username:\n")
 
         if validate_user_name(user_name):
-            print_out(
+            print_b(
                 f" Thank you {user_name}. Welcome to BATTLESHIP GAME!\n"
                 )
             return user_name
@@ -289,7 +289,7 @@ def game_level(user_name):
             else:
                 raise ValueError
         except ValueError:
-            print_out(f"""
+            print_r(f"""
  Invalid data. You provided '{user_experience}';
  this is not a recognised value.\n
             """)
@@ -448,10 +448,10 @@ def user_ships_option():
         decision = answer.upper()
 
         if decision == "Y":
-            print_out(" Great, you can choose ship locations now.\n")
+            print_b(" Great, you can choose ship locations now.\n")
             break
         elif decision == "N":
-            print_out(" Great, your ships will be randomly placed.\n")
+            print_b(" Great, your ships will be randomly placed.\n")
             break
         else:
             print(f" {answer} is not a valid option. Try again!\n")
@@ -551,17 +551,19 @@ def game_battle(board_one, board_two, shots, user_name):
                 print(f"  Ships: {board_one.num_ships}", end="")
                 print(f"\t\t\t {board_two.num_ships}")
                 print("-" * 60)
-                print("=" * 60)
+                print(Fore.YELLOW + "=" * 60)
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
                 print("=" * 60)
+                print(Style.RESET_ALL)
                 board_one.guess(board_two, shots, name=user_name)
-                print("=" * 60)
+                print(Fore.YELLOW + "=" * 60)
                 print_out("          \n")
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
                 print("\n")
                 print("=" * 60)
+                print(Style.RESET_ALL)
                 board_two.guess(board_one, shots, "Computer")
                 print("=" * 60)
                 print(f"{board_one.name}'s Board")
@@ -745,8 +747,8 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        # game_logo()
-        # print(" Would you like to start the game?")
+        game_logo()
+        print(" Would you like to start the game?")
         print_out(" Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
         if decision == "Y":
@@ -754,7 +756,7 @@ def main():
             user_name = collect_user_name()
             play_game(user_name)
         else:
-            print_out(" Thank you for playing BATTLESHIP GAME!\n")
+            print_r(" Thank you for playing BATTLESHIP GAME!\n")
             print("\n" * 40)
 
 
