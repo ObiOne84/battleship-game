@@ -208,7 +208,7 @@ def validate_user_name(name):
     """
     try:
         if len(name) < 3:
-            print(f"{name} has {len(name)} charactes.")
+            print(f"{name} has {len(name)} character/s.")
             raise ValueError
         if len(name) > 10:
             print(f"{name} has {len(name)} characters.")
@@ -507,9 +507,10 @@ def game_battle(board_one, board_two, shots, user_name):
     while board_two.num_ships > 0:
         if board_one.shots > 0:
             if board_one.num_ships > 0:
-                print_out(
-                    f"----------------Round {b}-----------------\n"
-                )
+                print_out("-" * 25)
+                print_out(f" Round {b} ")
+                print_out("-" * 24)
+                print_out("-\n")
                 print("-" * 60)
                 print(f"\t {user_name}", end="")
                 print("\t\t\t Computer")
@@ -534,7 +535,10 @@ def game_battle(board_one, board_two, shots, user_name):
                 print(f"{board_one.name}'s Board")
                 board_one.print_board(size)
                 print("=" * 60)
-                print_out(f"-------------End of round {b}-------------\n")
+                print_out("-" * 21)
+                print_out(f" End of round {b} ")
+                print_out("-" * 21)
+                print_out("-\n")
                 print("=" * 60)
                 print("\n")
                 b += 1
@@ -702,8 +706,8 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        game_logo()
-        game_intro()
+        # game_logo()
+        # game_intro()
         print("Would you like to start the game?")
         print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
