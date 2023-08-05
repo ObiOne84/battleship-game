@@ -103,8 +103,8 @@ def game_logo():
      |    |    |                         *   *
              )_)  )_)  )_)           *            *
             )___))___))___)      *                   *__/_____
-           )____)____)_____)*                    ____/_______\\
-         _____|____|____|_____           _______/_____\\_______\\____
+           )____)____)_____)*                    ____/________\\
+         _____|____|____|_____           _______/_____\\________\\____
 ---------\\                   /-----------\\              < < <      |
   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^
      ^^^^      ^^^^     ^^^    ^^^   ^^^^      ^^^^     ^^^    ^^
@@ -132,17 +132,17 @@ def game_intro():
     """
 
     message = """
-Welcome to the game BATTLESHIP\n
-Battleship is a war-themed game for two players in which the opponents
-try to guess the location of their opponent's warships and sink them. \n
-You can choose between three game levels:
-Beginner - This will build a 5 x 5 grid and allow you to choose
-the location of 5 ships on the board. Additionally, you will receive
-25 bullets.
-Intermediate - the game will take place on a 10 x 10 grid with 10 available
-ships and 75 bullets.
-Expert - the game takes place on the 10 x 10 grid but, on this level
-the number of available shots is limited to 50, and you must destroy 20 ships.
+ Welcome to the game BATTLESHIP\n
+ Battleship is a war-themed game for two players in which the opponents
+ try to guess the location of their opponent's warships and sink them. \n
+ You can choose between three game levels:
+ Beginner - This will build a 5 x 5 grid and allow you to choose
+ the location of 5 ships on the board. Additionally, you will receive
+ 25 bullets.
+ Intermediate - the game will take place on a 10 x 10 grid with 10 available
+ ships and 75 bullets.
+ Expert - the game takes place on the 10 x 10 grid but, on this level
+ the number of available shots is limited to 50, and you must destroy 20 ships.
   S - represent the ship on the game board.
   0 - indicates missed shot.
   X - illustrates hit ship.
@@ -160,7 +160,7 @@ def start_game():
     while True:
         decision = input("Please choose Y/N:\n").upper()
         if validate_decision(decision):
-            print_out(f"Thank you, your choice is {decision}\n")
+            print_out(f" Thank you, your choice is {decision}\n")
             break
     return decision
 
@@ -172,10 +172,10 @@ def validate_decision(value):
     try:
         if value != "N":
             if value != "Y":
-                print(f"{value} is not a valid option.")
+                print(f" {value} is not a valid option.")
                 raise ValueError
     except ValueError:
-        print_out("Please choose again!\n")
+        print_out(" Please choose again!\n")
         return False
     return True
 
@@ -187,16 +187,16 @@ def collect_user_name():
 
     while True:
         print_out("""
-Please choose your username. The username should contain minimum 3 characters
-and a maximum of 10. It must only have alphabetic letters from range a to z,
-upper, lower case, or a mix of both. Special characters are not allowed.
+ Please choose your username. The username should contain minimum 3 characters
+ and a maximum of 10. It must only have alphabetic letters from range a to z,
+ upper, lower case, or a mix of both. Special characters are not allowed.
         """)
 
-        user_name = input(f"Please provide your username:\n")
+        user_name = input(f" Please provide your username:\n")
 
         if validate_user_name(user_name):
             print_out(
-                f"Thank you {user_name}. Welcome to BATTLESHIP GAME!\n"
+                f" Thank you {user_name}. Welcome to BATTLESHIP GAME!\n"
                 )
             return user_name
 
@@ -208,18 +208,18 @@ def validate_user_name(name):
     """
     try:
         if len(name) < 3:
-            print(f"{name} has {len(name)} character/s.")
+            print(f" {name} has {len(name)} character/s.")
             raise ValueError
         if len(name) > 10:
-            print(f"{name} has {len(name)} characters.")
+            print(f" {name} has {len(name)} characters.")
             raise ValueError
         if name.isalpha() is False:
-            print(f"{name} must contain only alphabetic letters.")
+            print(f" {name} must contain only alphabetic letters.")
             raise ValueError
 
     except ValueError:
         print_out(
-            f"The username is not valid!\n"
+            f" The username is not valid!\n"
         )
         return False
     return True
@@ -233,38 +233,38 @@ def game_level(user_name):
 
     while True:
         message = """
-Please choose your gaming experience by choosing one of three options:
--- choose 'b' for beginners to set up a 5 x 5 grid, 25 shots and 5 ships.
--- choose 'i' for intermediate for a 10 x 10 grid, 75 shots, and 10 ships.
--- choose 'e' for an expert for a 10 x 10 grid, 50 shots, and 20 ships.\n
+ Please choose your gaming experience by choosing one of three options:
+ -- choose 'b' for beginners to set up a 5 x 5 grid, 25 shots and 5 ships.
+ -- choose 'i' for intermediate for a 10 x 10 grid, 75 shots, and 10 ships.
+ -- choose 'e' for an expert for a 10 x 10 grid, 50 shots, and 20 ships.\n
     """
         print_out(message)
 
-        user_input = input(f"Please indicate your game experience:\n")
+        user_input = input(f" Please indicate your game experience:\n")
         user_experience = user_input.lower()
 
         try:
             if user_experience == "b":
                 print_out(f"""
-Thank you {user_name}. Your game experience level is a beginner.\n
+ Thank you {user_name}. Your game experience level is a beginner.\n
                 """)
                 return 5
             elif user_experience == "i":
                 print_out(f"""
-Thank you {user_name}. Your game experience level is intermediate.\n
+ Thank you {user_name}. Your game experience level is intermediate.\n
                 """)
                 return 10
             elif user_experience == "e":
                 print_out(f"""
-Thank you {user_name}. Your game experience level is expert.\n
+ Thank you {user_name}. Your game experience level is expert.\n
                 """)
                 return 15
             else:
                 raise ValueError
         except ValueError:
             print_out(f"""
-Invalid data. You provided '{user_experience}';
-this is not a recognised value.\n
+ Invalid data. You provided '{user_experience}';
+ this is not a recognised value.\n
             """)
 
 
@@ -296,14 +296,14 @@ def player_ship_coordinates():
 
     while True:
         print_out("""
-Please enter coordinates in format 'A1', where 'A' represents the row
-name, and '1' indicates the column number. Only enter the coordinates displayed
-on your Battleship game board.
+ Please enter coordinates in format 'A1', where 'A' represents the row
+ name, and '1' indicates the column number. Only enter the coordinates
+ displayed on your Battleship game board.
         """)
         ship_loc = input("Please enter your coordinates:\n")
 
         if validate_coordinates(ship_loc, size):
-            print_out(f"Your coordinates are: '{ship_loc.upper()}'!\n")
+            print_out(f" Your coordinates are: '{ship_loc.upper()}'!\n")
             break
     return ship_loc.upper()
 
@@ -318,36 +318,36 @@ def validate_coordinates(values, size):
 
     try:
         if values.upper() == "STOP":
-            print_out("Sorry to see you go!\n")
-            print_out("Thank you for playing BATTLESHIP!\n")
+            print_out(" Sorry to see you go!\n")
+            print_out(" Thank you for playing BATTLESHIP!\n")
             print(" \n" * 3)
             main()
         if len(values) > 3:
-            print("The coordinates can have a maximum of 3 characters.")
+            print(" The coordinates can have a maximum of 3 characters.")
             raise ValueError
         if len(values) == 3 and int(values[1] + values[2]) != 10:
-            print(f"{values[1] + values[2]} is not a column number.")
-            print(f"Please choose a number between 1 and {size}")
+            print(f" {values[1] + values[2]} is not a column number.")
+            print(f" Please choose a number between 1 and {size}")
             raise ValueError
         if len(values) < 2:
-            print("The coordinates must have a minimum of 2 characters.")
+            print(" The coordinates must have a minimum of 2 characters.")
             raise ValueError
         if values[0].upper() not in ''.join(alphabet[:size]):
-            print(f"{values[0].upper()} is not a row name on the gameboard")
+            print(f" {values[0].upper()} is not a row name on the gameboard")
             raise ValueError
         if values[1].isnumeric() is False:
             print(f" '{values[1]}' is not a column number")
             raise ValueError
         if int(values[1]) > size:
-            print(f"{values[1]} is not a column number.")
-            print(f"Please choose a number between 1 and {size}")
+            print(f" {values[1]} is not a column number.")
+            print(f" Please choose a number between 1 and {size}")
             raise ValueError
         if int(values[1]) == 0:
-            print(f"{values[1]} is not a column number.")
+            print(f" {values[1]} is not a column number.")
             raise ValueError
 
     except ValueError:
-        print(f"{values} is not a valid choice.")
+        print(f" {values} is not a valid choice.")
         return False
 
     return True
@@ -395,7 +395,7 @@ def append_user_ship(self):
             self.ships.append(pair)
             break
         else:
-            print("You already placed ship here")
+            print(" You already placed ship here")
             continue
     return True
 
@@ -407,22 +407,22 @@ def user_ships_option():
     """
 
     print_out("""
-You can choose the position of the ships on the board. If you wish to choose
-the location of your ships on the board, choose "Y"  for YES or "N" for NO;
-if you choose NO, ships will be randomly allocated on the board.\n
+ You can choose the position of the ships on the board. If you wish to choose
+ the location of your ships on the board, choose "Y"  for YES or "N" for NO;
+ if you choose NO, ships will be randomly allocated on the board.\n
     """)
     while True:
-        answer = input(f"Would you like to place ships on the board Y/N:\n")
+        answer = input(f" Would you like to place ships on the board Y/N:\n")
         decision = answer.upper()
 
         if decision == "Y":
-            print_out("Great, you can choose ship locations now.\n")
+            print_out(" Great, you can choose ship locations now.\n")
             break
         elif decision == "N":
-            print_out("Great, your ships will be randomly placed.\n")
+            print_out(" Great, your ships will be randomly placed.\n")
             break
         else:
-            print(f"{answer} is not a valid option. Try again!\n")
+            print(f" {answer} is not a valid option. Try again!\n")
             continue
     return decision
 
@@ -441,17 +441,17 @@ def user_shots(self, data, shots, name):
         pair = (x, y)
 
         if pair in self.guesses:
-            print_out(f"{name}, you already shot at {coordinates}!\n")
+            print_out(f" {name}, you already shot at {coordinates}!\n")
         else:
             if pair not in data.ships:
                 data.board[x][y] = "0"
-                print_out(f"Sorry {name} that's a miss!\n")
+                print_out(f" Sorry {name} that's a miss!\n")
                 self.guesses.append(pair)
                 self.shots -= 1
                 break
             else:
                 data.board[x][y] = "X"
-                print_out(f"Well done {name}, you just HIT a ship!\n")
+                print_out(f" Well done {name}, you just HIT a ship!\n")
                 self.guesses.append(pair)
                 data.num_ships -= 1
                 self.shots -= 1
@@ -540,15 +540,16 @@ def game_battle(board_one, board_two, shots, user_name):
                 print_out("-" * 21)
                 print_out("-\n")
                 print("=" * 60)
-                print_out(f"""
-{user_name}, you can leave the game during the battle by entering the command
-'STOP' into the coordination input field. The game will reload.\n
+                print(f"""
+ {user_name}, you can leave the game during the battle by entering
+ the command 'STOP' into the coordination input field. The game
+ will reload.\n
                 """)
                 print("=" * 60)
                 print("\n")
                 b += 1
             else:
-                print_out(f"Sorry {user_name}. All your ships are sunk!\n")
+                print_out(f" Sorry {user_name}. All your ships are sunk!\n")
                 print("""
      #####     #    #     # #######
     #     #   # #   ##   ## #
@@ -568,7 +569,7 @@ def game_battle(board_one, board_two, shots, user_name):
                     """)
                 break
         else:
-            print_out(f"Sorry {user_name}. You don't have any bullets!\n")
+            print_out(f" Sorry {user_name}. You don't have any bullets!\n")
             print("""
      #####     #    #     # #######
     #     #   # #   ##   ## #
@@ -588,7 +589,7 @@ def game_battle(board_one, board_two, shots, user_name):
                     """)
             break
     else:
-        print_out(f"Congratulations {user_name}! You destroyed all ships!\n")
+        print_out(f" Congratulations {user_name}! You destroyed all ships!\n")
         print("""
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMWXK00000000KXNWMMMMMMMMMMMMMMMMMMMMMM
@@ -660,6 +661,7 @@ def play_game(user_name):
     print_pause("." * 4)
     print_out("." * 28)
     print_pause("100%\n")
+    print("\n")
     print_out("Board set up: Completed!\n")
 
     print("")
@@ -677,7 +679,7 @@ def play_game(user_name):
             user_board.print_board(size)
             print("=" * 60)
             print(f"""
-Well done, you placed {len(user_board.ships)} out of {num_ships} ships.\n
+ Well done, you placed {len(user_board.ships)} out of {num_ships} ships.\n
                 """)
             print("=" * 60)
     else:
@@ -696,13 +698,13 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
 
     game_battle(user_board, computer_board, shots, user_name)
 
-    print_out(f"{user_name} would you like to continue the game?\n")
+    print_out(f" {user_name} would you like to continue the game?\n")
     decision = start_game()
 
     if decision == "Y":
         play_game(user_name)
     else:
-        print_out(f"Thank you {user_name} for playing BATTLESHIP GAME!\n")
+        print_out(f" Thank you {user_name} for playing BATTLESHIP GAME!\n")
         print(" \n" * 40)
 
 
@@ -712,15 +714,15 @@ def main():
     """
     while True:
         game_logo()
-        print("Would you like to start the game?")
-        print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
+        print(" Would you like to start the game?")
+        print_out(" Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
         if decision == "Y":
             game_intro()
             user_name = collect_user_name()
             play_game(user_name)
         else:
-            print_out("Thank you for playing BATTLESHIP GAME!\n")
+            print_out(" Thank you for playing BATTLESHIP GAME!\n")
             print("\n" * 40)
 
 
