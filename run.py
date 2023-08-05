@@ -194,8 +194,9 @@ def collect_user_name():
 
     while True:
         print_out("""
-Please choose your username. The username should contain minimum 3 characters,
-and maximum 15.
+Please choose your username. The username should contain minimum 3 characters
+and a maximum of 10. It must only have alphabetic letters from range a to z,
+upper, lower case, or a mix of both. Special characters are not allowed.
         """)
 
         user_name = input(f"Please provide your username:\n")
@@ -210,15 +211,19 @@ and maximum 15.
 def validate_user_name(name):
     """
     Functions validates user input to ensure username
-    is between 3 to 15 characters
+    is between 3 to 10 characters
     """
     try:
         if len(name) < 3:
             print(f"{name} has {len(name)} charactes.")
             raise ValueError
-        if len(name) > 15:
+        if len(name) > 10:
             print(f"{name} has {len(name)} characters.")
             raise ValueError
+        if name.isalpha() is False:
+            print(f"{name} must contain only alphabetic letters.")
+            raise ValueError
+
     except ValueError:
         print_out(
             f"The username is not valid!\n"
@@ -241,8 +246,7 @@ Please choose your gaming experience by choosing one of three options:
 -- or choose 'e' for an expert for a 10 x 10 grid, 50 shots, and 20 ships.\n
     """
         print_out(message)
-        # global user_name
-        # user_name = input(f"Please enter username: ")
+
         user_input = input(f"Please indicate your game experience:\n")
         user_experience = user_input.lower()
 
