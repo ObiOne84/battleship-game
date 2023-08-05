@@ -146,7 +146,7 @@ the number of available shots is limited to 50, and you must destroy 20 ships.
   S - represent the ship on the game board.
   0 - indicates missed shot.
   X - illustrates hit ship.
-  You can leave the game during the battle by entering the command 'STOP.'
+  You can leave the game during the battle by entering the command 'STOP'
   into the coordination input field. The game will reload.\n
 """
     print_out(message)
@@ -236,7 +236,7 @@ def game_level(user_name):
 Please choose your gaming experience by choosing one of three options:
 -- choose 'b' for beginners to set up a 5 x 5 grid, 25 shots and 5 ships.
 -- choose 'i' for intermediate for a 10 x 10 grid, 75 shots, and 10 ships.
--- or choose 'e' for an expert for a 10 x 10 grid, 50 shots, and 20 ships.\n
+-- choose 'e' for an expert for a 10 x 10 grid, 50 shots, and 20 ships.\n
     """
         print_out(message)
 
@@ -540,6 +540,11 @@ def game_battle(board_one, board_two, shots, user_name):
                 print_out("-" * 21)
                 print_out("-\n")
                 print("=" * 60)
+                print_out(f"""
+{user_name}, you can leave the game during the battle by entering the command
+'STOP' into the coordination input field. The game will reload.\n
+                """)
+                print("=" * 60)
                 print("\n")
                 b += 1
             else:
@@ -706,8 +711,8 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        game_logo()
-        game_intro()
+        # game_logo()
+        # game_intro()
         print("Would you like to start the game?")
         print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
