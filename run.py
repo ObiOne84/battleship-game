@@ -344,7 +344,8 @@ def validate_coordinates(values, size):
             print(f" Please choose a number between 1 and {size}")
             raise ValueError
         if column_num == 10 and column_num > size:
-            print("new error")
+            print(f" {values[1] + values[2]} is not a column number.")
+            print(f" Please choose a number between 1 and {size}")
             raise ValueError
         if int(values[1]) == 0:
             print(f" {values[1]} is not a column number.")
