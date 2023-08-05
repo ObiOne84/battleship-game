@@ -134,7 +134,7 @@ def game_logo():
          ^^^^      ^^^     ^^^^      ^^^         ^^^^      ^^^
     """)
 
-    print_b(message)
+    print_out(message)
 
     print_r("""
 - - - - B A T T L E S H I P - - - - - - - - - - - - - - - - - - - - - - - - - -
