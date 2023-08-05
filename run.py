@@ -51,8 +51,6 @@ class GameBoard:
         """
 
         alphabet = ["ABCDEFGHIJKLMNOPRTQUXYZ"]
-
-        # if n is a paramter, take n number of characters from the alphabet
         alphabet = ''.join(alphabet[:size])
 
         column_values = []
@@ -62,12 +60,7 @@ class GameBoard:
         print(" ", *column_values)
 
         # with assist of Sean - Tutor
-# loop over the zipped lists, row is the index, cell is the list in the loop
         for x, row in enumerate(zip(alphabet, self.board)):
-            # there are two items in the list,
-            # row[0] is the alphabet character, row[1] is the board row
-            # the character can be printed as is
-            # the board list must be joined as a string
             print(
                 f'{row[0]}', ' '.join(x for x in row[1])
             )
@@ -289,8 +282,6 @@ def random_ship_location(self):
         pair = (x, y)
         if pair not in self.ships:
             self.ships.append(pair)
-            # don't forget to remove line below to hide computer ships
-            # self.board[x][y] = "S"
             if self.name != "Computer":
                 self.board[x][y] = "S"
         else:
@@ -651,10 +642,11 @@ def play_game(user_name):
     user_board = GameBoard(size, num_ships, shots, name=user_name)
     computer_board = GameBoard(size, num_ships, shots, "Computer")
     print_out("Please wait! We are setting your game board.\n")
-    print_pause("." * 8)
+    print_pause("." * 4)
+    print_out("." * 4)
     print_out("10%")
-    print_out("." * 16)
-    print_pause("." * 8)
+    print_out("." * 20)
+    print_pause("." * 4)
     print_out("50%")
     print_pause("." * 4)
     print_out("." * 28)
@@ -710,8 +702,8 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        # game_logo()
-        # game_intro()
+        game_logo()
+        game_intro()
         print("Would you like to start the game?")
         print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
