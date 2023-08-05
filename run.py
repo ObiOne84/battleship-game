@@ -711,8 +711,8 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        # game_logo()
-        # game_intro()
+        game_logo()
+        game_intro()
         print("Would you like to start the game?")
         print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
