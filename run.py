@@ -1,6 +1,7 @@
 import time
 import sys
 from random import randint
+from colorama import Fore, Back, Style
 
 
 user_name = ""
@@ -28,6 +29,28 @@ def print_pause(data):
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(1)
+
+
+def print_b(data):
+    """
+    Thiis funcion calls print_out function, to display text
+    printed in real time, in blue color
+    """
+
+    print(Fore.BLUE, Style.BRIGHT + "")
+    print_out(data)
+    print(Style.RESET_ALL)
+
+
+def print_r(data):
+    """
+    Thiis funcion calls print_out function, to display text
+    printed in real time, in red color
+    """
+
+    print(Fore.RED, Style.BRIGHT + "")
+    print_out(data)
+    print(Style.RESET_ALL)
 
 
 class GameBoard:
@@ -105,16 +128,18 @@ def game_logo():
             )___))___))___)      *                   *__/_____
            )____)____)_____)*                    ____/________\\
          _____|____|____|_____           _______/_____\\________\\____
----------\\                   /-----------\\              < < <      |
+---------\\                   /-----------\\              < < <       |
   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^
      ^^^^      ^^^^     ^^^    ^^^   ^^^^      ^^^^     ^^^    ^^
          ^^^^      ^^^     ^^^^      ^^^         ^^^^      ^^^
     """)
 
-    print_out(message)
+    print_b(message)
 
+    print_r("""
+- - - - B A T T L E S H I P - - - - - - - - - - - - - - - - - - - - - - - - - -
+""")
     print("""
-- - - - B A T T L E S H I P - - - - - - - - - - - - - - - - - - - - - - - -
  ######     #    ####### ####### #       #######  #####  #     # ### ######
  #     #   # #      #       #    #       #       #     # #     #  #  #     #
  #     #  #   #     #       #    #       #       #       #     #  #  #     #
@@ -122,7 +147,9 @@ def game_logo():
  #     # #######    #       #    #       #             # #     #  #  #
  #     # #     #    #       #    #       #       #     # #     #  #  #
  ######  #     #    #       #    ####### #######  #####  #     # ### #
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - ObiOne84 - - - - -
+ """)
+    print_r("""
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - ObiOne84 - - - - - - -
 """)
 
 
