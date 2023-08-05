@@ -703,7 +703,7 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
         play_game(user_name)
     else:
         print_out(f"Thank you {user_name} for playing BATTLESHIP GAME!\n")
-        print(" \n" * 4)
+        print(" \n" * 40)
 
 
 def main():
@@ -712,16 +712,16 @@ def main():
     """
     while True:
         game_logo()
-        game_intro()
         print("Would you like to start the game?")
         print_out("Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
         if decision == "Y":
+            game_intro()
             user_name = collect_user_name()
             play_game(user_name)
         else:
             print_out("Thank you for playing BATTLESHIP GAME!\n")
-            print("\n" * 5)
+            print("\n" * 40)
 
 
 main()
