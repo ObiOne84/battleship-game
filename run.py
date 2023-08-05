@@ -335,51 +335,51 @@ def player_ship_coordinates():
     return ship_loc.upper()
 
 
-def validate_coordinates(values, size):
+def validate_coordinates(data, size):
     """
     Function validates users ships coordinates
     and user shot coordinates
     """
     alphabet = ["ABCDEFGHIJKLMNOPRTQUXYZ"]
     alphabet = ''.join(alphabet[:size])
-    column_num = int(values[1] + values[2])
 
     try:
-        if values.upper() == "STOP":
+        if data.upper() == "STOP":
             print_out(" Sorry to see you go!\n")
             print_out(" Thank you for playing BATTLESHIP!\n")
             print(" \n" * 3)
             main()
-        if len(values) > 3:
+        if len(data) > 3:
             print(" The coordinates can have a maximum of 3 characters.")
             raise ValueError
-        if len(values) == 3 and column_num != 10:
-            print(f" {values[1] + values[2]} is not a column number.")
+        if len(data) == 3 and int(data[1] + data[2]) != 10:
+            print(f" {data[1] + data[2]} is not a column number.")
             print(f" Please choose a number between 1 and {size}")
             raise ValueError
-        if len(values) < 2:
+        if len(data) < 2:
             print(" The coordinates must have a minimum of 2 characters.")
             raise ValueError
-        if values[0].upper() not in ''.join(alphabet[:size]):
-            print(f" {values[0].upper()} is not a row name on the gameboard")
+        if data[0].upper() not in ''.join(alphabet[:size]):
+            print(f" {data[0].upper()} is not a row name on the gameboard")
             raise ValueError
-        if values[1].isnumeric() is False:
-            print(f" '{values[1]}' is not a column number")
+        if data[1].isnumeric() is False:
+            print(f" '{data[1]}' is not a column number")
             raise ValueError
-        if int(values[1]) > size:
-            print(f" {values[1]} is not a column number.")
+        if int(data[1]) > size:
+            print(f" {data[1]} is not a column number.")
             print(f" Please choose a number between 1 and {size}")
             raise ValueError
-        if column_num == 10 and column_num > size:
-            print(f" {values[1] + values[2]} is not a column number.")
+        if len(data) == 3 and int(data[1] + data[2]) == 10 and \
+           int(data[1] + data[2]) > size:
+            print(f" {data[1] + data[2]} is not a column number.")
             print(f" Please choose a number between 1 and {size}")
             raise ValueError
-        if int(values[1]) == 0:
-            print(f" {values[1]} is not a column number.")
+        if int(data[1]) == 0:
+            print(f" {data[1]} is not a column number.")
             raise ValueError
 
     except ValueError:
-        print(f" {values} is not a valid choice.")
+        print(f" {data} is not a valid choice.")
         return False
 
     return True
@@ -745,8 +745,8 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        game_logo()
-        print(" Would you like to start the game?")
+        # game_logo()
+        # print(" Would you like to start the game?")
         print_out(" Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
         if decision == "Y":
