@@ -315,6 +315,7 @@ def validate_coordinates(values, size):
     """
     alphabet = ["ABCDEFGHIJKLMNOPRTQUXYZ"]
     alphabet = ''.join(alphabet[:size])
+    column_num = int(values[1] + values[2])
 
     try:
         if values.upper() == "STOP":
@@ -325,7 +326,7 @@ def validate_coordinates(values, size):
         if len(values) > 3:
             print(" The coordinates can have a maximum of 3 characters.")
             raise ValueError
-        if len(values) == 3 and int(values[1] + values[2]) != 10:
+        if len(values) == 3 and column_num != 10:
             print(f" {values[1] + values[2]} is not a column number.")
             print(f" Please choose a number between 1 and {size}")
             raise ValueError
@@ -341,6 +342,9 @@ def validate_coordinates(values, size):
         if int(values[1]) > size:
             print(f" {values[1]} is not a column number.")
             print(f" Please choose a number between 1 and {size}")
+            raise ValueError
+        if column_num == 10 and column_num > size:
+            print("new error")
             raise ValueError
         if int(values[1]) == 0:
             print(f" {values[1]} is not a column number.")
