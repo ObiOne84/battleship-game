@@ -332,11 +332,6 @@ def player_ship_coordinates():
     """
 
     while True:
-        print_out("""
- Please enter coordinates in format 'A1', where 'A' represents the row
- name, and '1' indicates the column number. Only enter the coordinates
- displayed on your Battleship game board.
-        """)
         ship_loc = input("Please enter your coordinates:\n")
 
         if validate_coordinates(ship_loc, size):
@@ -357,7 +352,7 @@ def validate_coordinates(data, size):
         if data.upper() == "STOP":
             print_out(" Sorry to see you go!\n")
             print_out(" Thank you for playing BATTLESHIP!\n")
-            print(" \n" * 3)
+            print(" \n" * 40)
             main()
         if len(data) > 3:
             print(" The coordinates can have a maximum of 3 characters.")
@@ -389,7 +384,10 @@ def validate_coordinates(data, size):
             raise ValueError
 
     except ValueError:
-        print(f" {data} is not a valid choice.")
+        print(f"""
+ {data} is not a valid choice. Please enter coordinates where row name is
+ range of A to {alphabet[size - 1]} and column number between 1 to {size}.
+        """)
         return False
 
     return True
@@ -565,6 +563,11 @@ def game_battle(board_one, board_two, shots, user_name):
                 print(f"  Ships: {board_one.num_ships}", end="")
                 print(f"\t\t\t {board_two.num_ships}")
                 print("-" * 70)
+                print("""
+ Please enter coordinates in format 'A1', where 'A' represents the row
+ name, and '1' indicates the column number. Only enter the coordinates
+ displayed on your Battleship game board.
+                    """)
                 print(Fore.YELLOW + "=" * 70)
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
@@ -593,7 +596,7 @@ def game_battle(board_one, board_two, shots, user_name):
                 b += 1
             else:
                 print_out(f" Sorry {user_name}. All your ships are sunk!\n")
-                print("""
+                print(Fore.RED + """
      #####     #    #     # #######
     #     #   # #   ##   ## #
     #        #   #  # # # # #
@@ -609,11 +612,11 @@ def game_battle(board_one, board_two, shots, user_name):
     #     #  #   #  #       #   #
     #     #   # #   #       #    #  ###
     #######    #    ####### #     # ###
-                    """)
+                    """, Style.RESET_ALL)
                 break
         else:
             print_out(f" Sorry {user_name}. You don't have any bullets!\n")
-            print("""
+            print(Fore.RED + """
      #####     #    #     # #######
     #     #   # #   ##   ## #
     #        #   #  # # # # #
@@ -629,7 +632,7 @@ def game_battle(board_one, board_two, shots, user_name):
     #     #  #   #  #       #   #
     #     #   # #   #       #    #  ###
     #######    #    ####### #     # ###
-                    """)
+                    """, Style.RESET_ALL)
             break
     else:
         print_out(f" Congratulations {user_name}! You destroyed all ships!\n")
@@ -748,7 +751,7 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
         play_game(user_name)
     else:
         print_out(f" Thank you {user_name} for playing BATTLESHIP GAME!\n")
-        print(" \n" * 24)
+        print(" \n" * 40)
 
 
 def main():
@@ -766,7 +769,7 @@ def main():
             play_game(user_name)
         else:
             color_print("red", " Thank you for playing BATTLESHIP GAME!\n")
-            print("\n" * 24)
+            print("\n" * 40)
 
 
 main()
