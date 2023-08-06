@@ -195,7 +195,7 @@ def start_game():
     while True:
         decision = input("Please choose Y/N:\n").upper()
         if validate_decision(decision):
-            print_out(f" Thank you, your choice is {decision}\n")
+            color_print("blue", f" Thank you, your choice is {decision}\n")
             break
     return decision
 
@@ -280,17 +280,17 @@ def game_level(user_name):
 
         try:
             if user_experience == "b":
-                print_out(f"""
+                color_print("blue", f"""
  Thank you {user_name}. Your game experience level is a beginner.\n
                 """)
                 return 5
             elif user_experience == "i":
-                print_out(f"""
+                color_print("blue", f"""
  Thank you {user_name}. Your game experience level is intermediate.\n
                 """)
                 return 10
             elif user_experience == "e":
-                print_out(f"""
+                color_print("blue", f"""
  Thank you {user_name}. Your game experience level is expert.\n
                 """)
                 return 15
@@ -487,13 +487,15 @@ def user_shots(self, data, shots, name):
         else:
             if pair not in data.ships:
                 data.board[x][y] = "0"
-                print_out(f" Sorry {name} that's a miss!\n")
+                color_print("red", f" Sorry {name} that's a miss!\n")
                 self.guesses.append(pair)
                 self.shots -= 1
                 break
             else:
                 data.board[x][y] = "X"
-                print_out(f" Well done {name}, you just HIT a ship!\n")
+                color_print(
+                    "green", f" Well done {name}, you just HIT a ship!\n"
+                    )
                 self.guesses.append(pair)
                 data.num_ships -= 1
                 self.shots -= 1
@@ -523,14 +525,14 @@ def random_shot(self, data, shots, name):
             if pair not in data.ships:
                 data.board[x][y] = "0"
                 print_out(f"{name} gueesed {coordinates}\n")
-                print_out(f"{name} missed!\n")
+                color_print("red", f"{name} missed!\n")
                 self.guesses.append(pair)
                 self.shots -= 1
                 break
             else:
                 data.board[x][y] = "X"
                 print_out(f"{name} gueesed {coordinates}\n")
-                print_out(f"{name}, that's a HIT\n")
+                color_print("green", f"{name}, that's a HIT\n")
                 self.guesses.append(pair)
                 data.num_ships -= 1
                 self.shots -= 1
