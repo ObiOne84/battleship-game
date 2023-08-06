@@ -618,7 +618,7 @@ def game_battle(board_one, board_two, shots, user_name):
  {user_name}, you can leave the game during the battle by entering
  the command 'STOP' into the coordination input field. The game
  will reload.
-                """, Style.RESET_ALL)
+""", Style.RESET_ALL)
                 print("=" * 70)
                 b += 1
 
@@ -633,13 +633,13 @@ def game_battle(board_one, board_two, shots, user_name):
                             print(f"""
  Thank you {user_name}, you will continue with the next round. You can reset
  the game by typing 'STOP' into coordination field.
-                            """)
+""")
                             reminder -= 1
                             pass
                         else:
                             print_out(f"""
  Sorry {user_name}, you could not destroy all ships!
-                                    """)
+""")
                             print(Fore.RED + game_over, Style.RESET_ALL)
                             print_pause("   ")
                             print("\n" * 40)
@@ -765,7 +765,8 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
 """)
 
     computer_board.add_random_ships()
-    color_print("green", f"Welcome {user_name} in the BATTLE ZONE!\n")
+    color_print(
+        "green", f"             Welcome {user_name} in the BATTLE ZONE!\n")
 
     game_battle(user_board, computer_board, shots, user_name)
 
