@@ -317,6 +317,8 @@ def random_ship_location(self):
         pair = (x, y)
         if pair not in self.ships:
             self.ships.append(pair)
+            # remove after testing
+            self.board[x][y] = "S"
             if self.name != "Computer":
                 self.board[x][y] = "S"
         else:
@@ -551,46 +553,43 @@ def game_battle(board_one, board_two, shots, user_name):
     while board_two.num_ships > 0:
         if board_one.shots > 0:
             if board_one.num_ships > 0:
-                print_out("-" * 25)
+                print_out("-" * 30)
                 print_out(f" Round {b} ")
-                print_out("-" * 24)
+                print_out("-" * 29)
                 print_out("-\n")
-                print("-" * 60)
+                print("-" * 70)
                 print(f"\t {user_name}", end="")
                 print("\t\t\t Computer")
                 print(f"  Shots: {board_one.shots}", end="")
                 print(f"\t\t\t {board_two.shots}")
                 print(f"  Ships: {board_one.num_ships}", end="")
                 print(f"\t\t\t {board_two.num_ships}")
-                print("-" * 60)
-                print(Fore.YELLOW + "=" * 60)
+                print("-" * 70)
+                print(Fore.YELLOW + "=" * 70)
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
-                print("=" * 60, Style.RESET_ALL)
+                print("=" * 70, Style.RESET_ALL)
                 board_one.guess(board_two, shots, name=user_name)
-                print(Fore.YELLOW + "=" * 60)
-                print_out("          \n")
+                print(Fore.YELLOW + "=" * 70)
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
-                print("\n")
-                print("=" * 60, Style.RESET_ALL)
+                print("=" * 70, Style.RESET_ALL)
                 board_two.guess(board_one, shots, "Computer")
-                print("=" * 60)
+                print("=" * 70)
                 print(f"{board_one.name}'s Board")
                 board_one.print_board(size)
-                print("=" * 60)
-                print_out("-" * 21)
+                print("=" * 70)
+                print_out("-" * 26)
                 print_out(f" End of round {b} ")
-                print_out("-" * 21)
+                print_out("-" * 26)
                 print_out("-\n")
-                print("=" * 60)
-                print(f"""
+                print("=" * 70)
+                print(Style.DIM + f"""
  {user_name}, you can leave the game during the battle by entering
  the command 'STOP' into the coordination input field. The game
- will reload.\n
-                """)
-                print("=" * 60)
-                print("\n")
+ will reload.
+                """, Style.RESET_ALL)
+                print("=" * 70)
                 b += 1
             else:
                 print_out(f" Sorry {user_name}. All your ships are sunk!\n")
@@ -634,7 +633,7 @@ def game_battle(board_one, board_two, shots, user_name):
             break
     else:
         print_out(f" Congratulations {user_name}! You destroyed all ships!\n")
-        print("""
+        print(Fore.YELLOW, Style.BRIGHT + """
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMWXK00000000KXNWMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMXo'....     ....:OMMMMMMMMMMMMMMMMMMMMM
@@ -664,7 +663,7 @@ def game_battle(board_one, board_two, shots, user_name):
     MMMMMMMMM   #     ###   ###     # #    # #    #   MMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n
-        """)
+        """, Style.RESET_ALL)
 
 
 def play_game(user_name):
@@ -709,29 +708,29 @@ def play_game(user_name):
     print_out("Board set up: Completed!\n")
 
     print("")
-    print("=" * 60)
+    print("=" * 70)
     print(f"{user_board.name}'s Board")
     user_board.print_board(size)
-    print("=" * 60)
+    print("=" * 70)
 
     ship_location = user_ships_option()
     if ship_location == "Y":
         while len(user_board.ships) < num_ships:
             user_board.add_ships()
-            print("=" * 60)
+            print("=" * 70)
             print(f" {user_name}'s Game Board")
             user_board.print_board(size)
-            print("=" * 60)
+            print("=" * 70)
             print(f"""
  Well done, you placed {len(user_board.ships)} out of {num_ships} ships.\n
                 """)
-            print("=" * 60)
+            print("=" * 70)
     else:
         user_board.add_random_ships()
-        print("=" * 60)
+        print("=" * 70)
         print(f" {user_name}'s Game Board")
         user_board.print_board(size)
-        print("=" * 60)
+        print("=" * 70)
 
     print_out(f"""
 Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
@@ -749,7 +748,7 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
         play_game(user_name)
     else:
         print_out(f" Thank you {user_name} for playing BATTLESHIP GAME!\n")
-        print(" \n" * 40)
+        print(" \n" * 24)
 
 
 def main():
@@ -767,7 +766,7 @@ def main():
             play_game(user_name)
         else:
             color_print("red", " Thank you for playing BATTLESHIP GAME!\n")
-            print("\n" * 40)
+            print("\n" * 24)
 
 
 main()
