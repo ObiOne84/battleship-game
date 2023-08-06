@@ -178,9 +178,10 @@ def game_intro():
  ships and 75 bullets.
  Expert - the game takes place on the 10 x 10 grid; on this level
  the number of available shots is limited to 50, and you must destroy 20 ships.
-  S - represents the ship on the game board.
-  0 - indicates missed shot.
-  X - illustrates hit ship.
+
+  S - represents the ships on the game board.
+  0 - indicates missed shots.
+  X - illustrates hit ships.
   You can leave the game during the battle by entering the command 'STOP'
   into the coordination input field. The game will reload.\n
 """
@@ -193,7 +194,7 @@ def start_game():
     and provides feedback when incorrect.
     """
     while True:
-        decision = input("Please choose Y/N:\n").upper()
+        decision = input(" Please choose Y/N:\n").upper()
         if validate_decision(decision):
             if decision == "Y":
                 color_print("blue", f" Thank you, your choice is 'YES'\n")
@@ -320,8 +321,6 @@ def random_ship_location(self):
         pair = (x, y)
         if pair not in self.ships:
             self.ships.append(pair)
-            # remove after testing
-            # self.board[x][y] = "S"
             if self.name != "Computer":
                 self.board[x][y] = "S"
         else:
