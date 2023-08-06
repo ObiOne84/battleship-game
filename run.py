@@ -321,7 +321,7 @@ def random_ship_location(self):
         if pair not in self.ships:
             self.ships.append(pair)
             # remove after testing
-            self.board[x][y] = "S"
+            # self.board[x][y] = "S"
             if self.name != "Computer":
                 self.board[x][y] = "S"
         else:
@@ -555,6 +555,25 @@ def game_battle(board_one, board_two, shots, user_name):
     number of ships and shots lefts.
     """
 
+    reminder = 1
+    game_over = """
+     #####     #    #     # #######
+    #     #   # #   ##   ## #
+    #        #   #  # # # # #
+    #  #### #     # #  #  # #####
+    #     # ####### #     # #
+    #     # #     # #     # #
+     #####  #     # #     # #######
+
+    ####### #     # ####### ######  ###
+    #     # #     # #       #     # ###
+    #     # #     # #       #     # ###
+    #     # #     # #####   ######   #
+    #     #  #   #  #       #   #
+    #     #   # #   #       #    #  ###
+    #######    #    ####### #     # ###
+                    """
+
     b = 1
     while board_two.num_ships > 0:
         if board_one.shots > 0:
@@ -575,7 +594,7 @@ def game_battle(board_one, board_two, shots, user_name):
  Please enter coordinates in format 'A1', where 'A' represents the row
  name, and '1' indicates the column number. Only enter the coordinates
  displayed on your Battleship game board.
-                    """)
+                        """)
                 print(Fore.YELLOW + "=" * 70)
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
@@ -602,45 +621,41 @@ def game_battle(board_one, board_two, shots, user_name):
                 """, Style.RESET_ALL)
                 print("=" * 70)
                 b += 1
+
+                if reminder > 0:
+                    if board_one.shots < board_two.num_ships:
+                        print("""
+ You don't have enough bullets to destroy all ships!
+                            """)
+                        print_out("Would you like to continue?\n")
+                        decision = start_game()
+                        if decision == "Y":
+                            print(f"""
+ Thank you {user_name}, you will continue with the next round. You can reset
+ the game by typing 'STOP' into coordination field.
+                            """)
+                            reminder -= 1
+                            pass
+                        else:
+                            print_out(f"""
+ Sorry {user_name}, you could not destroy all ships!
+                                    """)
+                            print(Fore.RED + game_over, Style.RESET_ALL)
+                            print_pause("   ")
+                            print("\n" * 40)
+                            play_game(user_name)
+                            break
             else:
                 print_out(f" Sorry {user_name}. All your ships are sunk!\n")
-                print(Fore.RED + """
-     #####     #    #     # #######
-    #     #   # #   ##   ## #
-    #        #   #  # # # # #
-    #  #### #     # #  #  # #####
-    #     # ####### #     # #
-    #     # #     # #     # #
-     #####  #     # #     # #######
-
-    ####### #     # ####### ######  ###
-    #     # #     # #       #     # ###
-    #     # #     # #       #     # ###
-    #     # #     # #####   ######   #
-    #     #  #   #  #       #   #
-    #     #   # #   #       #    #  ###
-    #######    #    ####### #     # ###
-                    """, Style.RESET_ALL)
+                print(Fore.RED + game_over, Style.RESET_ALL)
+                print_pause("   ")
                 break
         else:
-            print_out(f" Sorry {user_name}. You don't have any bullets!\n")
-            print(Fore.RED + """
-     #####     #    #     # #######
-    #     #   # #   ##   ## #
-    #        #   #  # # # # #
-    #  #### #     # #  #  # #####
-    #     # ####### #     # #
-    #     # #     # #     # #
-     #####  #     # #     # #######
-
-    ####### #     # ####### ######  ###
-    #     # #     # #       #     # ###
-    #     # #     # #       #     # ###
-    #     # #     # #####   ######   #
-    #     #  #   #  #       #   #
-    #     #   # #   #       #    #  ###
-    #######    #    ####### #     # ###
-                    """, Style.RESET_ALL)
+            print_out(
+                f" Sorry {user_name}. You don't have any bullets left!\n"
+                )
+            print(Fore.RED + game_over, Style.RESET_ALL)
+            print_pause("   ")
             break
     else:
         print_out(f" Congratulations {user_name}! You destroyed all ships!\n")
@@ -675,6 +690,7 @@ def game_battle(board_one, board_two, shots, user_name):
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n
         """, Style.RESET_ALL)
+        print_pause("   ")
 
 
 def play_game(user_name):
@@ -693,9 +709,9 @@ def play_game(user_name):
     if difficulity_level == 5:
         size = 5
         num_ships = 5
-        # shots = 25
+        shots = 25
         # remove after testing is done and uncomment the coorect shots
-        shots = 5
+        # shots = 5
     elif difficulity_level == 10:
         size = 10
         num_ships = 10
@@ -784,13 +800,3 @@ def main():
 
 
 main()
-
-# size = 5
-# user_name = "Szymon"
-# num_ships = 5
-# shots = 5
-# user_board = GameBoard(size, num_ships, shots, name=user_name)
-# computer_board = GameBoard(size, num_ships, shots, "Computer")
-
-
-# game_battle(user_board, computer_board, shots, user_name)
