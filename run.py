@@ -195,7 +195,10 @@ def start_game():
     while True:
         decision = input("Please choose Y/N:\n").upper()
         if validate_decision(decision):
-            color_print("blue", f" Thank you, your choice is {decision}\n")
+            if decision == "Y":
+                color_print("blue", f" Thank you, your choice is 'YES'\n")
+            else:
+                color_print("red", f" Thank you, your choice is 'NO'\n")
             break
     return decision
 
@@ -457,6 +460,11 @@ def user_ships_option():
 
         if decision == "Y":
             color_print("blue", " Great, you can choose ship locations now.\n")
+            print("""
+ Please enter coordinates in format 'A1', where 'A' represents the row
+ name, and '1' indicates the column number. Only enter the coordinates
+ displayed on your Battleship game board.
+                    """)
             break
         elif decision == "N":
             color_print(
@@ -685,7 +693,9 @@ def play_game(user_name):
     if difficulity_level == 5:
         size = 5
         num_ships = 5
-        shots = 25
+        # shots = 25
+        # remove after testing is done and uncomment the coorect shots
+        shots = 5
     elif difficulity_level == 10:
         size = 10
         num_ships = 10
@@ -724,8 +734,8 @@ def play_game(user_name):
             print(f" {user_name}'s Game Board")
             user_board.print_board(size)
             print("=" * 70)
-            print(f"""
- Well done, you placed {len(user_board.ships)} out of {num_ships} ships.\n
+            color_print("blue", f"""
+ Well done, you placed {len(user_board.ships)} out of {num_ships} ships.
                 """)
             print("=" * 70)
     else:
@@ -734,13 +744,12 @@ def play_game(user_name):
         print(f" {user_name}'s Game Board")
         user_board.print_board(size)
         print("=" * 70)
-
-    print_out(f"""
-Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
-        """)
+        color_print("blue", f"""
+ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.
+                """)
 
     computer_board.add_random_ships()
-    print("\n")
+    color_print("green", f"Welcome {user_name} in the BATTLE ZONE!\n")
 
     game_battle(user_board, computer_board, shots, user_name)
 
@@ -750,7 +759,9 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
     if decision == "Y":
         play_game(user_name)
     else:
-        print_out(f" Thank you {user_name} for playing BATTLESHIP GAME!\n")
+        color_print(
+            "yellow", f" Thank you {user_name} for playing BATTLESHIP GAME!\n"
+            )
         print(" \n" * 40)
 
 
@@ -768,7 +779,7 @@ def main():
             user_name = collect_user_name()
             play_game(user_name)
         else:
-            color_print("red", " Thank you for playing BATTLESHIP GAME!\n")
+            color_print("yellow", " Thank you for playing BATTLESHIP GAME!\n")
             print("\n" * 40)
 
 
