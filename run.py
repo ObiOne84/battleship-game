@@ -31,15 +31,23 @@ def print_pause(data):
         time.sleep(1)
 
 
-def print_b(data):
+def color_print(color, data):
     """
     Thiis funcion calls print_out function, to display text
     printed in real time, in blue color
     """
-
-    print(Fore.BLUE, Style.BRIGHT + "")
+    if color == "blue":
+        print(Fore.BLUE, Style.BRIGHT, end="")
+    elif color == "red":
+        print(Fore.RED, Style.BRIGHT, end="")
+    elif color == "yellow":
+        print(Fore.YELLOW, Style.BRIGHT, end="")
+    elif color == "green":
+        print(Fore.GREEN, Style.BRIGHT, end="")
+    else:
+        print(Fore.CYAN, Style.BRIGHT, end="")
     print_out(data)
-    print(Style.RESET_ALL)
+    print(Style.RESET_ALL, end="")
 
 
 def print_r(data):
@@ -48,9 +56,9 @@ def print_r(data):
     printed in real time, in red color
     """
 
-    print(Fore.RED, Style.BRIGHT + "")
+    print(Fore.RED, Style.BRIGHT, end="")
     print_out(data)
-    print(Style.RESET_ALL)
+    print(Style.RESET_ALL, end="")
 
 
 class GameBoard:
@@ -136,10 +144,10 @@ def game_logo():
 
     print_out(message)
 
-    print_r("""
+    color_print("red", """
 - - - - B A T T L E S H I P - - - - - - - - - - - - - - - - - - - - - - - - - -
 """)
-    print("""
+    color_print("blue", """
  ######     #    ####### ####### #       #######  #####  #     # ### ######
  #     #   # #      #       #    #       #       #     # #     #  #  #     #
  #     #  #   #     #       #    #       #       #       #     #  #  #     #
@@ -148,7 +156,7 @@ def game_logo():
  #     # #     #    #       #    #       #       #     # #     #  #  #
  ######  #     #    #       #    ####### #######  #####  #     # ### #
  """)
-    print_r("""
+    color_print("red", """
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - ObiOne84 - - - - - - -
 """)
 
@@ -222,8 +230,8 @@ def collect_user_name():
         user_name = input(f" Please provide your username:\n")
 
         if validate_user_name(user_name):
-            print_b(
-                f" Thank you {user_name}. Welcome to BATTLESHIP GAME!\n"
+            color_print(
+                "blue", f"Thank you {user_name}. Welcome to BATTLESHIP GAME!\n"
                 )
             return user_name
 
@@ -289,7 +297,7 @@ def game_level(user_name):
             else:
                 raise ValueError
         except ValueError:
-            print_r(f"""
+            color_print("red", f"""
  Invalid data. You provided '{user_experience}';
  this is not a recognised value.\n
             """)
@@ -448,10 +456,12 @@ def user_ships_option():
         decision = answer.upper()
 
         if decision == "Y":
-            print_b(" Great, you can choose ship locations now.\n")
+            color_print("blue", " Great, you can choose ship locations now.\n")
             break
         elif decision == "N":
-            print_b(" Great, your ships will be randomly placed.\n")
+            color_print(
+                "blue", " Great, your ships will be randomly placed.\n"
+                )
             break
         else:
             print(f" {answer} is not a valid option. Try again!\n")
@@ -554,16 +564,14 @@ def game_battle(board_one, board_two, shots, user_name):
                 print(Fore.YELLOW + "=" * 60)
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
-                print("=" * 60)
-                print(Style.RESET_ALL)
+                print("=" * 60, Style.RESET_ALL)
                 board_one.guess(board_two, shots, name=user_name)
                 print(Fore.YELLOW + "=" * 60)
                 print_out("          \n")
                 print(f"{board_two.name}'s Board")
                 board_two.print_board(size)
                 print("\n")
-                print("=" * 60)
-                print(Style.RESET_ALL)
+                print("=" * 60, Style.RESET_ALL)
                 board_two.guess(board_one, shots, "Computer")
                 print("=" * 60)
                 print(f"{board_one.name}'s Board")
@@ -756,8 +764,18 @@ def main():
             user_name = collect_user_name()
             play_game(user_name)
         else:
-            print_r(" Thank you for playing BATTLESHIP GAME!\n")
+            color_print("red", " Thank you for playing BATTLESHIP GAME!\n")
             print("\n" * 40)
 
 
 main()
+
+# size = 5
+# user_name = "Szymon"
+# num_ships = 5
+# shots = 5
+# user_board = GameBoard(size, num_ships, shots, name=user_name)
+# computer_board = GameBoard(size, num_ships, shots, "Computer")
+
+
+# game_battle(user_board, computer_board, shots, user_name)
