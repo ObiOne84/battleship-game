@@ -35,6 +35,7 @@ def color_print(color, data):
     """
     Thiis funcion calls print_out function, to display text
     printed in real time, in blue color
+    source: https://pypi.org/project/colorama/
     """
     if color == "blue":
         print(Fore.BLUE, Style.BRIGHT, end="")
@@ -88,12 +89,12 @@ class GameBoard:
         for num in range(size):
             column_values.append(num + 1)
 
-        print(" ", *column_values)
+        print("   ", *column_values)
 
         # with assist of Sean - Tutor
         for x, row in enumerate(zip(alphabet, self.board)):
             print(
-                f'{row[0]}', ' '.join(x for x in row[1])
+                f'  {row[0]}', ' '.join(x for x in row[1])
             )
 
     def add_ships(self):
@@ -595,17 +596,17 @@ def game_battle(board_one, board_two, shots, user_name):
  displayed on your Battleship game board.
                         """)
                 print(Fore.YELLOW + "=" * 70)
-                print(f"{board_two.name}'s Board")
+                print(f" {board_two.name}'s Board")
                 board_two.print_board(size)
                 print("=" * 70, Style.RESET_ALL)
                 board_one.guess(board_two, shots, name=user_name)
                 print(Fore.YELLOW + "=" * 70)
-                print(f"{board_two.name}'s Board")
+                print(f" {board_two.name}'s Board")
                 board_two.print_board(size)
                 print("=" * 70, Style.RESET_ALL)
                 board_two.guess(board_one, shots, "Computer")
                 print("=" * 70)
-                print(f"{board_one.name}'s Board")
+                print(f" {board_one.name}'s Board")
                 board_one.print_board(size)
                 print("=" * 70)
                 print_out("-" * 26)
@@ -737,7 +738,7 @@ def play_game(user_name):
 
     print("")
     print("=" * 70)
-    print(f"{user_board.name}'s Board")
+    print(f" {user_board.name}'s Game Board")
     user_board.print_board(size)
     print("=" * 70)
 
@@ -750,8 +751,8 @@ def play_game(user_name):
             user_board.print_board(size)
             print("=" * 70)
             color_print("blue", f"""
- Well done, you placed {len(user_board.ships)} out of {num_ships} ships.
-                """)
+ Well done, you placed {len(user_board.ships)} out of {num_ships} ships.\n
+""")
             print("=" * 70)
     else:
         user_board.add_random_ships()
@@ -760,8 +761,8 @@ def play_game(user_name):
         user_board.print_board(size)
         print("=" * 70)
         color_print("blue", f"""
- Great {user_name}, you placed all {len(user_board.ships)} ships on the board.
-                """)
+Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
+""")
 
     computer_board.add_random_ships()
     color_print("green", f"Welcome {user_name} in the BATTLE ZONE!\n")
@@ -785,12 +786,12 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        # game_logo()
+        game_logo()
         print(" Would you like to start the game?")
         print_out(" Choose 'Y' to start the game or 'N' to leave now.\n")
         decision = start_game()
         if decision == "Y":
-            # game_intro()
+            game_intro()
             user_name = collect_user_name()
             play_game(user_name)
         else:
