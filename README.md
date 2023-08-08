@@ -23,4 +23,30 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 ### Current Features ###
 
+1. Game Logo.
+    - The users are presented with the game logo at the start of the game.
 
+ ![Game logo](assets/images/logo.png)
+
+2. Game Intro.
+    - Introduces the basic game rules to the user
+    - Explains the different game difficulity levels
+    - Explains game markings
+
+![Game introduction and rules](assets/images/game-intro.png)
+
+2. User decisions.
+
+    1. Start the game:
+    - Accepts user`s input
+    - The users must enter 'Y' or 'y' to start the game. If user choose 'N' or 'n', the game will reload 
+    ![Start the game message](assets/images/start-game-message.png)
+    ---
+    2. User must choose username and game level
+    - Accepts user`s input
+    ![Choose username and game level](assets/images/username-game-lev.png)
+    ---
+    3. The user must decide to manually or randomly place ships on the board
+    - Accept user`s input 
+    - Prints user`s board
+    ![Choose the ships location message](assets/images//decision-ships-loc.png)
