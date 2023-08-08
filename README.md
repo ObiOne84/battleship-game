@@ -35,18 +35,46 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 ![Game introduction and rules](assets/images/game-intro.png)
 
-2. User decisions.
+2. User decisions:
 
     1. Start the game:
     - Accepts user`s input
     - The users must enter 'Y' or 'y' to start the game. If user choose 'N' or 'n', the game will reload 
+    - Loads the game
     ![Start the game message](assets/images/start-game-message.png)
+    - Validates user's choice
     ---
     2. User must choose username and game level
     - Accepts user`s input
+    - Sets username
+    - Defines game parameters (board size, number of ships and shots)
     ![Choose username and game level](assets/images/username-game-lev.png)
+    - Validates user's choice
     ---
     3. The user must decide to manually or randomly place ships on the board
-    - Accept user`s input 
+    - Accepts user`s input 
     - Prints user`s board
     ![Choose the ships location message](assets/images//decision-ships-loc.png)
+    - Validates user's choice
+    ---
+    4. The users must decide if they want to continue game, when they do not have enough bullets to destroy all remaining ships.
+    - Accepts users` input
+    - Returns to the game or reloads the game - depending on user`s decision
+    ![Not enough bullets message](assets/images/low-bullets-message.png)
+    - Validates user's choice
+    ---
+    5. Users must decide if they want to continue game, once they won or lost the game.
+    - Accepts user`s input
+    - Reloads the game from game level or from the start
+
+    ---
+
+3. Feedback messages:
+  - In game feedback messages are printed in blue, to confirm user`s decision choice
+  - Hit shots are printed in green, to inform users about sucessfull shot
+  - Missed shots are printed in red, to inform users
+
+4. Manual placement of ship on the board.
+  - Accepts user`s input
+  - Adds ships to the board 'S'
+  - Validates user's choice
