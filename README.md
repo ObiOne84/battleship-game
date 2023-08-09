@@ -143,8 +143,8 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 1. Allow the player to choose to board color
 2. Allow two players to play against each other
-3. Add reveal function for expert level, to assist the players and allow them to reveal the position of 3 computer ships when low on ammo
-4. Allow to place larger ships - as per traditional board
+3. Add a reveal function for an expert level to assist the players and allow them to reveal the position of 3 computer ships when low on ammo
+4. Allow placing larger ships - as per traditional board
 5. Add a master level that takes place on the larger board 15 x 15
 
 ---
@@ -154,10 +154,15 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 
 1. Game flowchart:
-  - The game logic was illustrated with the [Lucidchart](https://www.lucidchart.com/pages/), by linking each stages of the game with users decision and required operations. Please click details to see the chart.
+  - The game logic was illustrated with the [Lucidchart](https://www.lucidchart.com/pages/) by linking each stage of the game with users' decisions and required operations. Please click details to see the chart. This allowed me to comprehensively understand users' journey through the application and became a foundation for the development
 
-  <details>
+    <details>
 
-  ![Lucid chart - battleship](assets/images/battlship-chart.png)
+    ![Lucid chart - battleship](assets/images/battlship-chart.png)
 
-  </details>
+   </details>
+
+2. Data Model:
+  - I decided to use a GameBoard class as my model. The game creates two instances of the GameBoard class, one for the player's and one for the computer's board. 
+  - The GameBoard class stores the game grid size, the number of ships, the number os shots, and the player's name.
+  - To assist the game, the GameBoard class has methods such as `print_board` method that allows to print the current board with row names and column numbers, method to allow user to add position of own ships `add_ships`, or randomly add ships to the board `add_random_ships`. What is more, `guess` method allows to add user guesses and return the result.
