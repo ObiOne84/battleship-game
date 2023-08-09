@@ -23,14 +23,14 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 ### Current Features ###
 
-1. Game Logo.
+1. Game Logo:
     - The users are presented with the game logo at the start of the game.
 
  ![Game logo](assets/images/logo.png)
 
-2. Game Intro.
+2. Game Intro:
     - Introduces the basic game rules to the user
-    - Explains the different game difficulity levels
+    - Explains the different game difficulty levels
     - Explains game markings
 
 ![Game introduction and rules](assets/images/game-intro.png)
@@ -38,43 +38,89 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 2. User decisions:
 
     1. Start the game:
-    - Accepts user`s input
-    - The users must enter 'Y' or 'y' to start the game. If user choose 'N' or 'n', the game will reload 
+    - Accepts user's input
+    - The users must enter 'Y' or 'y' to start the game. If the user chooses 'N' or 'n', the game will reload 
     - Loads the game
     ![Start the game message](assets/images/start-game-message.png)
-    - Validates user's choice
+    - Validates the user's choice
     ---
-    2. User must choose username and game level
-    - Accepts user`s input
+    2. User must choose a username and game level
+    - Accepts user's input
     - Sets username
     - Defines game parameters (board size, number of ships and shots)
-    ![Choose username and game level](assets/images/username-game-lev.png)
-    - Validates user's choice
+    ![Choose a username and game level](assets/images/username-game-lev.png)
+    - Validates the user's choice
     ---
     3. The user must decide to manually or randomly place ships on the board
-    - Accepts user`s input 
-    - Prints user`s board
+    - Accepts user's input 
+    - Prints user's board
     ![Choose the ships location message](assets/images//decision-ships-loc.png)
-    - Validates user's choice
+    - Validates the user's choice
     ---
-    4. The users must decide if they want to continue game, when they do not have enough bullets to destroy all remaining ships.
+    4. The users must decide if they want to continue the game when they do not have enough bullets to destroy all remaining ships.
     - Accepts users` input
-    - Returns to the game or reloads the game - depending on user`s decision
+    - Returns to the game or reloads the game - depending on the user's decision
     ![Not enough bullets message](assets/images/low-bullets-message.png)
-    - Validates user's choice
+    - Validates the user's choice
     ---
-    5. Users must decide if they want to continue game, once they won or lost the game.
-    - Accepts user`s input
-    - Reloads the game from game level or from the start
+    5. Users must decide whether to continue the game once they win or lose it.
+    - Accepts user's input
+    - Reloads the game from the game level choice
 
     ---
 
 3. Feedback messages:
-  - In game feedback messages are printed in blue, to confirm user`s decision choice
-  - Hit shots are printed in green, to inform users about sucessfull shot
-  - Missed shots are printed in red, to inform users
+  - In-game feedback messages are printed in blue to confirm the user's decision choice
+  - Feedback answer to Yes or No decision, username choice, game level.
+  ![Screenshot of feedback messages](assets/images/feedback-color.png)
+  - Hit shots are printed in green to inform users about successful shot
+  - Missed shots are printed in red to inform users
 
-4. Manual placement of ship on the board.
-  - Accepts user`s input
+4. Manual placement of ship on the board:
+  - Prints empty user's board
+  - Accepts user's input
   - Adds ships to the board 'S'
-  - Validates user's choice
+  - Informs users about the successful placement of the ship on the board
+  - Informs users about remaining ships to place
+  ![Screenshot of the user adding ships](assets/images/user-ships-choice.png)
+  - Validates the user's choice
+  - User must provide coordinates within the gameboard and in the correct format
+  ![Screenshot of ships location validation](assets/images/ship-loc-validation.png)
+
+---
+
+5. Random ship placement on the user's board:
+  - Prints user's board with ships randomly placed (example below - game level expert)
+  ![Screenshot random ships expert board](assets/images/random-ships-expert.png)
+
+---
+
+6. Battle mode:
+  - Accepts user's input 
+  - Users shot at the computer board (marked in yellow ink)
+  ![Battle mode beginner](assets/images/battle-mode-beginner.png)
+  - Prints feedback message for each hit in bright green color, for each missed in bright red color
+  - Confirms users' and computer choices by repeating users` choice
+  - Calculates remaining shots and ships
+  - Displays the beginning and end of each round
+  - Informs user about the possibility of leaving the game early by typing 'stop' into the coordination field at any time of the game - the game will restart
+  - Ships are randomly placed on the computer board
+  - Hides the location of computer ships
+  - Computer shots randomly at the users` board
+  - Displays hits on the board as 'X'
+  - Displays misses on the board as '0'
+  ![Battle mode user's feedback](assets/images/hit-miss-feedback.png)
+  - Validates users` input
+
+---
+
+7. Winner's message and trophy:
+  - Users receive congratulatory messages after destroying all computer ships
+  - Users are presented with a bright yellow trophy and the message YOU WIN
+  - Users are asked if they wish to continue the game, the game will restart, and the user can choose a difficult level
+  - Validates users` input
+  ![Winner's trophy](assets/images/trophy.png)
+
+---
+
+8. Game over message:
