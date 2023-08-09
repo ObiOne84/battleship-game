@@ -42,30 +42,31 @@ To place the ships or shot at the board, players must pass coordinates in the fo
     - The users must enter 'Y' or 'y' to start the game. If the user chooses 'N' or 'n', the game will reload 
     - Loads the game
     ![Start the game message](assets/images/start-game-message.png)
-    - Validates the user's choice
+    - Validates the user's choice - see testing
     ---
     2. User must choose a username and game level
     - Accepts user's input
     - Sets username
     - Defines game parameters (board size, number of ships and shots)
     ![Choose a username and game level](assets/images/username-game-lev.png)
-    - Validates the user's choice
+    - Validates the user's choice - see testing
     ---
     3. The user must decide to manually or randomly place ships on the board
     - Accepts user's input 
     - Prints user's board
     ![Choose the ships location message](assets/images//decision-ships-loc.png)
-    - Validates the user's choice
+    - Validates the user's choice - see testing
     ---
     4. The users must decide if they want to continue the game when they do not have enough bullets to destroy all remaining ships.
     - Accepts users` input
     - Returns to the game or reloads the game - depending on the user's decision
     ![Not enough bullets message](assets/images/low-bullets-message.png)
-    - Validates the user's choice
+    - Validates the user's choice - see testing
     ---
     5. Users must decide whether to continue the game once they win or lose it.
     - Accepts user's input
     - Reloads the game from the game level choice
+    - Validates user`s input - see testing
 
     ---
 
@@ -110,7 +111,7 @@ To place the ships or shot at the board, players must pass coordinates in the fo
   - Displays hits on the board as 'X'
   - Displays misses on the board as '0'
   ![Battle mode user's feedback](assets/images/hit-miss-feedback.png)
-  - Validates users` input
+  - Validates users` input - see testing
 
 ---
 
@@ -118,20 +119,45 @@ To place the ships or shot at the board, players must pass coordinates in the fo
   - Users receive congratulatory messages after destroying all computer ships
   - Users are presented with a bright yellow trophy and the message YOU WIN
   - Users are asked if they wish to continue the game, the game will restart, and the user can choose a difficult level
-  - Validates users` input
+  - Validates users` input - see testing
   ![Winner's trophy](assets/images/trophy.png)
 
 ---
 
 8. Game over message:
-  - When user fails to destroys all computer ships, the game over message will appear on the screen
+  - When a user fails to destroy all computer ships, the game over message will appear on the screen
   ![Game over message](assets/images/game-over.png)
 
 ---
 
 9. Low bullets message:
-  - Once number of remaining user's shots is lower than computer's remaining ships, the user will be given option to restart the game or to continue anyway
+  - Once the number of remaining user's shots is lower than the computer's remaining ships, the user will be given the option to restart the game or to continue anyway
   - The message appears only once.
+  - Validates user`s input - see testing
   ![Low bullets message](assets/images/low-amo-message.png)
 
 ---
+
+
+### Future Featuers ###
+
+1. Allow the player to choose to board color
+2. Allow two players to play against each other
+3. Add reveal function for expert level, to assist the players and allow them to reveal the position of 3 computer ships when low on ammo
+4. Allow to place larger ships - as per traditional board
+5. Add a master level that takes place on the larger board 15 x 15
+
+---
+
+
+## Design ##
+
+
+1. Game flowchart:
+  - The game logic was illustrated with the [Lucidchart](https://www.lucidchart.com/pages/), by linking each stages of the game with users decision and required operations. Please click details to see the chart.
+
+  <details>
+
+  ![Lucid chart - battleship](assets/images/battlship-chart.png)
+
+  </details>
