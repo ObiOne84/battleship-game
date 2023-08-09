@@ -126,3 +126,12 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 8. Game over message:
   - When user fails to destroys all computer ships, the game over message will appear on the screen
   ![Game over message](assets/images/game-over.png)
+
+---
+
+9. Low bullets message:
+  - Once number of remaining user's shots is lower than computer's remaining ships, the user will be given option to restart the game or to continue anyway
+  - The message appears only once.
+  ![Low bullets message](assets/images/low-amo-message.png)
+
+---
