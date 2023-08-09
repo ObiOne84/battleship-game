@@ -124,3 +124,5 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 ---
 
 8. Game over message:
+  - When user fails to destroys all computer ships, the game over message will appear on the screen
+  ![Game over message](assets/images/game-over.png)
