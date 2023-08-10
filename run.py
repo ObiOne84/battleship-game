@@ -4,9 +4,9 @@ from random import randint
 from colorama import Fore, Back, Style
 
 
-user_name = ""
-size = 5
-num_ships = size
+# user_name = ""
+# size = 5
+# num_ships = size
 
 
 def print_out(data):
@@ -51,15 +51,15 @@ def color_print(color, data):
     print(Style.RESET_ALL, end="")
 
 
-def print_r(data):
-    """
-    Thiis funcion calls print_out function, to display text
-    printed in real time, in red color
-    """
+# def print_r(data):
+#     """
+#     Thiis funcion calls print_out function, to display text
+#     printed in real time, in red color
+#     """
 
-    print(Fore.RED, Style.BRIGHT, end="")
-    print_out(data)
-    print(Style.RESET_ALL, end="")
+#     print(Fore.RED, Style.BRIGHT, end="")
+#     print_out(data)
+#     print(Style.RESET_ALL, end="")
 
 
 class GameBoard:
