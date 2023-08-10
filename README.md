@@ -4,7 +4,7 @@ Additionally, users can choose between random allocation of ships on the board o
 
 Click [HERE](https://battleship-game-one-6bf6c6bf7e50.herokuapp.com/) to visit a live page.
 
----
+
 ![Battleship Game on various screens.](assets/images/battleship-response.png)
 
 ---
@@ -157,13 +157,53 @@ To place the ships or shot at the board, players must pass coordinates in the fo
   - The game logic was illustrated with the [Lucidchart](https://www.lucidchart.com/pages/) by linking each stage of the game with users' decisions and required operations. Please click details to see the chart. This allowed me to comprehensively understand users' journey through the application and became a foundation for the development
 
     <details>
+    <summary>Click to expand: Battleship Game Lucidchart.</summary>
 
     ![Lucid chart - battleship](assets/images/battlship-chart.png)
 
    </details>
 
 2. Data Model:
-  - I decided to use a GameBoard class as my model. The game creates two instances of the GameBoard class, one for the player's and one for the computer's board. 
-  - The GameBoard class stores the game grid size, the number of ships, the number os shots, and the player's name.
-  - To assist the game, the GameBoard class has methods such as `print_board` method that allows to print the current board with row names and column numbers, method to allow user to add position of own ships `add_ships`, or randomly add ships to the board `add_random_ships`. What is more, `guess` method allows to add user guesses and return the result.
-  - Moreover, the game consist many supporting function to enhance user experience. For example, `color_print` allow to print out the text in various colors. Also, `collect_user_name` function collects username which is used to personalise the game. The function `game_level` allows user to choose dificulity level but also defines the size of the board, number of shots and ships available to play. Similarly, `player_ship_coordinates` help user to pass ships and shots coordinates against the board. Lastly, `game_battle` ensures that battle mode run smoothly and gives users opportunity to stop game early and restart the game with option to choose difficulity level again.
+  - I decided to use a GameBoard class as my model. The game creates two instances of the GameBoard class, one for the players and one for the computer's board. 
+  - The GameBoard class stores the game grid size, the number of ships, the number of shots, and the player's name.
+  - To assist the game, the GameBoard class has methods such as the `print_board` method that allows printing the current board with row names and column numbers, a method to allow users to add the position of their own ships `add_ships`, or randomly add ships to the board `add_random_ships`. Moreover, the `guess` method allows adding user guesses and returning the result.
+  - Moreover, the game has many supporting functions to enhance user experience. For example, `color_print` allows to print out the text in various colors. Also, the `collect_user_name` function collects usernames, which is used to personalise the game. The function `game_level` allows users to choose a difficult level but also defines the board size, number of shots and ships available to play. Similarly, `player_ship_coordinates` help the user to pass boats and shots coordinates against the board. Lastly, `game_battle` ensures that battle mode runs smoothly and allows users to stop the game early and restart the game with an option to choose a difficulty level again.
+
+
+## Testing ##
+
+
+## Local Development ##
+
+To bring down project for local development, it is possible to clone a repository by following steps below:
+- On [GitHub](https://github.com), navigate to the main page of the repository.
+- Above the list of files, click the green button Code.
+- Select Local tab.
+- Copy to HTTPS code.
+- In your local IDE open terminal, choose the location where you want to clone the directory.
+- Type git clone and then paste the URL you copied from GitHub.
+- Press Enter to create the clone.
+
+Alternatively, you can fork a GitHub repository. Remember that if you forked the repository, none of the updates made to the source repo would be reflected in your forked repo. To fork the repository, follow the steps below:
+- Log in to your GitHub account.
+- Go to the repository you want to fork.
+- In the top right corner of the window, click on the Fork button.
+- The process will start, and you will see the message confirming the start.
+
+
+## Deployment ##
+
+
+This project was deployed using Code Institute's mock terminal for [Heroku](https://www.heroku.com/).
+
+- Steps for deployment:
+    - Fork or clone this reposistory (see Local Development for instructions)
+    - Go to Heroku page, login or sign up for new account [Heroku](https://www.heroku.com/)
+    - Create a new Heroku App
+    - Choose the unique app name and region
+    - Go to the Setting tab, in section Config Vars, click on Reveal Config Vars and enter in field for key - `PORT` and the value is `8000`
+    - Next, you must add couple of Buildpacks, click on Add Buildpack in excatly this order `python` first, `nodejs` second
+    - Go to Deploy tab and choose deployment method GitHub, and connect to GitHub
+    - Find the battleship-game repository and connect
+    - Click on Deploy Branch (Manual deploy)
+    - If you wish that app was update everytime you push the changes to the GitHub, Enable Automatic Deploys
