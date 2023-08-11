@@ -215,6 +215,52 @@ I have manually tested this project by doing the following:
 
 **1. Solved Bugs**
 
+- The function returning value for the column number from the user coordinates input, was returning incorrect number, because I had forgotten to adjust the users input by reducing by 1 to match list index number. 
+
+<details>
+<summary>Click to expand - code: before and after</summary>
+
+```py
+
+before:
+    if len(data) == 3:
+        y = int(data[1] + data[2])
+        return y
+    else:
+        y = int(data[1])
+
+after:
+    if len(data) == 3:
+        y = int(data[1] + data[2]) - 1
+        return y
+    else:
+        y = int(data[1]) - 1
+
+```
+
+</details>
+
+- When testing `play_game` function, I noticed that function displayed an error, as it could not find value for `username` and `size`. I fixed the problem by passing the `user_name` parameter to game_level function and by passing the `size` parameter to `validate_coordinates` function. This allowed to restric users input to the size of the game board.
+
+<details>
+<summary>Click to expand - code: before and after</summary>
+
+```py
+
+before:
+    def validate_coordinates(values):
+
+    def game_level():
+
+after:
+    def validate_coordinates(values, size):
+
+    def game_level(user_name):
+
+```
+
+</details>
+
 **2. Remaining Bugs**
 - No bugs remaining.
 
