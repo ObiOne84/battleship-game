@@ -1,4 +1,6 @@
 # BATTLESHIP GAME #
+
+
 The BATTLESHIP Game is a terminal game which runs in the Code Institute mock terminal on Heroku. The user can challenge the computer in a one-on-one battle but choose one of three challenging levels. A beginner level lets users get familiar with the interface and understand simple game rules. At this level, users have 25 shots available to hit 5 ships. The game board size is reduced to 25 fields, which increases winning chances. An intermediate level builds a 10 by 10 grid, providing 10 boats and 75 shots. Lastly, an expert level utilises the same grid size as the intermediate, but the user has only 50 attempts to hit 20 ships.
 Additionally, users can choose between random allocation of ships on the board or manual placement. Moreover, the game consists of many visual additions like game logos, color fonts and line separators to improve user experience. Lastly, the game provides countless hours of fun and entertainment by challenging the user's luck.
 
@@ -10,6 +12,7 @@ Click [HERE](https://battleship-game-one-6bf6c6bf7e50.herokuapp.com/) to visit a
 ---
 
 ## How To Play ##
+
 
 BATTLESHIP Game is heavily based on traditional pen-and-paper games. The main goal is to destroy all opponent's ships. You can read more about the game on [TheSpruceCRAFTS](https://www.thesprucecrafts.com/the-basic-rules-of-battleship-411069). In this version, users enter their name, which consists of alphabetic letters. Furthermore, users are prompted to choose a difficulty level - this will determine the grid size, num of ships, and shots. 
 A beginner level generates a 5 x 5 game board with five boats and 25 available shots. At the intermediate level, users have 10 available ships and 75 bullets, and the game takes place on a 10 x 10 board. Also, an expert level generates a 10 x 10 game board, but users have only 50 shots to destroy 20 boats on this level. Lastly, the user can choose between manual boat placement on the board or random allocation. 
@@ -23,10 +26,13 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 ### Current Features ###
 
+
 1. Game Logo:
     - The users are presented with the game logo at the start of the game.
 
  ![Game logo](assets/images/logo.png)
+
+---
 
 2. Game Intro:
     - Introduces the basic game rules to the user
@@ -35,49 +41,55 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 ![Game introduction and rules](assets/images/game-intro.png)
 
-2. User decisions:
+---
+
+3. User decisions:
 
     1. Start the game:
     - Accepts user's input
     - The users must enter 'Y' or 'y' to start the game. If the user chooses 'N' or 'n', the game will reload 
     - Loads the game
     ![Start the game message](assets/images/start-game-message.png)
-    - Validates the user's choice - see testing
+
     ---
+
     2. User must choose a username and game level
     - Accepts user's input
     - Sets username
     - Defines game parameters (board size, number of ships and shots)
     ![Choose a username and game level](assets/images/username-game-lev.png)
-    - Validates the user's choice - see testing
+
     ---
+
     3. The user must decide to manually or randomly place ships on the board
     - Accepts user's input 
     - Prints user's board
     ![Choose the ships location message](assets/images//decision-ships-loc.png)
-    - Validates the user's choice - see testing
+
     ---
+
     4. The users must decide if they want to continue the game when they do not have enough bullets to destroy all remaining ships.
     - Accepts users` input
     - Returns to the game or reloads the game - depending on the user's decision
     ![Not enough bullets message](assets/images/low-bullets-message.png)
-    - Validates the user's choice - see testing
+
     ---
     5. Users must decide whether to continue the game once they win or lose it.
     - Accepts user's input
     - Reloads the game from the game level choice
-    - Validates user`s input - see testing
 
     ---
 
-3. Feedback messages:
+4. Feedback messages:
   - In-game feedback messages are printed in blue to confirm the user's decision choice
   - Feedback answer to Yes or No decision, username choice, game level.
   ![Screenshot of feedback messages](assets/images/feedback-color.png)
   - Hit shots are printed in green to inform users about successful shot
   - Missed shots are printed in red to inform users
 
-4. Manual placement of ship on the board:
+---
+
+5. Manual placement of ship on the board:
   - Prints empty user's board
   - Accepts user's input
   - Adds ships to the board 'S'
@@ -90,13 +102,13 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 ---
 
-5. Random ship placement on the user's board:
+6. Random ship placement on the user's board:
   - Prints user's board with ships randomly placed (example below - game level expert)
   ![Screenshot random ships expert board](assets/images/random-ships-expert.png)
 
 ---
 
-6. Battle mode:
+7. Battle mode:
   - Accepts user's input 
   - Users shot at the computer board (marked in yellow ink)
   ![Battle mode beginner](assets/images/battle-mode-beginner.png)
@@ -111,35 +123,39 @@ To place the ships or shot at the board, players must pass coordinates in the fo
   - Displays hits on the board as 'X'
   - Displays misses on the board as '0'
   ![Battle mode user's feedback](assets/images/hit-miss-feedback.png)
-  - Validates users` input - see testing
 
 ---
 
-7. Winner's message and trophy:
+8. Winner's message and trophy:
   - Users receive congratulatory messages after destroying all computer ships
   - Users are presented with a bright yellow trophy and the message YOU WIN
   - Users are asked if they wish to continue the game, the game will restart, and the user can choose a difficult level
-  - Validates users` input - see testing
   ![Winner's trophy](assets/images/trophy.png)
 
 ---
 
-8. Game over message:
+9. Game over message:
   - When a user fails to destroy all computer ships, the game over message will appear on the screen
   ![Game over message](assets/images/game-over.png)
 
 ---
 
-9. Low bullets message:
+10. Low bullets message:
   - Once the number of remaining user's shots is lower than the computer's remaining ships, the user will be given the option to restart the game or to continue anyway
   - The message appears only once.
-  - Validates user`s input - see testing
   ![Low bullets message](assets/images/low-amo-message.png)
 
 ---
 
+11. User input validation:
+  - Users can only enter the input permitted by the game parameters. 
+    - Only the letter "y, Y, n and N" will be accepted for user decisions where YES or NO answer is required. 
+    - The letters "b, B, i, I, e, and E" will be accepted to set the game level. Lastly, the coordinates can be entered as per the board size and in the format where the letter represents a row, and the number indicates a column. For example, A1 or b3. 
+    - Alternatively, users can enter stop into the coordinates field to restart the game. The username must be 3 to 10 characters long and accept only alphabetic letters.
+
 
 ### Future Featuers ###
+
 
 1. Allow the player to choose to board color
 2. Allow two players to play against each other
@@ -172,6 +188,7 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 ## Testing ##
 
+
 I have manually tested this project by doing the following:
 - Passed the code through the PEP8 linter and confirmed there are no problems.
 - Tested in my local terminal and the Code Institute Heroku terminal.
@@ -180,19 +197,40 @@ I have manually tested this project by doing the following:
 | Feature | Expected Action| Test Result|
 |---------|----------------|------------|
 | Game Logo | The game logo will load automatically <details><summary>Click to expand - game logo</summary>![Game logo test](assets/images/logo.png)</details>  | Pass |
-| User Decision - Yes or No | User can only pass: n, N, y, Y letters as a valid input. Any other answer will display error message <details><summary>Click to expand - yes or no</summary>![Yes or No answer test](assets/images/yes-or-no-test.png)</details> | Pass |
+| User Decision - Yes or No | User can only pass: n, N, y, Y letters as valid input. Any other answer will display an error message <details><summary>Click to expand - yes or no</summary>![Yes or No answer test](assets/images/yes-or-no-test.png)</details> | Pass |
 | Setting Username | User can only use alphabetic letters to set the username. The username must be minimum 3 characters and maximum 10 <details><summary>Click to expand - username</summary>![Setting username test](assets/images/username-test.png)</details> | Pass |
-| Setting Game Level | User can only enter letters: b, B, i, I, e, E to set game level. No other value will be accpeted <details><summary>Click to expand - game level</summary>![Setting game level test](assets/images/game-level-test.png)</details> | Pass |
-| Game Level | Once user choose the game level, the game will be set as per instruction in the game brief <details><summary>Click to expand - game parameters</summary>![Game parameters test](assets/images/...)</details> | Pass |
-| User adds ships | User can only add ships using the coordinates within the game board. User can enter 'stop' to restart the game. No other value will be accpeted <details><summary>Click to expand - adding ships</summary>![Adding ships test](assets/images/adding-ship-test.png)</details> | Pass |
-| Random Ships Allocation | User can choose to randomly add ships to the game board. Once done, message will confirm sucessful operation <details><summary>Click to expand - random ships</summary>![Random ships test](assets/images/random-ships-test.png)</details> | Pass |
-| User Shots | User shots against computer board. Hits are marked with 'X' and misses with '0'. The coordinates must be within the board, and user cannot shoot at the same location twice. <details><summary>Click to expand - random ships</summary>![Random ships test](assets/images/shots-test.png)</details> | Pass |
-| Score Board | The score board displays updated number of ships and shots after each round | Pass |
+| Setting Game Level | User can only enter letters: b, B, i, I, e, and E to set the game level. No other value will be accepted <details><summary>Click to expand - game level</summary>![Setting game level test](assets/images/game-level-test.png)</details> | Pass |
+| Game Level | Once the User chooses the game level, the game will be set as per instruction in the game brief <details><summary>Click to expand - game parameters</summary>![Game parameters test](assets/images/game-set-up-test.bmp)</details> | Pass |
+| User adds ships | User can only add ships using the coordinates within the game board. Users can enter 'stop' to restart the game. No other value will be accepted <details><summary>Click to expand - adding ships</summary>![Adding ships test](assets/images/adding-ship-test.png)</details> | Pass |
+| Random Ships Allocation | Users can randomly add ships to the game board. Once done, a message will confirm the successful operation <details><summary>Click to expand - random ships</summary>![Random ships test](assets/images/random-ships-test.png)</details> | Pass |
+| User Shots | User shots against computer board. Hits are marked with 'X' and misses with '0'. The coordinates must be within the board, and the User cannot shoot at the same location twice. <details><summary>Click to expand - random ships</summary>![Random ships test](assets/images/shots-test.png)</details> | Pass |
+| Score Board | The scoreboard displays an updated number of ships and shots after each round | Pass |
 | Round Number| The round number change after each shot by one | Pass |
-| Restart Game - STOP | Once word 'stop' is entered into coordination field, the game reloads from the start. | Pass |
-| Low Ammo | The low ammo message will apear to the user when number of user's shots is less then number of computer's ships | Pass |
-| Trophy | The trophy message will apear to the user once the game is won by sinking all computer ships | Pass |
-| Game Over | The game over message will apear to the user once the game is lost due computer sinking all user's ships, user was not able to sink all computer ships | Pass |
+| Restart Game - STOP | Once the word 'stop' is entered into the coordination field, the game reloads from the start. | Pass |
+| Low Ammo | The low ammo message will appear to the User when the number of the User's shots is less than that of the computer's ships. User can restart the game and choose a new game level | Pass |
+| Trophy | The trophy message will appear to the User once the game is won by sinking all computer ships | Pass |
+| Game Over | The game over message will appear to the User once the game is lost due computer sinking all User's ships; the User was not able to sink all computer's ships | Pass |
+
+### Bugs ###
+
+**1. Solved Bugs**
+
+**2. Remaining Bugs**
+- No bugs remaining.
+
+
+### Validator Testing ###
+
+- PEP8
+    - No errors were returned from [PEP8Validator](https://pep8ci.herokuapp.com/)
+
+    <details>
+    <summary>Click to expand - code validator</summary>
+
+    ![Code validator results](assets/images/code-validator-test.png)
+
+    </details>
+
 
 ## Local Development ##
 
