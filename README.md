@@ -172,6 +172,27 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 ## Testing ##
 
+I have manually tested this project by doing the following:
+- Passed the code through the PEP8 linter and confirmed there are no problems.
+- Tested in my local terminal and the Code Institute Heroku terminal.
+- Given invalid inputs - see table below for more information:
+
+| Feature | Expected Action| Test Result|
+|---------|----------------|------------|
+| Game Logo | The game logo will load automatically <details><summary>Click to expand - game logo</summary>![Game logo test](assets/images/logo.png)</details>  | Pass |
+| User Decision - Yes or No | User can only pass: n, N, y, Y letters as a valid input. Any other answer will display error message <details><summary>Click to expand - yes or no</summary>![Yes or No answer test](assets/images/yes-or-no-test.png)</details> | Pass |
+| Setting Username | User can only use alphabetic letters to set the username. The username must be minimum 3 characters and maximum 10 <details><summary>Click to expand - username</summary>![Setting username test](assets/images/username-test.png)</details> | Pass |
+| Setting Game Level | User can only enter letters: b, B, i, I, e, E to set game level. No other value will be accpeted <details><summary>Click to expand - game level</summary>![Setting game level test](assets/images/game-level-test.png)</details> | Pass |
+| Game Level | Once user choose the game level, the game will be set as per instruction in the game brief <details><summary>Click to expand - game parameters</summary>![Game parameters test](assets/images/...)</details> | Pass |
+| User adds ships | User can only add ships using the coordinates within the game board. User can enter 'stop' to restart the game. No other value will be accpeted <details><summary>Click to expand - adding ships</summary>![Adding ships test](assets/images/adding-ship-test.png)</details> | Pass |
+| Random Ships Allocation | User can choose to randomly add ships to the game board. Once done, message will confirm sucessful operation <details><summary>Click to expand - random ships</summary>![Random ships test](assets/images/random-ships-test.png)</details> | Pass |
+| User Shots | User shots against computer board. Hits are marked with 'X' and misses with '0'. The coordinates must be within the board, and user cannot shoot at the same location twice. <details><summary>Click to expand - random ships</summary>![Random ships test](assets/images/shots-test.png)</details> | Pass |
+| Score Board | The score board displays updated number of ships and shots after each round | Pass |
+| Round Number| The round number change after each shot by one | Pass |
+| Restart Game - STOP | Once word 'stop' is entered into coordination field, the game reloads from the start. | Pass |
+| Low Ammo | The low ammo message will apear to the user when number of user's shots is less then number of computer's ships | Pass |
+| Trophy | The trophy message will apear to the user once the game is won by sinking all computer ships | Pass |
+| Game Over | The game over message will apear to the user once the game is lost due computer sinking all user's ships, user was not able to sink all computer ships | Pass |
 
 ## Local Development ##
 
