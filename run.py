@@ -4,11 +4,6 @@ from random import randint
 from colorama import Fore, Back, Style
 
 
-# user_name = ""
-# size = 5
-# num_ships = size
-
-
 def print_out(data):
     """
     The function will display text as it typed in real
@@ -55,12 +50,12 @@ def color_print(color, data):
     print(Style.RESET_ALL, end="")
 
 
-# def print_r(data):
-#     """
-#     This funcion calls print function, to print text in red
-#     """
+def print_r(data):
+    """
+    This funcion calls print function, to print text in red
+    """
 
-#     print(Fore.RED, Style.BRIGHT + data, Style.RESET_All, end="")
+    print(Fore.RED, Style.BRIGHT + data, Style.RESET_ALL)
 
 
 class GameBoard:
@@ -359,41 +354,43 @@ def validate_coordinates(data, size):
         if data.upper() == "STOP":
             print_out(" Sorry to see you go!\n")
             print_out(" Thank you for playing BATTLESHIP!\n")
+            print_out("Reload")
+            print_pause("ing")
             print(" \n" * 40)
             main()
         if len(data) > 3:
-            print(" The coordinates can have a maximum of 3 characters.")
+            print_r(" The coordinates can have a maximum of 3 characters.")
             raise ValueError
         if len(data) == 3 and int(data[1] + data[2]) != 10:
-            print(f" {data[1] + data[2]} is not a column number.")
+            print_r(f" {data[1] + data[2]} is not a column number.")
             print(f" Please choose a number between 1 and {size}")
             raise ValueError
         if len(data) < 2:
-            print(" The coordinates must have a minimum of 2 characters.")
+            print_r(" The coordinates must have a minimum of 2 characters.")
             raise ValueError
         if data[0].upper() not in ''.join(alphabet[:size]):
-            print(f" {data[0].upper()} is not a row name on the gameboard")
+            print_r(f" {data[0].upper()} is not a row name on the gameboard")
             raise ValueError
         if data[1].isnumeric() is False:
-            print(f" '{data[1]}' is not a column number")
+            print_r(f" '{data[1]}' is not a column number")
             raise ValueError
         if int(data[1]) > size:
-            print(f" {data[1]} is not a column number.")
+            print_r(f" {data[1]} is not a column number.")
             print(f" Please choose a number between 1 and {size}")
             raise ValueError
         if len(data) == 3 and int(data[1] + data[2]) == 10 and \
            int(data[1] + data[2]) > size:
             print(f" {data[1] + data[2]} is not a column number.")
-            print(f" Please choose a number between 1 and {size}")
+            print_r(f" Please choose a number between 1 and {size}")
             raise ValueError
         if int(data[1]) == 0:
-            print(f" {data[1]} is not a column number.")
+            print_r(f" {data[1]} is not a column number.")
             raise ValueError
 
     except ValueError:
-        print(f"""
+        color_print("red", f"""
  {data} is not a valid choice. Please enter coordinates where row name is
- range of A to {alphabet[size - 1]} and column number between 1 to {size}.
+ range of A to {alphabet[size - 1]} and column number between 1 to {size}.\n
         """)
         return False
 
@@ -462,24 +459,27 @@ def user_ships_option():
         answer = input(f" Would you like to place ships on the board Y/N:\n")
         decision = answer.upper()
 
-        if decision == "Y":
-            color_print("blue", " Great, you can choose ship locations now.\n")
-            print("""
+        if validate_decision(decision):
+            if decision == "Y":
+                color_print(
+                    "blue", " Great, you can choose ship locations now.\n"
+                    )
+                print("""
  Please enter coordinates in format 'A1', where 'A' represents the row
  name, and '1' indicates the column number. Only enter the coordinates
  displayed on your Battleship game board.
                     """)
-            break
-        elif decision == "N":
-            color_print(
-                "blue", " Great, your ships will be randomly placed.\n"
-                )
-            break
-        else:
-            color_print(
-                "red", f" {answer} is not a valid option. Try again!\n"
-                )
-            continue
+                break
+            else:
+                color_print(
+                    "blue", " Great, your ships will be randomly placed.\n"
+                    )
+                break
+        # else:
+        #     color_print(
+        #         "red", f" {answer} is not a valid option. Try again!\n"
+        #         )
+        #     continue
     return decision
 
 
