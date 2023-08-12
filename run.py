@@ -38,8 +38,9 @@ def color_print(color, data):
     """
     Thiis funcion calls print_out function, to display text
     printed in real time, in blue color
-    source: https://pypi.org/project/colorama/
     """
+
+    # source: https://pypi.org/project/colorama/
     if color == "blue":
         print(Fore.BLUE, Style.BRIGHT, end="")
     elif color == "red":
@@ -715,9 +716,9 @@ def play_game(user_name):
     if difficulity_level == 5:
         size = 5
         num_ships = 5
-        shots = 25
+        # shots = 25
         # remove after testing is done and uncomment the coorect shots
-        # shots = 5
+        shots = 5
     elif difficulity_level == 10:
         size = 10
         num_ships = 10
