@@ -592,7 +592,7 @@ def game_battle(board_one, board_two, shots, user_name):
                 print(f"\t\t\t {board_two.shots}")
                 print(f"  Ships: {board_one.num_ships}", end="")
                 print(f"\t\t\t {board_two.num_ships}")
-                print("-" * 70)
+                print("-" * 70, end="")
                 print("""
  Please enter coordinates in format 'A1', where 'A' represents the row
  name, and '1' indicates the column number. Only enter the coordinates
@@ -615,7 +615,7 @@ def game_battle(board_one, board_two, shots, user_name):
                 print_out(f" End of round {b} ")
                 print_out("-" * 26)
                 print_out("-\n")
-                print("=" * 70)
+                print("=" * 70, end="")
                 print(Style.DIM + f"""
  {user_name}, you can leave the game during the battle by entering
  the command 'STOP' into the coordination input field. The game
@@ -771,7 +771,7 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
 
     computer_board.add_random_ships()
     color_print(
-        "green", f"             Welcome {user_name} in the BATTLE ZONE!\n")
+        "green", f"               Welcome {user_name} in the BATTLE ZONE!\n")
 
     game_battle(user_board, computer_board, shots, user_name)
 
