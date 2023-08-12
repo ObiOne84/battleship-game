@@ -1,0 +1,8 @@
+/* style background image */
+body {
+    height: 100%;
+    width: 100%;
+    background: url('../images/ship.png') no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
