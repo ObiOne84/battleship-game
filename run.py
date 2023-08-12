@@ -726,6 +726,7 @@ def play_game(user_name):
         size = 10
         num_ships = 20
         shots = 50
+        shots = 20
 
     user_board = GameBoard(size, num_ships, shots, name=user_name)
     computer_board = GameBoard(size, num_ships, shots, "Computer")
@@ -799,14 +800,14 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        # game_logo()
+        game_logo()
         print(" Would you like to start the game?")
         print_out(
             " Choose 'Y'- YES to start the game or 'N'- NO to leave now.\n"
             )
         decision = start_game()
         if decision == "Y":
-            # game_intro()
+            game_intro()
             user_name = collect_user_name()
             play_game(user_name)
         else:
