@@ -129,27 +129,13 @@ def game_logo():
     """
     # source: https://www.asciiart.eu/ascii-one-line
 
-#     message = ("""
-#      |    |    |                         *   *
-#              )_)  )_)  )_)           *            *
-#             )___))___))___)      *                   *__/_____
-#            )____)____)_____)*                    ____/________\\
-#          _____|____|____|_____           _______/_____\\________\\____
-# ---------\\                   /-----------\\              < < <       |----
-#   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^ ^^
-#      ^^^^      ^^^^     ^^^    ^^^   ^^^^      ^^^^     ^^^    ^^^   ^^^^
-#          ^^^^      ^^^     ^^^^      ^^^         ^^^^      ^^^    ^^
-#     """)
-
-#     print_out(message)
-
     print_out("""
-     |    |    |                         *   *                    |    |    |
+     |    |    |                         *   *                  |    |    |
              )_)  )_)  )_)          *            *
             )___))___))_o_)      *                   *__/_____
            )____)____)__X__)  *                  ____/________\\
          _____|____|____|_____           _______/_____\\________\\____
-         \\   o    o     o   /           \\              < < < -     |""")
+         \\    o    o    o    /           \\              < < < -     |""")
     color_print("blue", """
   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^
      ^^^^      ^^^^     ^^^    ^^^   ^^^^      ^^^^     ^^^    ^^^   ^^^
@@ -731,9 +717,7 @@ def play_game(user_name):
     if difficulity_level == 5:
         size = 5
         num_ships = 5
-        # shots = 25
-        # remove after testing is done and uncomment the coorect shots
-        shots = 5
+        shots = 25
     elif difficulity_level == 10:
         size = 10
         num_ships = 10
@@ -815,14 +799,14 @@ def main():
     Functions controls entire game, by calling all functions
     """
     while True:
-        game_logo()
+        # game_logo()
         print(" Would you like to start the game?")
         print_out(
             " Choose 'Y'- YES to start the game or 'N'- NO to leave now.\n"
             )
         decision = start_game()
         if decision == "Y":
-            game_intro()
+            # game_intro()
             user_name = collect_user_name()
             play_game(user_name)
         else:
