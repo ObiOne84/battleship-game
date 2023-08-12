@@ -143,7 +143,7 @@ def game_logo():
 
 #     print_out(message)
 
-    color_print("yellow", """
+    color_print("green", """
      |    |    |                         *   *
              )_)  )_)  )_)           *            *
             )___))___))___)      *                   *__/_____
