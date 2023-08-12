@@ -135,7 +135,7 @@ def game_logo():
             )___))___))___)      *                   *__/_____
            )____)____)_____)*                    ____/________\\
          _____|____|____|_____           _______/_____\\________\\____
----------\\                   /-----------\\              < < <       |------
+---------\\                   /-----------\\              < < <       |--------
   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^ ^^
      ^^^^      ^^^^     ^^^    ^^^   ^^^^      ^^^^     ^^^    ^^^   ^^^^
          ^^^^      ^^^     ^^^^      ^^^         ^^^^      ^^^    ^^
@@ -211,7 +211,7 @@ def validate_decision(value):
     try:
         if value != "N":
             if value != "Y":
-                print(f" {value} is not a valid option.")
+                print_r(f" {value} is not a valid option.")
                 raise ValueError
     except ValueError:
         print_out(" Please choose again!\n")
@@ -388,8 +388,8 @@ def validate_coordinates(data, size):
             raise ValueError
 
     except ValueError:
-        color_print("red", f"""
- {data} is not a valid choice. Please enter coordinates where row name is
+        color_print("blue", f"""
+ {data} is not a valid choice. Please enter coordinates where row name is in
  range of A to {alphabet[size - 1]} and column number between 1 to {size}.\n
         """)
         return False
@@ -439,7 +439,7 @@ def append_user_ship(self):
             self.ships.append(pair)
             break
         else:
-            print(" You already placed ship here")
+            print_r(" You already placed ship here")
             continue
     return True
 
@@ -475,11 +475,6 @@ def user_ships_option():
                     "blue", " Great, your ships will be randomly placed.\n"
                     )
                 break
-        # else:
-        #     color_print(
-        #         "red", f" {answer} is not a valid option. Try again!\n"
-        #         )
-        #     continue
     return decision
 
 
@@ -497,7 +492,9 @@ def user_shots(self, data, shots, name):
         pair = (x, y)
 
         if pair in self.guesses:
-            print_out(f" {name}, you already shot at {coordinates}!\n")
+            color_print(
+                "red", f" {name}, you already shot at {coordinates}!\n"
+                )
         else:
             if pair not in data.ships:
                 data.board[x][y] = "0"
@@ -802,7 +799,9 @@ def main():
     while True:
         game_logo()
         print(" Would you like to start the game?")
-        print_out(" Choose 'Y' to start the game or 'N' to leave now.\n")
+        print_out(
+            " Choose 'Y'- YES to start the game or 'N'- NO to leave now.\n"
+            )
         decision = start_game()
         if decision == "Y":
             game_intro()
