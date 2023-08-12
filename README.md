@@ -307,7 +307,6 @@ This project was deployed using Code Institute's mock terminal for [Heroku](http
     - Create a new Heroku App
     - Choose the unique app name and region
     - Go to the Setting tab, in section Config Vars, click on Reveal Config Vars and enter in field for key - `PORT` and the value is `8000`
-    - [!IMPORTANT]
     - Next, you must add couple of Buildpacks, click on Add Buildpack in excatly this order `python` first, `nodejs` second
     - Go to Deploy tab and choose deployment method GitHub, and connect to GitHub
     - Find the battleship-game repository and connect

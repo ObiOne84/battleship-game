@@ -262,8 +262,8 @@ def validate_user_name(name):
             raise ValueError
 
     except ValueError:
-        print_out(
-            f" The username is not valid!\n"
+        color_print(
+            "red", f" The username is not valid!\n"
         )
         return False
     return True
@@ -476,7 +476,9 @@ def user_ships_option():
                 )
             break
         else:
-            print(f" {answer} is not a valid option. Try again!\n")
+            color_print(
+                "red", f" {answer} is not a valid option. Try again!\n"
+                )
             continue
     return decision
 
@@ -642,11 +644,14 @@ def game_battle(board_one, board_two, shots, user_name):
                             reminder -= 1
                             pass
                         else:
-                            print_out(f"""
+                            color_print("blue", f"""
  Sorry {user_name}, you could not destroy all ships!
 """)
                             print(Fore.RED + game_over, Style.RESET_ALL)
-                            print_pause("   ")
+                            print_out(
+                                "The game will reload!"
+                                )
+                            print_pause(".....")
                             print("\n" * 40)
                             play_game(user_name)
                             break
@@ -731,14 +736,15 @@ def play_game(user_name):
     user_board = GameBoard(size, num_ships, shots, name=user_name)
     computer_board = GameBoard(size, num_ships, shots, "Computer")
     print_out("Please wait! We are setting your game board.\n")
+    print_out("Loading")
     print_pause("." * 4)
     print_out("." * 4)
-    print_out("10%")
-    print_out("." * 20)
+    print_out("15%")
+    print_out("." * 16)
     print_pause("." * 4)
     print_out("50%")
     print_pause("." * 4)
-    print_out("." * 28)
+    print_out("." * 25)
     print_pause("100%\n")
     print("\n")
     print_out("Board set up: Completed!\n")
