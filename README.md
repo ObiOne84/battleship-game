@@ -313,6 +313,8 @@ This project was deployed using Code Institute's mock terminal for [Heroku](http
     - Click on Deploy Branch (Manual deploy)
     - If you wish that app was update everytime you push the changes to the GitHub, Enable Automatic Deploys
 
+- You can follow the link https://battleship-game-one-6bf6c6bf7e50.herokuapp.com/ to vist deployed application or click [Play Battleship](https://battleship-game-one-6bf6c6bf7e50.herokuapp.com/) and enjoy the game!
+
 
     ## Credits ##
 
