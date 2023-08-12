@@ -14,6 +14,9 @@ def print_out(data):
     The function will display text as it typed in real
     time rather than dispaly all message at once
     """
+
+    # source:
+    # https://stackoverflow.com/questions/10019456/usage-of-sys-stdout-flush-method
     for letter in data:
         sys.stdout.write(letter)
         sys.stdout.flush()
@@ -53,13 +56,10 @@ def color_print(color, data):
 
 # def print_r(data):
 #     """
-#     Thiis funcion calls print_out function, to display text
-#     printed in real time, in red color
+#     This funcion calls print function, to print text in red
 #     """
 
-#     print(Fore.RED, Style.BRIGHT, end="")
-#     print_out(data)
-#     print(Style.RESET_ALL, end="")
+#     print(Fore.RED, Style.BRIGHT + data, Style.RESET_All, end="")
 
 
 class GameBoard:
@@ -67,6 +67,7 @@ class GameBoard:
     The class holds the game board, ships position and user guesses
     """
 
+    # source: Code Institute - Battleship Game sample
     def __init__(self, size, num_ships, shots, name):
         self.size = size
         self.num_ships = num_ships
@@ -130,6 +131,7 @@ def game_logo():
     """
     Prints game logo and game name
     """
+    # source: https://www.asciiart.eu/ascii-one-line
 
     message = ("""
      |    |    |                         *   *
@@ -145,6 +147,7 @@ def game_logo():
 
     print_out(message)
 
+    # source: https://www.ascii-art-generator.org/
     color_print("red", """
 - - - - B A T T L E S H I P - - - - - - - - - - - - - - - - - - - - - - - - - -
 """)
@@ -556,6 +559,7 @@ def game_battle(board_one, board_two, shots, user_name):
     """
 
     reminder = 1
+    # source: https://www.ascii-art-generator.org/
     game_over = """
      #####     #    #     # #######
     #     #   # #   ##   ## #
@@ -659,6 +663,8 @@ def game_battle(board_one, board_two, shots, user_name):
             break
     else:
         print_out(f" Congratulations {user_name}! You destroyed all ships!\n")
+
+        # source: https://www.ascii-art-generator.org/
         print(Fore.YELLOW, Style.BRIGHT + """
     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
     MMMMMMMMMMMMMMMMMMMMMMMWXK00000000KXNWMMMMMMMMMMMMMMMMMMMMMM

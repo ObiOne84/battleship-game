@@ -312,3 +312,20 @@ This project was deployed using Code Institute's mock terminal for [Heroku](http
     - Find the battleship-game repository and connect
     - Click on Deploy Branch (Manual deploy)
     - If you wish that app was update everytime you push the changes to the GitHub, Enable Automatic Deploys
+
+
+    ## Credits ##
+
+
+- **Inspiration**
+    - Firstly, I would like to thank Code Institute for reminding me about this wonderful game that I spent countless hours palying as a kid. This brought so many good memomories, and I had wonderful time building this project. So thank you Code Institute!
+
+    - Also, big thanks to [TheSpruceCRAFTS](https://www.thesprucecrafts.com/the-basic-rules-of-battleship-411069) for reminding me the rules of the game, and providing description.
+
+- **Code**
+    - Firstly, thanks to the Tutor of Code Institute, Sean, for helping me out improving the board printing function to ensure that row names and column numbers correspond to the board size.
+    - Next, [ASCII Art Archive](https://www.asciiart.eu/ascii-one-line) for providing inspiration for the game logos, which helped improve the visual effects of the application.
+    - Also, [ascii-art-generator.org](https://www.ascii-art-generator.org/) helped me to change regular writing into ASCII art but also convert the trophy logo downloaded from [pixabay](https://pixabay.com/vectors/search/trophy/).
+    - Moreover, various contributors to [stackoverflow](https://stackoverflow.com/questions/10019456/usage-of-sys-stdout-flush-method) for providing basis and assist in developing print_out function by utilising `syst.stdout.flush()` method.
+    - Furthermore, thank you to [pypi.org](https://pypi.org/project/colorama/) for adding color to my project by providing access to the library and explaining its functionality.
+    - Lastly, and most importantly, I would like to thank you,, Matt,, at [Code Institute](https://codeinstitute.net/ie/full-stack-software-development-diploma/?hsa_acc=8983321581&hsa_cam=14304747355&hsa_grp=1152289077037598&hsa_ad=&hsa_src=o&hsa_tgt=kwd-72018717753321:loc-92&hsa_kw=code%20institute&hsa_mt=e&hsa_net=adwords&hsa_ver=3&msclkid=3994a47b5ed319c9893bc0ac0eccb860&utm_source=bing&utm_medium=cpc&utm_campaign=CI%20-%20IRL%20-%20Search%20-%20Brand&utm_term=code%20institute&utm_content=CI%20-%20IRL%20-%20Search%20-%20Brand%20-%20Exact), for providing inspiration and explaining basic class usage in developing the Battleship game.
