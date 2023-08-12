@@ -129,19 +129,32 @@ def game_logo():
     """
     # source: https://www.asciiart.eu/ascii-one-line
 
-    message = ("""
+#     message = ("""
+#      |    |    |                         *   *
+#              )_)  )_)  )_)           *            *
+#             )___))___))___)      *                   *__/_____
+#            )____)____)_____)*                    ____/________\\
+#          _____|____|____|_____           _______/_____\\________\\____
+# ---------\\                   /-----------\\              < < <       |----
+#   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^ ^^
+#      ^^^^      ^^^^     ^^^    ^^^   ^^^^      ^^^^     ^^^    ^^^   ^^^^
+#          ^^^^      ^^^     ^^^^      ^^^         ^^^^      ^^^    ^^
+#     """)
+
+#     print_out(message)
+
+    color_print("yellow", """
      |    |    |                         *   *
              )_)  )_)  )_)           *            *
             )___))___))___)      *                   *__/_____
            )____)____)_____)*                    ____/________\\
          _____|____|____|_____           _______/_____\\________\\____
----------\\                   /-----------\\              < < <       |--------
-  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^ ^^
-     ^^^^      ^^^^     ^^^    ^^^   ^^^^      ^^^^     ^^^    ^^^   ^^^^
+---------\\                   /-----------\\              < < <       |----""")
+    color_print("blue", """
+  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^
+     ^^^^      ^^^^     ^^^    ^^^   ^^^^      ^^^^     ^^^    ^^^   ^
          ^^^^      ^^^     ^^^^      ^^^         ^^^^      ^^^    ^^
     """)
-
-    print_out(message)
 
     # source: https://www.ascii-art-generator.org/
     color_print("red", """
@@ -780,10 +793,15 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
 
     game_battle(user_board, computer_board, shots, user_name)
 
+    print("""
+ Please choose Y for Yes, if you wish to continue the gama and choose a new
+ game level, else choose N for No, and game will restart.
+ """)
     print_out(f" {user_name} would you like to continue the game?\n")
     decision = start_game()
 
     if decision == "Y":
+        print("\n" * 40)
         play_game(user_name)
     else:
         color_print(
