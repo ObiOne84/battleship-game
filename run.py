@@ -225,7 +225,7 @@ def collect_user_name():
 
     while True:
         print_out("""
- Please choose your username. The username should contain minimum 3 characters
+ Please choose your username. The username must contain minimum 3 characters
  and a maximum of 10. It must only have alphabetic letters from range a to z,
  upper, lower case, or a mix of both. Special characters are not allowed.
         """)
@@ -596,8 +596,7 @@ def game_battle(board_one, board_two, shots, user_name):
                 print("""
  Please enter coordinates in format 'A1', where 'A' represents the row
  name, and '1' indicates the column number. Only enter the coordinates
- displayed on your Battleship game board.
-                        """)
+ displayed on your Battleship game board.""")
                 print(Fore.YELLOW + "=" * 70)
                 print(f" {board_two.name}'s Board")
                 board_two.print_board(size)
@@ -620,8 +619,7 @@ def game_battle(board_one, board_two, shots, user_name):
                 print(Style.DIM + f"""
  {user_name}, you can leave the game during the battle by entering
  the command 'STOP' into the coordination input field. The game
- will reload.
-""", Style.RESET_ALL)
+ will reload.""", Style.RESET_ALL)
                 print("=" * 70)
                 b += 1
 
@@ -726,7 +724,6 @@ def play_game(user_name):
         size = 10
         num_ships = 20
         shots = 50
-        shots = 20
 
     user_board = GameBoard(size, num_ships, shots, name=user_name)
     computer_board = GameBoard(size, num_ships, shots, "Computer")
