@@ -49,7 +49,13 @@ To place the ships or shot at the board, players must pass coordinates in the fo
     - Accepts user's input
     - The users must enter 'Y' or 'y' to start the game. If the user chooses 'N' or 'n', the game will reload 
     - Loads the game
+
+    <details>
+    <summary>Click to expand - user choose to start the game</summary>
+
     ![Start the game message](assets/images/start-game-message.png)
+
+    </details>
 
     ---
 
@@ -57,21 +63,39 @@ To place the ships or shot at the board, players must pass coordinates in the fo
     - Accepts user's input
     - Sets username
     - Defines game parameters (board size, number of ships and shots)
+
+    <details>
+    <summary>Click to expand - choose game level</summary>
+
     ![Choose a username and game level](assets/images/username-game-lev.png)
+
+    </details>
 
     ---
 
     3. The user must decide to manually or randomly place ships on the board
     - Accepts user's input 
     - Prints user's board
+
+    <details>
+    <summary>Click to expand - users can choose location of ships</summary>
+
     ![Choose the ships location message](assets/images//decision-ships-loc.png)
+
+    </details>
 
     ---
 
     4. The users must decide if they want to continue the game when they do not have enough bullets to destroy all remaining ships.
     - Accepts users` input
     - Returns to the game or reloads the game - depending on the user's decision
+
+    <details>
+    <summary>Click to expand - user must decide if continue to play if low ammo</summary>
+
     ![Not enough bullets message](assets/images/low-bullets-message.png)
+
+    </details>
 
     ---
     5. Users must decide whether to continue the game once they win or lose it.
@@ -83,7 +107,14 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 4. Feedback messages:
   - In-game feedback messages are printed in blue to confirm the user's decision choice
   - Feedback answer to Yes or No decision, username choice, game level.
+
+  <details>
+  <summary>Click to expand - examples of feedback messages</summary>
+
   ![Screenshot of feedback messages](assets/images/feedback-color.png)
+
+  </details>
+
   - Hit shots are printed in green to inform users about successful shot
   - Missed shots are printed in red to inform users
 
@@ -95,23 +126,50 @@ To place the ships or shot at the board, players must pass coordinates in the fo
   - Adds ships to the board 'S'
   - Informs users about the successful placement of the ship on the board
   - Informs users about remaining ships to place
+
+  <details>
+  <summary>Click to expand - users add ships to the board</summary>
+
   ![Screenshot of the user adding ships](assets/images/user-ships-choice.png)
+
+  </details>
+
   - Validates the user's choice
   - User must provide coordinates within the gameboard and in the correct format
+
+  <details>
+  <summary>Click to expand - user coordination validation example</summary>
+
   ![Screenshot of ships location validation](assets/images/ship-loc-validation.png)
+
+  </details>
 
 ---
 
 6. Random ship placement on the user's board:
-  - Prints user's board with ships randomly placed (example below - game level expert)
+  - Prints user's board with ships randomly placed
+  - Adds ships as per game level description
+
+  <details>
+  <summary>Click to expand - random ships example, expert level</summary>
+
   ![Screenshot random ships expert board](assets/images/random-ships-expert.png)
+
+  </details>
 
 ---
 
 7. Battle mode:
   - Accepts user's input 
   - Users shot at the computer board (marked in yellow ink)
-  ![Battle mode beginner](assets/images/battle-mode-beginner.png)
+
+  <details>
+  <summary>Click to expand - begginer battle mode board view</summary>
+
+  ![Battle mode, beginner boards](assets/images/battle-mode-beginner.png)
+
+  </details>
+
   - Prints feedback message for each hit in bright green color, for each missed in bright red color
   - Confirms users' and computer choices by repeating users` choice
   - Calculates remaining shots and ships
@@ -122,7 +180,13 @@ To place the ships or shot at the board, players must pass coordinates in the fo
   - Computer shots randomly at the users` board
   - Displays hits on the board as 'X'
   - Displays misses on the board as '0'
+
+  <details>
+  <summary>Click to expand - hit and miss feedback</summary>
+
   ![Battle mode user's feedback](assets/images/hit-miss-feedback.png)
+
+  </details>
 
 ---
 
@@ -130,20 +194,38 @@ To place the ships or shot at the board, players must pass coordinates in the fo
   - Users receive congratulatory messages after destroying all computer ships
   - Users are presented with a bright yellow trophy and the message YOU WIN
   - Users are asked if they wish to continue the game, the game will restart, and the user can choose a difficult level
+
+  <details>
+  <summary>Click to expand - winner's trophy</summary>
+
   ![Winner's trophy](assets/images/trophy.png)
+
+  </details>
 
 ---
 
 9. Game over message:
   - When a user fails to destroy all computer ships, the game over message will appear on the screen
+
+  <details>
+  <summary>Click to expand - game over message</summary>
+
   ![Game over message](assets/images/game-over.png)
+
+  </details>
 
 ---
 
 10. Low bullets message:
   - Once the number of remaining user's shots is lower than the computer's remaining ships, the user will be given the option to restart the game or to continue anyway
   - The message appears only once.
+
+  <details>
+  <summary>Click to expand - low ammo message</summary>
+
   ![Low bullets message](assets/images/low-amo-message.png)
+
+  </details>
 
 ---
 
