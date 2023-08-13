@@ -534,14 +534,14 @@ def random_shot(self, data, shots, name):
         else:
             if pair not in data.ships:
                 data.board[x][y] = "0"
-                print_out(f"{name} gueesed {coordinates}\n")
+                print_out(f"{name} guessed {coordinates}\n")
                 color_print("red", f"{name} missed!\n")
                 self.guesses.append(pair)
                 self.shots -= 1
                 break
             else:
                 data.board[x][y] = "X"
-                print_out(f"{name} gueesed {coordinates}\n")
+                print_out(f"{name} guessed {coordinates}\n")
                 color_print("green", f"{name}, that's a HIT\n")
                 self.guesses.append(pair)
                 data.num_ships -= 1
@@ -739,7 +739,7 @@ def play_game(user_name):
     print_out("." * 25)
     print_pause("100%\n")
     print("\n")
-    print_out("Board set up: Completed!\n")
+    print_out("Board setup: Completed!\n")
 
     print("")
     print("=" * 70)
@@ -776,8 +776,8 @@ Great {user_name}, you placed all {len(user_board.ships)} ships on the board.\n
     game_battle(user_board, computer_board, shots, user_name)
 
     print("""
- Please choose Y for Yes, if you wish to continue the gama and choose a new
- game level, else choose N for No, and game will restart.
+ If you wish to continue the game and change the game level, please choose
+ Y or Yes, else choose N for No, and game will restart.
  """)
     print_out(f" {user_name} would you like to continue the game?\n")
     decision = start_game()
