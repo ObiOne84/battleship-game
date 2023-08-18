@@ -11,6 +11,23 @@ Click [HERE](https://battleship-game-one-6bf6c6bf7e50.herokuapp.com/) to visit a
 
 ---
 
+## Table of Contents ##
+
+
+ - [How to Play](#how-to-play)
+ - [Features](#features)
+    - [Current Features](#current-features)
+    - [Future Features](#future-featuers)
+ - [Design](#design)
+ - [Testing](#testing)
+    - [Bugs](#bugs)
+    - [Validator Testing](#validator-testing)
+ - [Local Development](#local-development)
+ - [Deployment](#deployment)
+ - [Credits](#credits)
+
+---
+
 ## How To Play ##
 
 
@@ -235,8 +252,10 @@ To place the ships or shot at the board, players must pass coordinates in the fo
     - The letters "b, B, i, I, e, and E" will be accepted to set the game level. Lastly, the coordinates can be entered as per the board size and in the format where the letter represents a row, and the number indicates a column. For example, A1 or b3. 
     - Alternatively, users can enter stop into the coordinates field to restart the game. The username must be 3 to 10 characters long and accept only alphabetic letters.
 
+---
 
-### Future Featuers ###
+
+### Future Features ###
 
 
 1. Allow the player to choose to board color
@@ -267,6 +286,8 @@ To place the ships or shot at the board, players must pass coordinates in the fo
   - To assist the game, the GameBoard class has methods such as the `print_board` method that allows printing the current board with row names and column numbers, a method to allow users to add the position of their own ships `add_ships`, or randomly add ships to the board `add_random_ships`. Moreover, the `guess` method allows adding user guesses and returning the result.
   - Moreover, the game has many supporting functions to enhance user experience. For example, `color_print` allows to print out the text in various colors. Also, the `collect_user_name` function collects usernames, which is used to personalise the game. The function `game_level` allows users to choose a difficult level but also defines the board size, number of shots and ships available to play. Similarly, `player_ship_coordinates` help the user to pass boats and shots coordinates against the board. Lastly, `game_battle` ensures that battle mode runs smoothly and allows users to stop the game early and restart the game with an option to choose a difficulty level again.
 
+---
+
 
 ## Testing ##
 
@@ -292,6 +313,8 @@ I have manually tested this project by doing the following:
 | Low Ammo | The low ammo message will appear to the User when the number of the User's shots is less than that of the computer's ships. User can restart the game and choose a new game level | Pass |
 | Trophy | The trophy message will appear to the User once the game is won by sinking all computer ships | Pass |
 | Game Over | The game over message will appear to the User once the game is lost due computer sinking all User's ships; the User was not able to sink all computer's ships | Pass |
+
+---
 
 ### Bugs ###
 
@@ -343,9 +366,12 @@ after:
 
 </details>
 
+---
+
 **2. Remaining Bugs**
 - No bugs remaining.
 
+---
 
 ### Validator Testing ###
 
@@ -359,6 +385,7 @@ after:
 
     </details>
 
+---
 
 ## Local Development ##
 
@@ -377,6 +404,7 @@ Alternatively, you can fork a GitHub repository. Remember that if you forked the
 - In the top right corner of the window, click on the Fork button.
 - The process will start, and you will see the message confirming the start.
 
+---
 
 ## Deployment ##
 
@@ -397,8 +425,9 @@ This project was deployed using Code Institute's mock terminal for [Heroku](http
 
 - You can follow the link https://battleship-game-one-6bf6c6bf7e50.herokuapp.com/ to vist deployed application or click [Play Battleship](https://battleship-game-one-6bf6c6bf7e50.herokuapp.com/) and enjoy the game!
 
+---
 
-    ## Credits ##
+## Credits ##
 
 
 - **Inspiration**
