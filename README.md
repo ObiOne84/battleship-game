@@ -223,6 +223,7 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 
 9. Game over message:
   - When a user fails to destroy all computer ships, the game over message will appear on the screen
+  - The message appears when all user ships has been destoryed, or when user used all available bullets and failed to sink computer ships
 
   <details>
   <summary>Click to expand - game over message</summary>
@@ -234,7 +235,7 @@ To place the ships or shot at the board, players must pass coordinates in the fo
 ---
 
 10. Low bullets message:
-  - Once the number of remaining user's shots is lower than the computer's remaining ships, the user will be given the option to restart the game or to continue anyway
+  - Once the number of remaining user's shots is lower than the computer's remaining ships, the user will be given the option to restart the game or to continue even when the available bullets are not enough to win the game
   - The message appears only once.
 
   <details>
