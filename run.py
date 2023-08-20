@@ -178,11 +178,13 @@ def game_intro():
  Expert - the game takes place on the 10 x 10 grid; on this level
  the number of available shots is limited to 50, and you must destroy 20 ships.
 
+ To win the game you must destroy all computer ships. Good luck!
+
   S - represents the ships on the game board.
   0 - indicates missed shots.
   X - illustrates hit ships.
-  You can leave the game during the battle by entering the command 'STOP'
-  into the coordination input field. The game will reload.\n
+ You can leave the game during the battle by entering the command 'STOP'
+ into the coordination input field. The game will reload.\n
 """
     print_out(message)
 
